@@ -10,15 +10,19 @@ namespace SrbijaVoz.model
     {
         public Line Line { get; set; }
 
-        public DateOnly DepartureDate { get; set; }
+        public DayOfWeek Day { get; set; }
 
-        public LineSchedule(Line line, DateOnly departureDate)
+        public int DayNumber { get; set; }
+
+        public LineSchedule(Line line, int day)
         {
             Line = line;
-            DepartureDate = departureDate;
+            Day = (DayOfWeek)day;
         }
 
-        public LineSchedule() {}
+        public LineSchedule() { }
+
+        
 
 
 

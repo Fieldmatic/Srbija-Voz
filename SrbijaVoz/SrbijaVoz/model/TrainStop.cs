@@ -10,10 +10,10 @@ namespace SrbijaVoz.model
     {
         public Station StartStation { get; set; }
         public Station EndStation { get; set; }
-        public TimeOnly DepartureTime { get; set; }
-        public TimeOnly ArrivalTime { get; set; }
+        public TimeSpan DepartureTime { get; set; }
+        public TimeSpan ArrivalTime { get; set; }
 
-        public TrainStop(Station startStation, Station endStation, TimeOnly departureTime, TimeOnly arrivalTime)
+        public TrainStop(Station startStation, Station endStation, TimeSpan departureTime, TimeSpan arrivalTime)
         {
             StartStation = startStation;
             EndStation = endStation;

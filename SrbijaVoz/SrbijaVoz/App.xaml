@@ -4,6 +4,25 @@
              xmlns:local="clr-namespace:SrbijaVoz"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+
+                <ResourceDictionary>
+                    <SolidColorBrush x:Key="PrimaryHueLightBrush" Color="Red"/>
+                    <SolidColorBrush x:Key="PrimaryHueLightForegroundBrush" Color="Black"/>
+                    <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="Red"/>
+                    <SolidColorBrush x:Key="PrimaryHueMidForegroundBrush" Color="Black"/>
+                    <SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="Red"/>
+                    <SolidColorBrush x:Key="PrimaryHueDarkForegroundBrush" Color="Red"/>
+                    <!--  accent -->
+                    <SolidColorBrush x:Key="SecondaryAccentBrush" Color="Blue"/>
+                    <SolidColorBrush x:Key="SecondaryAccentForegroundBrush" Color="Black"/>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
+
+
 </Application>

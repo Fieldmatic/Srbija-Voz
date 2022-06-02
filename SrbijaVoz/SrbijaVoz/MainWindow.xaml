@@ -5,13 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SrbijaVoz"
         mc:Ignorable="d"
-        Icon="SrbijaVozICON.png"
-        Title="Srbija voz" Height="800" Width="1200">
+        Icon="resources/SrbijaVozICON.png"
+        WindowStartupLocation="CenterScreen"
+        Title="Srbija voz" Height="600" Width="800"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}">
+
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="239*"/>
-        </Grid.ColumnDefinitions>
+        <materialDesign:Card HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,0,625,0" />
+        <Grid Height="500" Width="350" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="109*"/>
+                <RowDefinition Height="391*"/>
+            </Grid.RowDefinitions>
+            <Image Source="resources/SrbijaVoz.png" Margin="20,22,30,280" Grid.RowSpan="2"/>
+            <TextBox
+                  Name="Username"
+                  Margin="46,141,56,221"
+                  materialDesign:HintAssist.Hint="Username" Grid.Row="1"/>
+            <PasswordBox
+                  Name="Password"
+                  materialDesign:TextFieldAssist.HasClearButton="True"
+                  materialDesign:HintAssist.Hint="Password" Margin="46,190,52,158" Grid.Row="1"/>
+            <Button Margin="46,257,52,102" Grid.Row="1" Click="LoginEvent">Login</Button>
+
+        </Grid>
 
     </Grid>
 </Window>

@@ -1,0 +1,70 @@
+[
+  {
+    "Id": 1,
+    "Name": "Novi Sad - Beograd",
+    "TrainStops": [
+      {
+        "StartStation": {
+          "Id": 1,
+          "Name": "Novi Sad"
+        },
+        "EndStation": {
+          "Id": 2,
+          "Name": "Sremski Karlovci"
+        },
+        "DepartureTime": "08:00:00",
+        "ArrivalTime": "08:10:00"
+      },
+      {
+        "StartStation": {
+          "Id": 2,
+          "Name": "Sremski Karlovci"
+        },
+        "EndStation": {
+          "Id": 3,
+          "Name": "Novi Beograd"
+        },
+        "DepartureTime": "08:10:00",
+        "ArrivalTime": "08:35:00"
+      },
+      {
+        "StartStation": {
+          "Id": 3,
+          "Name": "Novi Beograd"
+        },
+        "EndStation": {
+          "Id": 4,
+          "Name": "Beograd Centar"
+        },
+        "DepartureTime": "08:35:00",
+        "ArrivalTime": "08:45:00"
+      }
+    ],
+    "Train": {
+      "Id": 1,
+      "Name": "Soko",
+      "Prices": {
+        "0": 500,
+        "1": 300
+      },
+      "Seats": [
+        {
+          "Number": 1,
+          "SeatClass": 0
+        },
+        {
+          "Number": 2,
+          "SeatClass": 0
+        },
+        {
+          "Number": 3,
+          "SeatClass": 0
+        },
+        {
+          "Number": 4,
+          "SeatClass": 1
+        }
+      ]
+    }
+  }
+ ]

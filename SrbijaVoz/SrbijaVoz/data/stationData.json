@@ -1,0 +1,18 @@
+[
+  {
+    "Id": 1,
+    "Name": "Novi Sad"
+  },
+  {
+    "Id": 2,
+    "Name": "Sremski Karlovci"
+  },
+  {
+    "Id": 3,
+    "Name": "Novi Beograd"
+  },
+  {
+    "Id": 4,
+    "Name": "Beograd Centar"
+    }
+ ]

@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SrbijaVoz.database;
+using SrbijaVoz.model;
 
 namespace SrbijaVoz
 {
@@ -20,9 +22,37 @@ namespace SrbijaVoz
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Database database;
         public MainWindow()
         {
             InitializeComponent();
+            database = new Database();
+            
         }
+
+        private void LoginEvent(object sender, RoutedEventArgs e)
+        {
+            foreach (Client client in database.Clients)
+            {
+                if (client.Username.Equals(Username.Text) && client.Password.Equals(Password.Password))
+                {
+                    ClientWindow clientWindow = new ClientWindow(database,client);
+                    clientWindow.Show();
+                    this.Close();
+                }
+            }
+
+            foreach (Manager manager in database.Managers)
+            {
+                if (manager.Username.Equals(Username.Text) && manager.Password.Equals(Password.Password))
+                {
+                    ManagerWindow managerWindow = new ManagerWindow(database, manager);
+                    managerWindow.Show();
+                    this.Close();
+                }
+            }
+        }
+
+
     }
 }

@@ -14,12 +14,12 @@ namespace SrbijaVoz.model
 
         public Dictionary<SeatClass, int> Prices { get; set; }
 
-        public Train(int id, string name, List<Seat> seats, Dictionary<SeatClass, int> Prices)
+        public Train(int id, string name, List<Seat> seats, Dictionary<SeatClass, int> prices)
         {
             Id = id;
             Name = name;
             Seats = seats;
-            this.Prices = Prices;
+            Prices= prices;
         }
 
         public Train () {}
