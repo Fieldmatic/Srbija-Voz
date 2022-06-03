@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SrbijaVoz"
         mc:Ignorable="d"
-        Icon="resources/SrbijaVozICON.png"
+        Icon="resources/VOZSRBIJA.png"
         WindowStartupLocation="CenterScreen"
-        Title="Srbija voz" Height="600" Width="800"
+        Title="Srbija Voz" Height="800" Width="1200"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -18,22 +18,36 @@
         FontFamily="{DynamicResource MaterialDesignFont}">
 
     <Grid>
-        <materialDesign:Card HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,0,625,0" />
-        <Grid Height="500" Width="350" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2.5*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <materialDesign:Card HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" />
+        <Grid  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="109*"/>
-                <RowDefinition Height="391*"/>
+                <RowDefinition Height="3.5*"/>
+                <RowDefinition Height="0.55*"/>
+                <RowDefinition Height="0.55*"/>
+                <RowDefinition Height="1.5*"/>
             </Grid.RowDefinitions>
-            <Image Source="resources/SrbijaVoz.png" Margin="20,22,30,280" Grid.RowSpan="2"/>
+            <Image Source="resources/VOZSRBIJA.png" Grid.Row="0"/>
             <TextBox
-                  Name="Username"
-                  Margin="46,141,56,221"
+                  Name="Username"      
+                  Height="Auto"
+                  FontSize="20"
+                  Width="Auto"
+                  Margin="0 20 0 0"
                   materialDesign:HintAssist.Hint="Username" Grid.Row="1"/>
             <PasswordBox
-                  Name="Password"
+                  Name="Password"           
+                  Width="Auto"
+                  FontSize="20"
+                  Height="Auto"
+                  Margin="0 20 0 0"
                   materialDesign:TextFieldAssist.HasClearButton="True"
-                  materialDesign:HintAssist.Hint="Password" Margin="46,190,52,158" Grid.Row="1"/>
-            <Button Margin="46,257,52,102" Grid.Row="1" Click="LoginEvent">Login</Button>
+                  materialDesign:HintAssist.Hint="Password" Grid.Row="2"/>
+            <Button Grid.Row="3" Click="LoginEvent" Width="Auto">Login</Button>
 
         </Grid>
 

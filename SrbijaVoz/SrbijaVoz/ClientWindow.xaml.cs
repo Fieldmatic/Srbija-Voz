@@ -29,5 +29,13 @@ namespace SrbijaVoz
             Database = database;
             Client = client;
         }
+
+        private void LogoutEvent(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow(Database);
+            mainWindow.Show();
+            this.Close();
+
+        }
     }
 }

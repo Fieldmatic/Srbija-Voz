@@ -30,6 +30,12 @@ namespace SrbijaVoz
             
         }
 
+        public MainWindow(Database db)
+        {
+            InitializeComponent();
+            database = db;
+        }
+
         private void LoginEvent(object sender, RoutedEventArgs e)
         {
             foreach (Client client in database.Clients)
