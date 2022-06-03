@@ -1,0 +1,39 @@
+﻿<Page x:Class="SrbijaVoz.managerWindows.LinePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SrbijaVoz.managerWindows"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1200"
+      Title="LinePage">
+
+    <Page.Resources>
+        <Image x:Key="Add" Source="../resources/plus.png"/>
+        <Image x:Key="Edit" Source="../resources/edit.png" RenderTransformOrigin="0.597,0.41"/>
+        <Image x:Key="Delete" Source="../resources/delete.png"/>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="9*"/>
+            <ColumnDefinition Width="1.3*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="LineDataGrid" Grid.Column="0"  AutoGenerateColumns="False" FontSize="18" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="0.5*"/>
+                <DataGridTextColumn Header="Voz" Binding="{Binding Train}" Width="0.7*"/>
+                <DataGridTextColumn Header="Stanice" Binding="{Binding TrainStops}" Width="6*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid Grid.Column="1" Background="White">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                <Button Grid.Row="1" Background ="Transparent" BorderThickness="0" Content="{StaticResource Add}" Height="60" HorizontalAlignment="Center"></Button>
+                <Button Background ="Transparent" BorderThickness="0" Content="{StaticResource Edit}" Margin="12 80 0 0" Height="60" RenderTransformOrigin="1.282,0.533"/>
+                <Button Grid.Row="3" Background ="Transparent" BorderThickness="0" Content="{StaticResource Delete}" Margin="0 80 0 0" Height="60"  HorizontalAlignment="Center"></Button>
+            </StackPanel>
+
+        </Grid>
+
+    </Grid>
+</Page>

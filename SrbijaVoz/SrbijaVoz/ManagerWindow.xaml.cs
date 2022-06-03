@@ -1,4 +1,6 @@
 ﻿using SrbijaVoz.database;
+using SrbijaVoz.dataGridRecord;
+using SrbijaVoz.managerWindows;
 using SrbijaVoz.model;
 using System;
 using System.Collections.Generic;
@@ -13,6 +15,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Line = SrbijaVoz.model.Line;
 
 namespace SrbijaVoz
 {
@@ -28,6 +31,7 @@ namespace SrbijaVoz
             InitializeComponent();
             Database = database;
             Manager = manager;
+            
         }
 
         private void LogoutEvent(object sender, RoutedEventArgs e)
@@ -36,6 +40,45 @@ namespace SrbijaVoz
             mainWindow.Show();
             this.Close();
 
+        }
+
+        private void SwitchToTrainData(object sender, RoutedEventArgs e)
+        {
+            DataFrame.Content = new TrainPage(getTrainGridData());
+
+        }
+
+        private void SwitchToLineData(object sender, RoutedEventArgs e)
+        {
+            DataFrame.Content = new LinePage(getLineGridData());
+
+        }
+
+        private void SwitchToLineScheduleData(object sender, RoutedEventArgs e)
+        {
+            DataFrame.Content = new LineSchedulePage(getLineScheduleGridData());
+
+        }
+
+        private List<TrainRecord> getTrainGridData()
+        {
+            List<TrainRecord> trainRecordData = new List<TrainRecord>();
+            foreach (Train train in Database.Trains) trainRecordData.Add(new TrainRecord(train));
+            return trainRecordData;
+        }
+
+        private List<LineRecord> getLineGridData()
+        {
+            List<LineRecord> lineRecordData = new List<LineRecord>();
+            foreach (Line line in Database.Lines) lineRecordData.Add(new LineRecord(line));
+            return lineRecordData;
+        }
+
+        private List<LineScheduleRecord> getLineScheduleGridData()
+        {
+            List<LineScheduleRecord> lineScheduleRecordData = new List<LineScheduleRecord>();
+            foreach (LineSchedule schedule in Database.LineSchedules) lineScheduleRecordData.Add(new LineScheduleRecord(schedule));
+            return lineScheduleRecordData;
         }
     }
 }

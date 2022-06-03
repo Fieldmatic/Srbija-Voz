@@ -24,5 +24,27 @@ namespace SrbijaVoz.model
 
         public Train () {}
 
+        public int getFirstClassSeatsCount()
+        {
+            int count = 0;
+            foreach(Seat seat in Seats)
+            {
+                if (seat.SeatClass == SeatClass.I) count++;
+            }
+            return count;
+
+        }
+
+        public int getSecondClassSeatsCount()
+        {
+            int count = 0;
+            foreach (Seat seat in Seats)
+            {
+                if (seat.SeatClass == SeatClass.II) count++;
+            }
+            return count;
+
+        }
+
     }
 }

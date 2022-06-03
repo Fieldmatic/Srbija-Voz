@@ -1,28 +1,113 @@
 [
-    {
-      "Id": 1,
-      "Name": "Soko",
-      "Prices": {
-        "0": 500,
-        "1": 300
+  {
+    "Id": 1,
+    "Name": "Soko",
+    "Prices": {
+      "0": 500,
+      "1": 300
+    },
+    "Seats": [
+      {
+        "Number": 1,
+        "SeatClass": 0
       },
-      "Seats": [
-        {
-          "Number": 1,
-          "SeatClass": 0
-        },
-        {
-          "Number": 2,
-          "SeatClass": 0
-        },
-        {
-          "Number": 3,
-          "SeatClass": 0
-        },
-        {
-          "Number": 4,
-          "SeatClass": 1
-        }
-      ]
-    }
- ]
+      {
+        "Number": 2,
+        "SeatClass": 0
+      },
+      {
+        "Number": 3,
+        "SeatClass": 0
+      },
+      {
+        "Number": 4,
+        "SeatClass": 1
+      }
+    ]
+  },
+  {
+    "Id": 2,
+    "Name": "Soko",
+    "Prices": {
+      "0": 500,
+      "1": 300
+    },
+    "Seats": [
+      {
+        "Number": 1,
+        "SeatClass": 0
+      },
+      {
+        "Number": 2,
+        "SeatClass": 0
+      },
+      {
+        "Number": 3,
+        "SeatClass": 0
+      },
+      {
+        "Number": 4,
+        "SeatClass": 1
+      },
+      {
+        "Number": 5,
+        "SeatClass": 1
+      },
+      {
+        "Number": 6,
+        "SeatClass": 1
+      },
+      {
+        "Number": 7,
+        "SeatClass": 1
+      },
+      {
+        "Number": 8,
+        "SeatClass": 1
+      }
+    ]
+  },
+  {
+    "Id": 3,
+    "Name": "Svraka",
+    "Prices": {
+      "0": 300,
+      "1": 200
+    },
+    "Seats": [
+      {
+        "Number": 1,
+        "SeatClass": 0
+      },
+      {
+        "Number": 2,
+        "SeatClass": 0
+      },
+      {
+        "Number": 3,
+        "SeatClass": 0
+      },
+      {
+        "Number": 4,
+        "SeatClass": 1
+      },
+      {
+        "Number": 5,
+        "SeatClass": 0
+      },
+      {
+        "Number": 6,
+        "SeatClass": 1
+      },
+      {
+        "Number": 7,
+        "SeatClass": 1
+      },
+      {
+        "Number": 8,
+        "SeatClass": 0
+      }
+    ]
+  }
+
+]

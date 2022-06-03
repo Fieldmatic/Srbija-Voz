@@ -8,6 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="resources\delete.png" />
+    <None Remove="resources\edit.png" />
+    <None Remove="resources\plus.png" />
     <None Remove="resources\SrbijaVoz.png" />
     <None Remove="resources\VOZSRBIJA.png" />
     <None Remove="SrbijaVozICON.png" />
@@ -22,6 +25,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="resources\delete.png" />
+    <Resource Include="resources\edit.png" />
+    <Resource Include="resources\plus.png" />
     <Resource Include="resources\SrbijaVoz.png" />
     <Resource Include="resources\SrbijaVozICON.png" />
     <Resource Include="resources\VOZSRBIJA.png" />
