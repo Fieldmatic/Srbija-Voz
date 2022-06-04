@@ -26,7 +26,11 @@ namespace SrbijaVoz.managerWindows
         {
             InitializeComponent();
             TrainDataGrid.ItemsSource = Trains;
-            
+
         }
+
+       
+
+
     }
 }

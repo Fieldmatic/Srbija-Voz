@@ -1,18 +1,34 @@
 [
   {
     "Id": 1,
-    "Name": "Novi Sad"
+    "Name": "Novi Sad",
+    "Location": {
+      "Latitude": 45.265519,
+      "Longitude": 19.829519
+    }
   },
   {
     "Id": 2,
-    "Name": "Sremski Karlovci"
+    "Name": "Sremski Karlovci",
+    "Location": {
+      "Latitude": 45.206631,
+      "Longitude": 19.932878
+    }
   },
   {
     "Id": 3,
-    "Name": "Novi Beograd"
+    "Name": "Novi Beograd",
+    "Location": {
+      "Latitude": 44.806900,
+      "Longitude": 20.417764
+    }
   },
   {
     "Id": 4,
-    "Name": "Beograd Centar"
+    "Name": "Beograd Centar",
+    "Location": {
+      "Latitude": 44.793832,
+      "Longitude": 20.452561
     }
- ]
+  }
+]

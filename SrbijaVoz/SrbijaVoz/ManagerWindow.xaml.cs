@@ -1,5 +1,6 @@
 ﻿using SrbijaVoz.database;
 using SrbijaVoz.dataGridRecord;
+using SrbijaVoz.managerPages;
 using SrbijaVoz.managerWindows;
 using SrbijaVoz.model;
 using System;
@@ -39,6 +40,12 @@ namespace SrbijaVoz
             MainWindow mainWindow = new MainWindow(Database);
             mainWindow.Show();
             this.Close();
+
+        }
+
+        private void SwitchToLineNetworkView(object sender, RoutedEventArgs e)
+        {
+            DataFrame.Content = new LineNetwork(Database.Lines);
 
         }
 
