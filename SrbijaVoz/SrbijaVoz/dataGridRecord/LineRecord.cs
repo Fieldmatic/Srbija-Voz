@@ -18,8 +18,8 @@ namespace SrbijaVoz.dataGridRecord
         {
             Id = line.Id;
             Train = line.Train.Name;
-            string trainStops = line.TrainStops[0].StartStation.Name + " ("+ line.TrainStops[0].DepartureTime.ToString()+") ";
-            foreach (TrainStop stop in line.TrainStops) trainStops += " - " + stop.EndStation.Name + " (" + stop.ArrivalTime.ToString() + ") ";
+            string trainStops = line.TrainStops[0].StartStation.Name + " ("+ line.TrainStops[0].DepartureTime.ToString()+")";
+            foreach (TrainStop stop in line.TrainStops) trainStops += " - " + stop.EndStation.Name + " (" + stop.ArrivalTime.ToString() + ")";
             TrainStops = trainStops;
         }
 

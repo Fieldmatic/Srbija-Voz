@@ -21,19 +21,22 @@
             <RowDefinition Height="1.7*"/>
             <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="8*"/>
-                <ColumnDefinition Width="1.25*"/>
-            </Grid.ColumnDefinitions>
-            <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" >
-                <Image Source="resources/VOZSRBIJA.png"/>
-                <Button Background="Transparent" Foreground="Black" BorderThickness="0" FontWeight="UltraBold" FontSize="22" Margin="0 0 5 0">Polasci</Button>
-                <Button Background="Transparent" Foreground="Black" BorderThickness="0" FontWeight="UltraBold" FontSize="22"  Margin="0 0 5 0">Kupljene Karte</Button>
-                <Button Background="Transparent" Foreground="Black" BorderThickness="0" FontWeight="UltraBold" FontSize="22"  Margin="0 0 5 0">Rezervisane Karte</Button>
-            </StackPanel>
-            <Button Background="Transparent" Foreground="Black" BorderThickness="0" FontWeight="UltraBold" FontSize="22"  Margin="5 0 5 0" Grid.Column="1" Click="LogoutEvent">Izloguj se</Button>
-        </Grid>
+        <Border BorderBrush="Gray" BorderThickness="0,0,0,1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="1.25*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" >
+                    <Image Source="resources/VOZSRBIJA.png"/>
+                    <Button Background="Transparent" Foreground="Black" BorderThickness="0" FontWeight="UltraBold" FontSize="22" Margin="0 0 5 0" Click="SwitchToDeparturesPage">Polasci</Button>
+                    <Button Background="Transparent" Foreground="Black" BorderThickness="0" FontWeight="UltraBold" FontSize="22"  Margin="0 0 5 0">Kupljene Karte</Button>
+                    <Button Background="Transparent" Foreground="Black" BorderThickness="0" FontWeight="UltraBold" FontSize="22"  Margin="0 0 5 0">Rezervisane Karte</Button>
+                </StackPanel>
+                <Button Background="Transparent" Foreground="Black" BorderThickness="0" FontWeight="UltraBold" FontSize="22"  Margin="5 0 5 0" Grid.Column="1" Click="LogoutEvent">Izloguj se</Button>
+            </Grid>
+        </Border>
+        <Frame x:Name="DataFrame" Grid.Row="1"/>
 
     </Grid>
 </Window>

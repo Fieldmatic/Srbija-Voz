@@ -14,13 +14,15 @@ namespace SrbijaVoz.model
 
         public int DayNumber { get; set; }
 
-        public LineSchedule(Line line, int day)
+        public Dictionary<DateTime, List<int>> TakenSeats;
+        public LineSchedule(Line line, int day, Dictionary<DateTime, List<int>> takenSeats)
         {
             Line = line;
             Day = (DayOfWeek)day;
+            TakenSeats = takenSeats;
         }
 
-        public LineSchedule() { }
+        public LineSchedule() {}
 
         
 

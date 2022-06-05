@@ -1,4 +1,5 @@
-﻿using SrbijaVoz.database;
+﻿using SrbijaVoz.clientPages;
+using SrbijaVoz.database;
 using SrbijaVoz.model;
 using System;
 using System.Collections.Generic;
@@ -35,6 +36,12 @@ namespace SrbijaVoz
             MainWindow mainWindow = new MainWindow(Database);
             mainWindow.Show();
             this.Close();
+
+        }
+
+        private void SwitchToDeparturesPage(object sender, RoutedEventArgs e)
+        {
+            DataFrame.Content = new DeparturesPage(Database, Client);
 
         }
     }
