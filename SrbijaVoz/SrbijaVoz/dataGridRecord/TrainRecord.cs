@@ -31,5 +31,9 @@ namespace SrbijaVoz.dataGridRecord
 
         public TrainRecord() { }
 
+        public override string? ToString()
+        {
+            return base.ToString();
+        }
     }
 }

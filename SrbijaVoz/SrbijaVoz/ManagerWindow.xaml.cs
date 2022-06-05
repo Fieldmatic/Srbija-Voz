@@ -44,7 +44,7 @@ namespace SrbijaVoz
 
         private void SwitchToTrainData(object sender, RoutedEventArgs e)
         {
-            DataFrame.Content = new TrainPage(getTrainGridData());
+            DataFrame.Content = new TrainPage(Database);
 
         }
 
@@ -60,12 +60,6 @@ namespace SrbijaVoz
 
         }
 
-        private List<TrainRecord> getTrainGridData()
-        {
-            List<TrainRecord> trainRecordData = new List<TrainRecord>();
-            foreach (Train train in Database.Trains) trainRecordData.Add(new TrainRecord(train));
-            return trainRecordData;
-        }
 
         private List<LineRecord> getLineGridData()
         {

@@ -38,16 +38,18 @@
                   FontSize="20"
                   Width="Auto"
                   Margin="0 20 0 0"
-                  materialDesign:HintAssist.Hint="Username" Grid.Row="1"/>
+                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                  materialDesign:HintAssist.Hint="Korisničko ime" Grid.Row="1"/>
             <PasswordBox
                   Name="Password"           
                   Width="Auto"
                   FontSize="20"
                   Height="Auto"
                   Margin="0 20 0 0"
+                  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
                   materialDesign:TextFieldAssist.HasClearButton="True"
-                  materialDesign:HintAssist.Hint="Password" Grid.Row="2"/>
-            <Button Grid.Row="3" Click="LoginEvent" Width="Auto">Login</Button>
+                  materialDesign:HintAssist.Hint="Lozinka" Grid.Row="2"/>
+            <Button Grid.Row="3" Click="LoginEvent" Width="Auto">Prijavi se</Button>
 
         </Grid>
 
