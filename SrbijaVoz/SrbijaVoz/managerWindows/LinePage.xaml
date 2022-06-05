@@ -4,10 +4,16 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SrbijaVoz.managerWindows"
+      xmlns:cmd="clr-namespace:SrbijaVoz.managerWindows.Commands"
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="1200"
       Title="LinePage">
-
+    
+    <Page.CommandBindings>
+        <CommandBinding Command="cmd:RoutedCommands.AddLine"
+                        CanExecute="AddLine_CanExecute" Executed="AddLine_Executed"></CommandBinding>
+    </Page.CommandBindings>
+    
     <Page.Resources>
         <Image x:Key="Add" Source="../resources/plus.png"/>
         <Image x:Key="Edit" Source="../resources/edit.png" RenderTransformOrigin="0.597,0.41"/>
@@ -28,9 +34,15 @@
         </DataGrid>
         <Grid Grid.Column="1" Background="White">
             <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                <Button Grid.Row="1" Background ="Transparent" BorderThickness="0" Content="{StaticResource Add}" Height="60" HorizontalAlignment="Center"></Button>
-                <Button Background ="Transparent" BorderThickness="0" Content="{StaticResource Edit}" Margin="12 80 0 0" Height="60" RenderTransformOrigin="1.282,0.533"/>
-                <Button Grid.Row="3" Background ="Transparent" BorderThickness="0" Content="{StaticResource Delete}" Margin="0 80 0 0" Height="60"  HorizontalAlignment="Center"></Button>
+                <Button Grid.Row="1" Background ="Transparent" BorderThickness="0"
+                        Content="{StaticResource Add}" Height="60" HorizontalAlignment="Center"
+                        ToolTip="Nova Linija, Ctrl+N" Command="cmd:RoutedCommands.AddLine"></Button>
+                <Button Background ="Transparent" BorderThickness="0"
+                        Content="{StaticResource Edit}" Margin="12 80 0 0" Height="60"
+                        RenderTransformOrigin="1.282,0.533"/>
+                <Button Grid.Row="3" Background ="Transparent" BorderThickness="0"
+                        Content="{StaticResource Delete}" Margin="0 80 0 0" Height="60"
+                        HorizontalAlignment="Center"></Button>
             </StackPanel>
 
         </Grid>
