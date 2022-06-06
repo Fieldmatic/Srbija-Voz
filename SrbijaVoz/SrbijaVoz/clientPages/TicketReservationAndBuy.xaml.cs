@@ -118,7 +118,7 @@ namespace SrbijaVoz.clientPages
             switch (rsltMessageBox)
             {
                 case MessageBoxResult.Yes:
-                    Ticket ticket = new Ticket(currentOffer.LineSchedule.Line, TicketStatus.BOUGHT, Seat, Client, TicketPrice, currentOffer.StartStation, currentOffer.EndStation, currentOffer.StartTime, currentOffer.EndTime, currentOffer.Date);
+                    Ticket ticket = new Ticket(currentOffer.LineSchedule, TicketStatus.BOUGHT, Seat, Client, TicketPrice, currentOffer.StartStation, currentOffer.EndStation, currentOffer.StartTime, currentOffer.EndTime, currentOffer.Date);
                     Client.Tickets.Add(ticket);
                     database.Tickets.Add(ticket);
                     if (currentOffer.LineSchedule.TakenSeats.ContainsKey(currentOffer.Date)) currentOffer.LineSchedule.TakenSeats[currentOffer.Date].Add(Seat.Number);
@@ -154,7 +154,7 @@ namespace SrbijaVoz.clientPages
             switch (rsltMessageBox)
             {
                 case MessageBoxResult.Yes:
-                    Ticket ticket = new Ticket(currentOffer.LineSchedule.Line, TicketStatus.RESERVED, Seat, Client, TicketPrice, currentOffer.StartStation, currentOffer.EndStation, currentOffer.StartTime, currentOffer.EndTime, currentOffer.Date);
+                    Ticket ticket = new Ticket(currentOffer.LineSchedule, TicketStatus.RESERVED, Seat, Client, TicketPrice, currentOffer.StartStation, currentOffer.EndStation, currentOffer.StartTime, currentOffer.EndTime, currentOffer.Date);
                     Client.Tickets.Add(ticket);
                     database.Tickets.Add(ticket);
                     if (currentOffer.LineSchedule.TakenSeats.ContainsKey(currentOffer.Date)) currentOffer.LineSchedule.TakenSeats[currentOffer.Date].Add(Seat.Number);

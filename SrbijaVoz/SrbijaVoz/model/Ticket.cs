@@ -9,7 +9,7 @@ namespace SrbijaVoz.model
     public class Ticket
     {
         public int Id { get; set; }
-        public Line Line {get; set;}
+        public LineSchedule LineSchedule {get; set;}
         public TicketStatus TicketStatus { get; set; }
         public Seat Seat { get; set; }
         public Client Client { get; set; }
@@ -27,9 +27,9 @@ namespace SrbijaVoz.model
 
         public Ticket () {}
 
-        public Ticket(Line line, TicketStatus ticketStatus, Seat seat, Client client, double price, Station startStation, Station exitStation, TimeSpan departure, TimeSpan arrival, DateTime date)
+        public Ticket(LineSchedule lineSchedule, TicketStatus ticketStatus, Seat seat, Client client, double price, Station startStation, Station exitStation, TimeSpan departure, TimeSpan arrival, DateTime date)
         {
-            Line = line;
+            LineSchedule = lineSchedule;
             TicketStatus = ticketStatus;
             Seat = seat;
             Client = client;

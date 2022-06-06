@@ -37,4 +37,17 @@
     <Resource Include="resources\VOZSRBIJA.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="clientPages\ReservedTicketCard.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="clientPages\ReservedTicketCard.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
 </Project>
