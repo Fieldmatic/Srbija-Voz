@@ -41,9 +41,30 @@ namespace SrbijaVoz.clientPages
 
         private void TicketRemoveReservation(object sender, RoutedEventArgs e)
         {
-            database.Tickets.Remove(Ticket);
-            Client.Tickets.Remove(Ticket);
-            Ticket.LineSchedule.TakenSeats[Ticket.Date].Remove(Ticket.Seat.Number);
+            string sMessageBoxText = "Jeste li sigurni da zelite da otkazete rezervaciju za ovu kartu?";
+
+            MessageBoxButton btnMessageBox = MessageBoxButton.YesNoCancel;
+            MessageBoxImage icnMessageBox = MessageBoxImage.Question;
+            string sCaption = "Otkazivanje rezervacije";
+
+            MessageBoxResult rsltMessageBox = MessageBox.Show(sMessageBoxText, sCaption, btnMessageBox, icnMessageBox);
+
+            switch (rsltMessageBox)
+            {
+                case MessageBoxResult.Yes:
+                    database.Tickets.Remove(Ticket);
+                    Client.Tickets.Remove(Ticket);
+                    Ticket.LineSchedule.TakenSeats[Ticket.Date].Remove(Ticket.Seat.Number);
+                    (this.Parent as StackPanel).Children.Remove(this);
+                    break;
+
+                case MessageBoxResult.No:
+                    break;
+
+                case MessageBoxResult.Cancel:
+                    break;
+            }
+          
 
         }
     }

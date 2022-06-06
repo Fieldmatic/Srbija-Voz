@@ -31,7 +31,7 @@ namespace SrbijaVoz.clientPages
             Database = db;
             foreach(Ticket t in client.Tickets)
             {
-                ReservedTicketsStackPanel.Children.Add(new ReservedTicketCard(t, Database, Client));
+                if (t.TicketStatus.Equals(TicketStatus.RESERVED)) ReservedTicketsStackPanel.Children.Add(new ReservedTicketCard(t, Database, Client));
             }
         }
     }

@@ -50,5 +50,11 @@ namespace SrbijaVoz
             DataFrame.Content = new ReservedTicketsPage(Database, Client);
 
         }
+
+        private void SwitchToBoughtTicketsPage(object sender, RoutedEventArgs e)
+        {
+            DataFrame.Content = new BoughtTicketsPage(Database, Client);
+
+        }
     }
 }
