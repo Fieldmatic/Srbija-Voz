@@ -1,7 +1,9 @@
 ﻿using SrbijaVoz.database;
 using SrbijaVoz.dataGridRecord;
 using SrbijaVoz.model;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -13,17 +15,21 @@ namespace SrbijaVoz.managerWindows
     public partial class TrainPage : Page
     {
         private readonly Database Database;
-        private List<TrainRecord> Trains;
+        private List<TrainRecord> Trains { get; set; }
         private TrainRecord? Train;
         public delegate Point GetPosition(IInputElement element);
         private int rowIndex = -1;
 
+        public Delegate UpdateTrain;
+
         public delegate void RefreshTrains();
         public event RefreshTrains RefreshTrainsListEvent;
+        public ObservableCollection<TrainRecord> items = new ObservableCollection<TrainRecord>();
 
         public TrainPage(Database database)
         {
             InitializeComponent();
+            //DataContext = this;
             this.Database = database;
             InitializeTrains();
             
@@ -32,29 +38,25 @@ namespace SrbijaVoz.managerWindows
         private void InitializeTrains()
         {
             this.Trains = getTrainGridData();
-            TrainDataGrid.ItemsSource = Trains;
+            this.items = getTrainGridData1();
+            TrainDataGrid.ItemsSource = this.items;
             this.Train = null;
         }
 
         private List<TrainRecord> getTrainGridData()
         {
             List<TrainRecord> trainRecordData = new();
-            foreach (Train train in Database.Trains) trainRecordData.Add(new TrainRecord(train));
+            foreach (Train train in this.Database.Trains) trainRecordData.Add(new TrainRecord(train));
             return trainRecordData;
         }
 
-
-        private void TrainDataGrid_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private ObservableCollection<TrainRecord> getTrainGridData1()
         {
-            rowIndex = GetCurrentRowIndex(e.GetPosition);
-            TrainDataGrid.SelectedIndex = rowIndex;
-            if (Trains[rowIndex] is not TrainRecord selectedEmp)
-                return;
-            var dataObject = new DataObject();
-            dataObject.SetData("TrainRecord", selectedEmp);
-            DragDrop.DoDragDrop(TrainDataGrid, dataObject, DragDropEffects.Move);
-
+            ObservableCollection<TrainRecord> trainRecordData = new();
+            foreach (Train train in this.Database.Trains) trainRecordData.Add(new TrainRecord(train));
+            return trainRecordData;
         }
+
 
         private void AddTrain_Drop(object sender, DragEventArgs e)
         {
@@ -63,20 +65,48 @@ namespace SrbijaVoz.managerWindows
               
         }
 
+        private void UpdateTrain_Drop(object sender, DragEventArgs e)
+        {
+            this.Train = e.Data.GetData("TrainRecord") as TrainRecord;
+            UpdateTrainWindow updateTrainWindow = new(this.Train, Database.Trains, "update");
+            RefreshTrainsListEvent += new RefreshTrains(InitializeTrains); // event initialization
+            updateTrainWindow.UpdateTrain = RefreshTrainsListEvent;
+            updateTrainWindow.Show();
+
+        }
+
+
         private void Add_Train_Event(object sender, RoutedEventArgs e)
         {
-            AddTrainWindow addTrain;
+            UpdateTrainWindow addTrain;
             if (this.Train is not null)
             {
-                addTrain = new(this.Train, Database.Trains);
+                addTrain = new(this.Train, Database.Trains, "add");
             }
             else
             {
-                addTrain = new(Database.Trains);
+                addTrain = new(Database.Trains, "add");
             }
             RefreshTrainsListEvent += new RefreshTrains(InitializeTrains); // event initialization
-            addTrain.AddTrain = RefreshTrainsListEvent;
+            addTrain.UpdateTrain = RefreshTrainsListEvent;
             addTrain.Show();
+        }
+
+        private void TrainDataGrid_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            rowIndex = GetCurrentRowIndex(e.GetPosition);
+            if (rowIndex < 0)
+            {
+                return;
+            }
+            TrainDataGrid.SelectedIndex = rowIndex;
+            if (Trains[rowIndex] is not TrainRecord selectedEmp)
+                return;
+            var dataObject = new DataObject();
+            dataObject.SetData("TrainRecord", selectedEmp);
+            DragDrop.DoDragDrop(TrainDataGrid, dataObject, DragDropEffects.Move);
+         
+
         }
 
         private int GetCurrentRowIndex(GetPosition pos)
@@ -107,6 +137,5 @@ namespace SrbijaVoz.managerWindows
                 return null;
             return TrainDataGrid.ItemContainerGenerator.ContainerFromIndex(index) as DataGridRow;
         }
-
     }
 }

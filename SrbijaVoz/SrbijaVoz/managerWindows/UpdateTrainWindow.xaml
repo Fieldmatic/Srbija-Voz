@@ -1,11 +1,11 @@
-﻿<Window x:Class="SrbijaVoz.managerWindows.AddTrainWindow"
+﻿<Window x:Class="SrbijaVoz.managerWindows.UpdateTrainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SrbijaVoz.managerWindows"
         mc:Ignorable="d"
-        Title="Add Train" Height="450" Width="800"
+        Title="Dodavanje voza" Height="450" Width="800"
         Icon="../resources/VOZSRBIJA.png"
         WindowStartupLocation="CenterScreen"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -75,7 +75,7 @@
                   Margin="0 20 20 0"
                   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                   materialDesign:HintAssist.Hint="Cena sedista II Razred" Grid.Row="2" Grid.Column="1"/>
-            <Button Grid.Row="3" Grid.ColumnSpan="2" Click="AddTrain_Click">Dodaj voz</Button>
+            <Button x:Name="updateButton" Grid.Row="3" Grid.ColumnSpan="2" Click="UpdateOrAddTrain_Click"></Button>
         </Grid>
 
     </Grid>

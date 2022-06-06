@@ -18,10 +18,10 @@
             <ColumnDefinition Width="9*"/>
             <ColumnDefinition Width="1.3*"/>
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="TrainDataGrid" Grid.Column="0"  AutoGenerateColumns="False" FontSize="18" IsReadOnly="True" PreviewMouseLeftButtonDown="TrainDataGrid_PreviewMouseLeftButtonDown">
+        <DataGrid x:Name="TrainDataGrid" Grid.Column="0"  AutoGenerateColumns="False" FontSize="18" PreviewMouseLeftButtonDown="TrainDataGrid_PreviewMouseLeftButtonDown">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="trainRow" Header="Id" Binding="{Binding Id}" Width="0.5*"/>
-                <DataGridTextColumn Header="Ime" Binding="{Binding Name}" Width="0.75*"/>
+                <DataGridTextColumn x:Name="trainRow" Header="Id" Binding="{Binding Id}" Width="0.5*" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Ime"  Binding="{Binding Name}" Width="0.75*"/>
                 <DataGridTextColumn Header="Broj Sedista I Razred" Binding="{Binding FirstClassSeatsNumber}" Width="1.1*"/>
                 <DataGridTextColumn Header="Broj Sedista II Razred"  Binding="{Binding SecondClassSeatsNumber}" Width="1.1*"/>
                 <DataGridTextColumn Header="Cena I Razred" Binding="{Binding FirstClassPrice}" Width="0.75*"/>
@@ -31,8 +31,8 @@
         <Grid Grid.Column="1" Background="White">
             <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                 <Button AllowDrop="True" Drop="AddTrain_Drop" Click="Add_Train_Event" Grid.Row="1" Background ="Transparent" BorderThickness="0" Content="{StaticResource Add}" Height="60" HorizontalAlignment="Center"></Button>
-                <Button AllowDrop="True" Background ="Transparent" BorderThickness="0" Content="{StaticResource Edit}" Margin="12 80 0 0" Height="60" RenderTransformOrigin="1.282,0.533"/>
-                <Button Grid.Row="3" Background ="Transparent" BorderThickness="0" Content="{StaticResource Delete}" Margin="0 80 0 0" Height="60"  HorizontalAlignment="Center"></Button>
+                <Button AllowDrop="True" Drop="UpdateTrain_Drop" Background ="Transparent" BorderThickness="0" Content="{StaticResource Edit}" Margin="12 80 0 0" Height="60" RenderTransformOrigin="1.282,0.533"/>
+                <Button AllowDrop="True" Drop="DeleteTrain_Drop" Grid.Row="3" Background ="Transparent" BorderThickness="0" Content="{StaticResource Delete}" Margin="0 80 0 0" Height="60"  HorizontalAlignment="Center"></Button>
             </StackPanel>
 
         </Grid>
