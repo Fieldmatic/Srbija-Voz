@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SrbijaVoz.clientPages"
         xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
         mc:Ignorable="d"
-        Title="ClientRouteView" Height="450" Width="800">
+        Title="Pregled rute za kupljenu kartu" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
            

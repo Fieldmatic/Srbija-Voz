@@ -23,7 +23,8 @@ namespace SrbijaVoz.managerPages
             List<String> lineNames = new List<String>();
             foreach (Line line in lines)
             {
-                lineNames.Add(line.Name);
+                if (!lineNames.Contains(line.Name))
+                    lineNames.Add(line.Name);
             }            
             LinesCombo.ItemsSource = lineNames;
             

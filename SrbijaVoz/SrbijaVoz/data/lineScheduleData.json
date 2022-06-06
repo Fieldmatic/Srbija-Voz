@@ -462,6 +462,106 @@
 
     },
     "DayNumber": 3
+  },
+  {
+    "Line": {
+      "Id": 2,
+      "Name": "Beograd - Novi Sad",
+      "TrainStops": [
+        {
+          "StartStation": {
+            "Id": 4,
+            "Name": "Beograd Centar",
+            "Location": {
+              "Latitude": 44.793832,
+              "Longitude": 20.452561
+            }
+          },
+          "EndStation": {
+            "Id": 3,
+            "Name": "Novi Beograd",
+            "Location": {
+              "Latitude": 44.806900,
+              "Longitude": 20.417764
+            }
+
+          },
+          "DepartureTime": "08:00:00",
+          "ArrivalTime": "08:10:00"
+        },
+        {
+          "StartStation": {
+            "Id": 3,
+            "Name": "Novi Beograd",
+            "Location": {
+              "Latitude": 44.806900,
+              "Longitude": 20.417764
+            }
+
+          },
+          "EndStation": {
+            "Id": 2,
+            "Name": "Sremski Karlovci",
+            "Location": {
+              "Latitude": 45.206631,
+              "Longitude": 19.932878
+            }
+
+          },
+          "DepartureTime": "08:10:00",
+          "ArrivalTime": "08:35:00"
+        },
+        {
+          "StartStation": {
+            "Id": 2,
+            "Name": "Sremski Karlovci",
+            "Location": {
+              "Latitude": 45.206631,
+              "Longitude": 19.932878
+            }
+
+          },
+          "EndStation": {
+            "Id": 1,
+            "Name": "Novi Sad",
+            "Location": {
+              "Latitude": 45.265519,
+              "Longitude": 19.829519
+            }
+
+          },
+          "DepartureTime": "08:35:00",
+          "ArrivalTime": "08:45:00"
+        }
+      ],
+      "Train": {
+        "Id": 1,
+        "Name": "Soko",
+        "Prices": {
+          "0": 500,
+          "1": 300
+        },
+        "Seats": [
+          {
+            "Number": 1,
+            "SeatClass": 0
+          },
+          {
+            "Number": 2,
+            "SeatClass": 0
+          },
+          {
+            "Number": 3,
+            "SeatClass": 0
+          },
+          {
+            "Number": 4,
+            "SeatClass": 1
+          }
+        ]
+      }
+    },
+    "DayNumber": 1
   }
 
 
