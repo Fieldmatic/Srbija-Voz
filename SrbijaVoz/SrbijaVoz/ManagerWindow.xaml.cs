@@ -67,6 +67,12 @@ namespace SrbijaVoz
 
         }
 
+        private void SwitchToStationsData(object sender, RoutedEventArgs e)
+        {
+            DataFrame.Content = new StationsPage(Database.Stations);
+
+        }
+
 
         private List<LineRecord> getLineGridData()
         {

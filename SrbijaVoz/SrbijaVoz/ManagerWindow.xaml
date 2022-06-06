@@ -33,6 +33,7 @@
                     <Button Background="Transparent" Foreground="Black" BorderThickness="0" FontWeight="UltraBold" FontSize="22" Margin="0 0 10 0" Click="SwitchToLineData">Linije</Button>
                     <Button Background="Transparent" Foreground="Black" BorderThickness="0" FontWeight="UltraBold" FontSize="22" Margin="0 0 10 0" Click="SwitchToLineScheduleData">Redovi Voznje</Button>
                     <Button Background="Transparent" Foreground="Black" BorderThickness="0" FontWeight="UltraBold" FontSize="22" Margin="0 0 10 0" Click="SwitchToLineNetworkView">Mrezni Pregled Linija</Button>
+                    <Button Background="Transparent" Foreground="Black" BorderThickness="0" FontWeight="UltraBold" FontSize="22" Margin="0 0 10 0" Click="SwitchToStationsData">Stanice</Button>
                     <Button Background="Transparent" Foreground="Black" BorderThickness="0" FontWeight="UltraBold" FontSize="22" Margin="0 0 10 0">Pregled Karata</Button>
                 </StackPanel>
                 <Button Background="Transparent" Foreground="Black" BorderThickness="0" FontWeight="UltraBold" FontSize="22" Grid.Column="1" Click="LogoutEvent" Margin="5 0 5 0">Izloguj se</Button>
