@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SrbijaVoz"
+        x:Name="window"
         mc:Ignorable="d"
         Icon="resources/VOZSRBIJA.png"
         WindowStartupLocation="CenterScreen"
@@ -27,7 +28,7 @@
                 <ColumnDefinition Width="1.25*"/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" >
-                <Image Source="resources/VOZSRBIJA.png"/> 
+                <Image Source="resources/VOZSRBIJA.png"/>
                 <Button Background="Transparent" Foreground="Black" BorderThickness="0" FontWeight="UltraBold" FontSize="22" Margin="0 0 5 0" Click="SwitchToTrainData">Vozovi</Button>
                 <Button Background="Transparent" Foreground="Black" BorderThickness="0" FontWeight="UltraBold" FontSize="22" Margin="0 0 5 0" Click="SwitchToLineData">Linije</Button>
                 <Button Background="Transparent" Foreground="Black" BorderThickness="0" FontWeight="UltraBold" FontSize="22" Margin="0 0 5 0" Click="SwitchToLineScheduleData">Redovi Voznje</Button>

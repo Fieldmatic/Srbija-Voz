@@ -27,12 +27,23 @@ namespace SrbijaVoz.managerWindows
 
         public Database Database { get; set; }
 
-        public LinePage(List<LineRecord> lineRecords, Database database)
+        public LinePage(List<LineRecord> lineRecords, Database database, ManagerWindow managerWindow)
         {
             InitializeComponent();
             LineDataGrid.ItemsSource = lineRecords;
             Database = database;
             Stations = Database.Stations;
+
+            managerWindow.CommandBindings.Clear();
+            managerWindow.InitializeManagerShortcuts();
+            InitializeLinePageShortcuts(managerWindow);
+        }
+
+        private void InitializeLinePageShortcuts(ManagerWindow managerWindow)
+        {
+            RoutedCommand addNewLine = new RoutedCommand();
+            addNewLine.InputGestures.Add(new KeyGesture(Key.N, ModifierKeys.Control));
+            managerWindow.CommandBindings.Add(new CommandBinding(addNewLine, AddLine_Executed));
         }
 
         private void AddLine_CanExecute(object sender, CanExecuteRoutedEventArgs e)

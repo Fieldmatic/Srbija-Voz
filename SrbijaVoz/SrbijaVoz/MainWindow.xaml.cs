@@ -23,6 +23,7 @@ namespace SrbijaVoz
     public partial class MainWindow : Window
     {
         private Database database;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -34,6 +35,7 @@ namespace SrbijaVoz
         {
             InitializeComponent();
             database = db;
+            
         }
 
         private void LoginEvent(object sender, RoutedEventArgs e)
