@@ -15,21 +15,18 @@ namespace SrbijaVoz.managerWindows
     public partial class TrainPage : Page
     {
         private readonly Database Database;
-        private List<TrainRecord> Trains { get; set; }
+        public ObservableCollection<TrainRecord> Trains = new ObservableCollection<TrainRecord>();
         private TrainRecord? Train;
-        public delegate Point GetPosition(IInputElement element);
-        private int rowIndex = -1;
 
-        public Delegate UpdateTrain;
+        public delegate Point GetPosition(IInputElement element);
+        private int selectedRowIndex = -1;
 
         public delegate void RefreshTrains();
         public event RefreshTrains RefreshTrainsListEvent;
-        public ObservableCollection<TrainRecord> items = new ObservableCollection<TrainRecord>();
 
         public TrainPage(Database database)
         {
             InitializeComponent();
-            //DataContext = this;
             this.Database = database;
             InitializeTrains();
             
@@ -38,19 +35,11 @@ namespace SrbijaVoz.managerWindows
         private void InitializeTrains()
         {
             this.Trains = getTrainGridData();
-            this.items = getTrainGridData1();
-            TrainDataGrid.ItemsSource = this.items;
+            this.TrainDataGrid.DataContext = this.Trains;
             this.Train = null;
         }
 
-        private List<TrainRecord> getTrainGridData()
-        {
-            List<TrainRecord> trainRecordData = new();
-            foreach (Train train in this.Database.Trains) trainRecordData.Add(new TrainRecord(train));
-            return trainRecordData;
-        }
-
-        private ObservableCollection<TrainRecord> getTrainGridData1()
+        private ObservableCollection<TrainRecord> getTrainGridData()
         {
             ObservableCollection<TrainRecord> trainRecordData = new();
             foreach (Train train in this.Database.Trains) trainRecordData.Add(new TrainRecord(train));
@@ -75,6 +64,19 @@ namespace SrbijaVoz.managerWindows
 
         }
 
+        private void DeleteTrain_Drop(object sender, DragEventArgs e)
+        {
+            this.Train = e.Data.GetData("TrainRecord") as TrainRecord;
+            MessageBoxResult result = MessageBox.Show("Da li ste sigurni da želite da obrišete voz " + this.Train.Name + "?", "Brisanje voza", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if ( result == MessageBoxResult.Yes)
+            {
+                Train trainForDelete = Database.Trains.Find(item => item.Id == this.Train.Id);
+                Database.Trains.Remove(trainForDelete);
+                this.TrainDataGrid.DataContext = null;
+                InitializeTrains();
+            }
+            
+        }
 
         private void Add_Train_Event(object sender, RoutedEventArgs e)
         {
@@ -94,13 +96,13 @@ namespace SrbijaVoz.managerWindows
 
         private void TrainDataGrid_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            rowIndex = GetCurrentRowIndex(e.GetPosition);
-            if (rowIndex < 0)
+            selectedRowIndex = GetCurrentRowIndex(e.GetPosition);
+            if (selectedRowIndex < 0)
             {
                 return;
             }
-            TrainDataGrid.SelectedIndex = rowIndex;
-            if (Trains[rowIndex] is not TrainRecord selectedEmp)
+            TrainDataGrid.SelectedIndex = selectedRowIndex;
+            if (Trains[selectedRowIndex] is not TrainRecord selectedEmp)
                 return;
             var dataObject = new DataObject();
             dataObject.SetData("TrainRecord", selectedEmp);

@@ -51,6 +51,7 @@ namespace SrbijaVoz.managerWindows
             this.Trains = trains;
             this.operationType = operationType;
             SetVariableWindowInfos();
+            ClearAllFields();
 
         }
 
@@ -125,6 +126,15 @@ namespace SrbijaVoz.managerWindows
                 updateButton.Content = "Izmeni voz";
                 Title = "Izmena voza";
             }
+        }
+
+        private void ClearAllFields()
+        {
+            Name.Text = "";
+            seatsNumIClass.Text = "";
+            seatsPriceIClass.Text = "";
+            seatsNumIIClass.Text = "";
+            seatsPriceIIClass.Text = "";
         }
     }
 
