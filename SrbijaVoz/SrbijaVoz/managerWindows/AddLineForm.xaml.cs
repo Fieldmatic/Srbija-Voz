@@ -1,4 +1,6 @@
-﻿using SrbijaVoz.dataGridRecord;
+﻿using MaterialDesignThemes.Wpf;
+using SrbijaVoz.database;
+using SrbijaVoz.dataGridRecord;
 using SrbijaVoz.model;
 using System;
 using System.Collections.Generic;
@@ -24,16 +26,23 @@ namespace SrbijaVoz.managerWindows
     {
         Point startPoint = new Point();
 
-        public ObservableCollection<TrainStopRecord> TrainStopRecords { get; set; }
+        public ObservableCollection<Station> Stations { get; set; }
 
-        public ObservableCollection<TrainStopRecord> TrainStopRecordsSetted { get; set; }
+        public ObservableCollection<Station> StationsSetted { get; set; }
 
-        public AddLineForm(List<TrainStopRecord> trainStopRecords)
+        public Database Database { get; set; }
+
+        public List<TimePicker> TimePickers { get; set; }
+
+        public AddLineForm(List<Station> stations, Database database)
         {
             InitializeComponent();
             this.DataContext = this;
-            TrainStopRecords = new ObservableCollection<TrainStopRecord>(trainStopRecords);
-            TrainStopRecordsSetted = new ObservableCollection<TrainStopRecord>();
+            Stations = new ObservableCollection<Station>(stations);
+            StationsSetted = new ObservableCollection<Station>();
+            Database = database;
+            PopulateTrainNames();
+            TimePickers = new List<TimePicker>();
         }
 
         private void ListView_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -56,11 +65,11 @@ namespace SrbijaVoz.managerWindows
                     FindAncestor<ListViewItem>((DependencyObject)e.OriginalSource);
 
                 // Find the data behind the ListViewItem
-                TrainStopRecord trainStopRecord = (TrainStopRecord)listView.ItemContainerGenerator.
+                Station station = (Station)listView.ItemContainerGenerator.
                     ItemFromContainer(listViewItem);
 
                 // Initialize the drag & drop operation
-                DataObject dragData = new DataObject("myFormat", trainStopRecord);
+                DataObject dragData = new DataObject("myFormat", station);
                 DragDrop.DoDragDrop(listViewItem, dragData, DragDropEffects.Move);
             }
         }
@@ -91,10 +100,60 @@ namespace SrbijaVoz.managerWindows
         {
             if (e.Data.GetDataPresent("myFormat"))
             {
-                TrainStopRecord trainStopRecord = e.Data.GetData("myFormat") as TrainStopRecord;
-                TrainStopRecords.Remove(trainStopRecord);
-                TrainStopRecordsSetted.Add(trainStopRecord);
+                Station station = e.Data.GetData("myFormat") as Station;
+                Stations.Remove(station);
+                StationsSetted.Add(station);
+                
+                TimePicker timePicker = new TimePicker();
+                timePicker.Width = 100;
+                timePicker.Is24Hours = true; 
+                timePicker.Style = (Style)Resources["MaterialDesignFloatingHintTimePicker"];
+                Thickness margin = timePicker.Margin;
+                margin.Bottom = 8;
+                timePicker.Margin = margin;
+
+                TimePanel.Children.Add(timePicker);
+                TimePickers.Add(timePicker);
             }
+        }
+
+        private void PopulateTrainNames()
+        {
+            foreach (Train train in Database.Trains)
+            {
+                string name = train.Name + " (" + train.Id + ")";
+                Trains.Items.Add(name);
+            }
+            Trains.SelectedIndex = 0;
+        }
+
+        private void SubmitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            int id = Database.Lines.Count() + 1;
+            string name = StartStation.Text + " - " + EndStation.Text;
+            string selectedTrainId = Trains.SelectedValue.ToString().Split(" (")[1];
+            selectedTrainId = selectedTrainId.Substring(0, selectedTrainId.Length - 1);
+            Train train = Database.Trains.Where(t => t.Id.Equals(int.Parse(selectedTrainId))).First();
+
+            List<TrainStop> trainStops = getTrainStops();
+            Database.Lines.Add(new model.Line(id, name, trainStops, train));
+
+            MessageBox.Show("Nova linija uspešno dodata.");
+            this.Close();
+        }
+
+        private List<TrainStop> getTrainStops()
+        {
+            List<TrainStop> trainStops = new();
+            for (int i = 0; i < StationsSetted.Count - 1; i++)
+            {
+                Station station1 = StationsSetted[i];
+                Station station2 = StationsSetted[i + 1];
+                TimeSpan departureTime = TimePickers[i].SelectedTime.Value.TimeOfDay;
+                TimeSpan arrivalTime = TimePickers[i + 1].SelectedTime.Value.TimeOfDay;
+                trainStops.Add(new TrainStop(station1, station2, departureTime, arrivalTime));
+            }
+            return trainStops;
         }
     }
 }

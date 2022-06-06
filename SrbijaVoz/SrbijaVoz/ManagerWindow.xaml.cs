@@ -50,7 +50,7 @@ namespace SrbijaVoz
 
         private void SwitchToLineData(object sender, RoutedEventArgs e)
         {
-            DataFrame.Content = new LinePage(getLineGridData(), getTrainStopsData());
+            DataFrame.Content = new LinePage(getLineGridData(), Database);
 
         }
 
@@ -58,13 +58,6 @@ namespace SrbijaVoz
         {
             DataFrame.Content = new LineSchedulePage(getLineScheduleGridData());
 
-        }
-
-        private List<TrainStopRecord> getTrainStopsData()
-        {
-            List<TrainStopRecord> trainStopsData = new List<TrainStopRecord>();
-            foreach (TrainStop trainStop in Database.TrainStops) trainStopsData.Add(new TrainStopRecord(trainStop));
-            return trainStopsData;
         }
 
         private List<TrainRecord> getTrainGridData()

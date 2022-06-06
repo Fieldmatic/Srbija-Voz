@@ -1,4 +1,5 @@
-﻿using SrbijaVoz.dataGridRecord;
+﻿using SrbijaVoz.database;
+using SrbijaVoz.dataGridRecord;
 using SrbijaVoz.model;
 using System;
 using System.Collections.Generic;
@@ -22,12 +23,16 @@ namespace SrbijaVoz.managerWindows
     /// </summary>
     public partial class LinePage : Page
     {
-        public List<TrainStopRecord> TrainStopsRecord { get; set; }
-        public LinePage(List<LineRecord> lineRecords, List<TrainStopRecord> trainStops)
+        public List<Station> Stations { get; set; }
+
+        public Database Database { get; set; }
+
+        public LinePage(List<LineRecord> lineRecords, Database database)
         {
             InitializeComponent();
             LineDataGrid.ItemsSource = lineRecords;
-            TrainStopsRecord = trainStops;
+            Database = database;
+            Stations = Database.Stations;
         }
 
         private void AddLine_CanExecute(object sender, CanExecuteRoutedEventArgs e)
@@ -37,7 +42,7 @@ namespace SrbijaVoz.managerWindows
 
         private void AddLine_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            var form = new AddLineForm(TrainStopsRecord);
+            var form = new AddLineForm(Stations, Database);
             form.ShowDialog();
         }
     }
