@@ -143,20 +143,41 @@ namespace SrbijaVoz.managerWindows
         private void SubmitBtn_Click(object sender, RoutedEventArgs e)
         {
             int id = Database.Lines.Count() + 1;
+            if (StartStation.Text.Length == 0 || EndStation.Text.Length == 0)
+            {
+                MessageBox.Show("Morate popuniti nazive za početnu i krajnju stanicu!",
+                                "Greška",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
+                return;
+            }
             string name = StartStation.Text + " - " + EndStation.Text;
             string selectedTrainId = Trains.SelectedValue.ToString().Split(" (")[1];
             selectedTrainId = selectedTrainId.Substring(0, selectedTrainId.Length - 1);
             Train train = Database.Trains.Where(t => t.Id.Equals(int.Parse(selectedTrainId))).First();
 
-            List<TrainStop> trainStops = getTrainStops();
+            List<TrainStop>? trainStops = GetTrainStops();
+            if (trainStops == null)
+            {
+                MessageBox.Show("Morate uneti bar 2 stanice!",
+                                "Greška",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
+                return;
+            }
             Database.Lines.Add(new model.Line(id, name, trainStops, train));
-
-            MessageBox.Show("Nova linija uspešno dodata.");
+            MessageBox.Show("Nova linija uspešno dodata.",
+                                "Dodavanje nove linije",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Information);
             this.Close();
         }
 
-        private List<TrainStop> getTrainStops()
+        private List<TrainStop>? GetTrainStops()
         {
+            if (SettedStations.Count < 2)
+                return null;
+
             List<TrainStop> trainStops = new();
             for (int i = 0; i < SettedStations.Count - 1; i++)
             {

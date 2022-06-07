@@ -14,6 +14,8 @@
                         CanExecute="AddLine_CanExecute" Executed="AddLine_Executed"></CommandBinding>
         <CommandBinding Command="cmd:RoutedCommands.EditItem"
                         CanExecute="EditLine_CanExecute" Executed="EditLine_Executed"></CommandBinding>
+        <CommandBinding Command="cmd:RoutedCommands.DeleteItem"
+                        CanExecute="DeleteLine_CanExecute" Executed="DeleteLine_Executed"></CommandBinding>
     </Page.CommandBindings>
 
     <Page.Resources>
@@ -46,7 +48,7 @@
                 <Button Grid.Row="3" Background ="Transparent" BorderThickness="0"
                         Content="{StaticResource Delete}" Margin="0 80 0 0" Height="60"
                         HorizontalAlignment="Center"
-                        ToolTip="Obriši liniju, Del" Command="cmd:RoutedCommands.DeleteItem"/>
+                        ToolTip="Obriši liniju, Shift+Del" Command="cmd:RoutedCommands.DeleteItem"/>
             </StackPanel>
 
         </Grid>

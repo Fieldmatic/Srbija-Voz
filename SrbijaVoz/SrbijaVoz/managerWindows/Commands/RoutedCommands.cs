@@ -36,7 +36,7 @@ namespace SrbijaVoz.managerWindows.Commands
             typeof(RoutedCommands),
             new InputGestureCollection()
             {
-                new KeyGesture(Key.Delete)
+                new KeyGesture(Key.Delete, ModifierKeys.Shift)
             }
         );
     }

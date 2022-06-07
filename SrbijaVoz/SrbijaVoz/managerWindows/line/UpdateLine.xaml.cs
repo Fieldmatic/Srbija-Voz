@@ -216,18 +216,40 @@ namespace SrbijaVoz.managerWindows
 
         private void SubmitBtn_Click(object sender, RoutedEventArgs e)
         {
+            if (StartStation.Text.Length == 0 || EndStation.Text.Length == 0)
+            {
+                MessageBox.Show("Morate popuniti nazive za početnu i krajnju stanicu!",
+                                "Greška",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
+                return;
+            }
             CurrentLine.Name = StartStation.Text + " - " + EndStation.Text;
             string selectedTrainId = Trains.SelectedValue.ToString().Split(" (")[1];
             selectedTrainId = selectedTrainId.Substring(0, selectedTrainId.Length - 1);
             CurrentLine.Train = Database.Trains.Where(t => t.Id.Equals(int.Parse(selectedTrainId))).First();
             CurrentLine.TrainStops = GetTrainStops();
 
-            MessageBox.Show("Linija uspešno izmenjena.");
+            if (CurrentLine.TrainStops == null)
+            {
+                MessageBox.Show("Morate uneti bar 2 stanice!",
+                                "Greška",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
+                return;
+            }
+            MessageBox.Show("Linija uspešno izmenjena.",
+                                "Ažuriranje linije",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Information);
             this.Close();
         }
 
-        private List<TrainStop> GetTrainStops()
+        private List<TrainStop>? GetTrainStops()
         {
+            if (SettedStations.Count < 2)
+                return null;
+
             List<TrainStop> trainStops = new();
             for (int i = 0; i < SettedStations.Count - 1; i++)
             {
