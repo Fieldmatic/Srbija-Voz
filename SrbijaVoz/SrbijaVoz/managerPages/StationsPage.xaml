@@ -41,6 +41,47 @@
             </Button>
 
         </Grid>
+        <materialDesign:DialogHost x:Name="DialogHost"
+            DialogTheme="Inherit"
+            CloseOnClickAway="True">
+            <materialDesign:DialogHost.DialogContentTemplate>
+                <DataTemplate DataType="local:MessageBoxModel">
+                    <StackPanel
+                    Margin="16">
+                        <TextBlock Text="{Binding MessageBoxAction}" />
+                        <TextBox HorizontalAlignment="Stretch" Text="{Binding MessageBoxInput}" Margin="0 8 0 0"></TextBox>
+                        <StackPanel
+                Orientation="Horizontal"
+                HorizontalAlignment="Right">
+                            <Button
+                    Style="{StaticResource MaterialDesignFlatButton}"
+                    IsCancel="True"
+                    Margin="0 8 8 0"
+                    Content="Zatvori"
+                    Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}">
+                                <Button.CommandParameter>
+                                    <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
+                                        False
+                                    </system:Boolean>
+                                </Button.CommandParameter>
+                            </Button>
+                            <Button
+                    Style="{StaticResource MaterialDesignFlatButton}"
+                    IsDefault="True"
+                    Margin="0 8 8 0"
+                    Content="Dodaj stanicu"
+                    Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}">
+                                <Button.CommandParameter>
+                                    <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
+                                        True
+                                    </system:Boolean>
+                                </Button.CommandParameter>
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </materialDesign:DialogHost.DialogContentTemplate>
+        </materialDesign:DialogHost>
 
     </Grid>
 </Page>
