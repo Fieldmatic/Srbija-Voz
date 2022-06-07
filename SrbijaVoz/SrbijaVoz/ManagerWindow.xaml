@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SrbijaVoz"
         x:Name="window"
         mc:Ignorable="d"
-        Icon="resources/VOZSRBIJA.png"
+        Icon="resources/SrbijaVozLogo.png"
         WindowStartupLocation="CenterScreen"
         Title="Srbija Voz - Menadzer" Height="800" Width="1500"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -19,24 +19,24 @@
         FontFamily="{DynamicResource MaterialDesignFont}">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1.4*"/>
+            <RowDefinition Height="1.1*"/>
             <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
         <Border BorderBrush="Gray" BorderThickness="0,0,0,1">
-            <Grid>
+            <Grid Background="#0F3256">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="8*"/>
                     <ColumnDefinition Width="1.25*"/>
                 </Grid.ColumnDefinitions>
-                <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" >
-                    <Image Source="resources/VOZSRBIJA.png"/>
-                    <Button Background="Transparent" Foreground="Black" BorderThickness="0" FontWeight="UltraBold" FontSize="22" Margin="0 0 10 0" Click="SwitchToTrainData">Vozovi</Button>
-                    <Button Background="Transparent" Foreground="Black" BorderThickness="0" FontWeight="UltraBold" FontSize="22" Margin="0 0 10 0" Click="SwitchToLineData">Linije</Button>
-                    <Button Background="Transparent" Foreground="Black" BorderThickness="0" FontWeight="UltraBold" FontSize="22" Margin="0 0 10 0" Click="SwitchToLineScheduleData">Redovi Voznje</Button>
-                    <Button Background="Transparent" Foreground="Black" BorderThickness="0" FontWeight="UltraBold" FontSize="22" Margin="0 0 10 0" Click="SwitchToLineNetworkView">Mrezni Pregled Linija</Button>
-                    <Button Background="Transparent" Foreground="Black" BorderThickness="0" FontWeight="UltraBold" FontSize="22" Margin="0 0 10 0">Pregled Karata</Button>
+                <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
+                    <Image Source="resources/SrbijaVozLogo.png" Margin="10"/>
+                    <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="22" Margin="0 0 10 0" Click="SwitchToTrainData">Vozovi</Button>
+                    <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="22" Margin="0 0 10 0" Click="SwitchToLineData">Linije</Button>
+                    <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="22" Margin="0 0 10 0" Click="SwitchToLineScheduleData">Redovi Voznje</Button>
+                    <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="22" Margin="0 0 10 0" Click="SwitchToLineNetworkView">Mrezni Pregled Linija</Button>
+                    <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="22" Margin="0 0 10 0">Pregled Karata</Button>
                 </StackPanel>
-                <Button Background="Transparent" Foreground="Black" BorderThickness="0" FontWeight="UltraBold" FontSize="22" Grid.Column="1" Click="LogoutEvent" Margin="5 0 5 0">Izloguj se</Button>
+                <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="22" Grid.Column="1" Click="LogoutEvent" Margin="5 0 5 0">Izloguj se</Button>
             </Grid>
         </Border>
         <Frame x:Name="DataFrame" Grid.Row="1"/>

@@ -21,7 +21,6 @@
                 VerticalAlignment="Center"
                 Margin ="5 10 5 10"
                 FontSize="15"
-                BorderBrush="Gray"
                 materialDesign:HintAssist.Hint="Izaberi liniju"
                 materialDesign:HintAssist.Foreground="Black"
                 SelectionChanged="LinesComboChanged"

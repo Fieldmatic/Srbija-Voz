@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SrbijaVoz"
         mc:Ignorable="d"
-         Icon="resources/VOZSRBIJA.png"
+         Icon="resources/SrbijaVozLogo.png"
         WindowStartupLocation="CenterScreen"
         Title="Srbija Voz - Klijent" Height="800" Width="1200"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -16,25 +16,25 @@
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}">
-    <Grid>
+    <Grid >
         <Grid.RowDefinitions>
-            <RowDefinition Height="1.7*"/>
+            <RowDefinition Height="1.1*"/>
             <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
         <Border BorderBrush="Gray" BorderThickness="0,0,0,1">
-            <Grid>
+            <Grid Background="#0F3256">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="8*"/>
                     <ColumnDefinition Width="1.25*"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" >
-                    <Image Source="resources/VOZSRBIJA.png"/>
-                    <Button Background="Transparent" Foreground="Black" BorderThickness="0" FontWeight="UltraBold" FontSize="22" Margin="0 0 5 0" Click="SwitchToDeparturesPage">Polasci</Button>
-                    <Button Background="Transparent" Foreground="Black" BorderThickness="0" FontWeight="UltraBold" FontSize="22"  Margin="0 0 5 0" Click="SwitchToReservedTicketsPage">Rezervisane Karte</Button>
-                    <Button Background="Transparent" Foreground="Black" BorderThickness="0" FontWeight="UltraBold" FontSize="22"  Margin="0 0 5 0" Click="SwitchToBoughtTicketsPage">Kupljene Karte</Button>
+                    <Image Source="resources/SrbijaVozLogo.png" Margin="10"/>
+                    <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="22" Margin="0 0 5 0" Click="SwitchToDeparturesPage">Polasci</Button>
+                    <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="22"  Margin="0 0 5 0" Click="SwitchToReservedTicketsPage">Rezervisane Karte</Button>
+                    <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="22"  Margin="0 0 5 0" Click="SwitchToBoughtTicketsPage">Kupljene Karte</Button>
                     
                 </StackPanel>
-                <Button Background="Transparent" Foreground="Black" BorderThickness="0" FontWeight="UltraBold" FontSize="22"  Margin="5 0 5 0" Grid.Column="1" Click="LogoutEvent">Izloguj se</Button>
+                <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="22"  Margin="5 0 5 0" Grid.Column="1" Click="LogoutEvent">Izloguj se</Button>
             </Grid>
         </Border>
         <Frame x:Name="DataFrame" Grid.Row="1"/>

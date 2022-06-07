@@ -24,7 +24,7 @@
             <Label x:Name="Arrival" Grid.Column="3" Content="13:30" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
             <Label x:Name="Price" Grid.Column="4" Content="Cena" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
             <Label x:Name="Train" Grid.Column="5" Content="Soko" VerticalAlignment="Center"  HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
-            <Button x:Name ="TicketResBuy" Content="Rezervacija/Kupovina" Grid.Column="6" BorderBrush="Aquamarine" Background="Aquamarine" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Margin="0 7 0 7" FontSize="18" Click="TicketResBuy_Click"/>
+            <Button x:Name ="TicketResBuy" Content="Rezervacija/Kupovina" Grid.Column="6" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Margin="0 7 0 7" FontSize="18" Click="TicketResBuy_Click"/>
 
         </Grid>
     </Border>

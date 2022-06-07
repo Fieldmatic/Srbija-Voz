@@ -16,7 +16,7 @@
                 <ColumnDefinition Width="1.35*"/>
                 <ColumnDefinition Width="1.35*"/>
                 <ColumnDefinition Width="1.35*"/>
-                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1.5*"/>
             </Grid.ColumnDefinitions>
 
             <Label x:Name="Line" Grid.Column="0" Content="Novi Sad - Beograd" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
@@ -26,7 +26,7 @@
             <Label x:Name="Price" Grid.Column="4" Content="Cena" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
             <Label x:Name="Seat" Grid.Column="5" Content="Sediste" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
             <Label x:Name="Train" Grid.Column="6" Content="Soko" VerticalAlignment="Center"  HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
-            <Button x:Name ="SeeTicketRoute" Content="Pogledaj rutu" Grid.Column="7" BorderBrush="Aquamarine" Background="Aquamarine" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Margin="0 7 0 7" FontSize="18" Click="ShowTicketRoute"/>
+            <Button x:Name ="SeeTicketRoute" Content="Pogledaj rutu" Grid.Column="7" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Margin="0 7 0 7" FontSize="18" Click="ShowTicketRoute"/>
 
         </Grid>
     </Border>

@@ -47,10 +47,12 @@ namespace SrbijaVoz
 
         private void LoginEvent(object sender, RoutedEventArgs e)
         {
+            bool found = false;
             foreach (Client client in database.Clients)
             {
                 if (client.Username.Equals(Username.Text) && client.Password.Equals(Password.Password))
                 {
+                    found = true;
                     ClientWindow clientWindow = new ClientWindow(database,client);
                     clientWindow.Show();
                     this.Close();
@@ -61,11 +63,19 @@ namespace SrbijaVoz
             {
                 if (manager.Username.Equals(Username.Text) && manager.Password.Equals(Password.Password))
                 {
+                    found = true;
                     ManagerWindow managerWindow = new ManagerWindow(database, manager);
                     managerWindow.Show();
                     this.Close();
                 }
             }
+            if (!found)
+            {
+                MessageBox.Show("Korisnik sa tim korisnickim imenom i lozinkom ne postoji!", "Neuspesan login", MessageBoxButton.OK, MessageBoxImage.Error);
+
+            }
+
+            
         }
 
 

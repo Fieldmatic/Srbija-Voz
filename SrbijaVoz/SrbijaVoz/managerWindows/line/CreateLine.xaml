@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
+        Icon="../../resources/9696.png"
         Title="Dodavanje nove linije" Height="550" Width="800">
     <Grid>
         <Grid.RowDefinitions>

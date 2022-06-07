@@ -21,7 +21,7 @@
             <ColumnDefinition Width="1.25*"/>
             <ColumnDefinition Width="1.25*"/>
             <ColumnDefinition Width="1.25*"/>
-            <ColumnDefinition Width="2.06*"/>
+            <ColumnDefinition Width="1.58*"/>
         </Grid.ColumnDefinitions>
 
         <Label x:Name="Line" Grid.Column="0" Content="Linija" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>

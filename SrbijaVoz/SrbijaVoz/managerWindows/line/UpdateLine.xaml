@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SrbijaVoz.managerWindows"
         mc:Ignorable="d"
+        Icon="../../resources/9696.png"
         Title="Dodavanje nove linije" Height="550" Width="800">
     <Grid>
         <Grid.RowDefinitions>

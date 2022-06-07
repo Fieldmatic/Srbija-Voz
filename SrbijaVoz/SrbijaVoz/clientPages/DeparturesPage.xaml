@@ -20,7 +20,6 @@
                 x:Name="StartStationCombo"
                 Style="{StaticResource MaterialDesignOutlinedComboBox}"   
                 FontSize="15"
-                BorderBrush="Gray"
                 HorizontalAlignment="Left"
                 materialDesign:HintAssist.Hint="Pocetna stanica"
                 materialDesign:HintAssist.Foreground="Black"
@@ -31,7 +30,6 @@
             Style="{StaticResource MaterialDesignOutlinedComboBox}"   
             HorizontalAlignment="Left"
             FontSize="15"
-            BorderBrush="Gray"
             materialDesign:HintAssist.Hint="Izlazna stanica"
             materialDesign:HintAssist.Foreground="Black"
             Width="Auto"
@@ -44,15 +42,12 @@
                 FontSize="15"
                 Width="Auto"
                 HorizontalAlignment="Left"/>
-                <Button
-            Style="{StaticResource MaterialDesignPaperButton}"
+             
+            <Button
+            x:Name="SearchDeparturesButton"
             Width="150"
-            ToolTip="Resource name: MaterialDesignPaperButton"
             Content="Pretrazi"
             FontSize="18"
-            BorderBrush="Aquamarine" 
-            Background="Aquamarine"
-            Foreground="White"
             HorizontalAlignment="Left"
             Margin="5" 
             Click="SearchDepartures"/>

@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SrbijaVoz.clientPages"
         mc:Ignorable="d"
+        Icon="../resources/9696.png"
         Title="TicketReservationAndBuy" Height="451" Width="660">
     <Grid>
         <Grid.RowDefinitions>
@@ -43,8 +44,8 @@
             <Label x:Name ="Price" Grid.Row="1" Grid.Column="3" FontSize="18" Content="Cena" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             <Label Grid.Row="2" Grid.Column="0" FontSize="18" Content="Datum :" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             <Label x:Name ="Date" Grid.Row="2" Grid.Column="1" FontSize="18" Content="06-06-2022" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <Button Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 5 0 5" BorderBrush="Aquamarine" Background="Aquamarine" Foreground="White" Click="ReserveTicket" FontWeight="Bold">Rezervisi</Button>
-            <Button Grid.Row="2" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 5 0 5" BorderBrush="Aquamarine" Background="Aquamarine" Foreground="White" Click="BuyTicket" FontWeight="Bold">Kupi</Button>
+            <Button Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" Width ="100" HorizontalAlignment="Center" Margin="0 5 0 5" Foreground="White" Click="ReserveTicket" FontWeight="Bold">Rezervisi</Button>
+            <Button Grid.Row="2" Grid.Column="3" VerticalAlignment="Center"  Width ="100" HorizontalAlignment="Center" Margin="0 5 0 5" Foreground="White" Click="BuyTicket" FontWeight="Bold">Kupi</Button>
 
         </Grid>
         

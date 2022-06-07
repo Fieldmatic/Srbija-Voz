@@ -8,10 +8,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="resources\9696.png" />
+    <None Remove="resources\backgroundd.jpg" />
+    <None Remove="resources\BG.jpg" />
     <None Remove="resources\delete.png" />
     <None Remove="resources\edit.png" />
+    <None Remove="resources\loginBackground.jpg" />
+    <None Remove="resources\loginbg.jpg" />
     <None Remove="resources\plus.png" />
+    <None Remove="resources\proba.png" />
+    <None Remove="resources\Screenshot_1.png" />
     <None Remove="resources\SrbijaVoz.png" />
+    <None Remove="resources\SrbijaVozLogo.png" />
     <None Remove="resources\VOZSRBIJA.png" />
     <None Remove="SrbijaVozICON.png" />
   </ItemGroup>
@@ -29,11 +37,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="resources\9696.png" />
+    <Resource Include="resources\BG.jpg" />
     <Resource Include="resources\delete.png" />
     <Resource Include="resources\edit.png" />
     <Resource Include="resources\plus.png" />
     <Resource Include="resources\SrbijaVoz.png" />
     <Resource Include="resources\SrbijaVozICON.png" />
+    <Resource Include="resources\SrbijaVozLogo.png" />
     <Resource Include="resources\VOZSRBIJA.png" />
   </ItemGroup>
 
