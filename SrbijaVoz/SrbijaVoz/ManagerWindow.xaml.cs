@@ -27,12 +27,34 @@ namespace SrbijaVoz
     {
         private Database Database;
         private Manager Manager;
+
         public ManagerWindow(Database database, Manager manager)
         {
             InitializeComponent();
             Database = database;
             Manager = manager;
+
+            InitializeManagerShortcuts();
             
+        }
+
+        public void InitializeManagerShortcuts()
+        {
+            RoutedCommand showTrains = new RoutedCommand();
+            showTrains.InputGestures.Add(new KeyGesture(Key.F1));
+            this.CommandBindings.Add(new CommandBinding(showTrains, SwitchToTrainData));
+
+            RoutedCommand showLines = new RoutedCommand();
+            showLines.InputGestures.Add(new KeyGesture(Key.F2));
+            this.CommandBindings.Add(new CommandBinding(showLines, SwitchToLineData));
+
+            RoutedCommand showLineSchedules = new RoutedCommand();
+            showLineSchedules.InputGestures.Add(new KeyGesture(Key.F3));
+            this.CommandBindings.Add(new CommandBinding(showLineSchedules, SwitchToLineScheduleData));
+
+            //RoutedCommand showTrains = new RoutedCommand();
+            //showTrains.InputGestures.Add(new KeyGesture(Key.F4));
+            //this.CommandBindings.Add(new CommandBinding(showTrains, SwitchToTrainData));
         }
 
         private void LogoutEvent(object sender, RoutedEventArgs e)
@@ -57,7 +79,7 @@ namespace SrbijaVoz
 
         private void SwitchToLineData(object sender, RoutedEventArgs e)
         {
-            DataFrame.Content = new LinePage(getLineGridData());
+            DataFrame.Content = new LinePage(getLineGridData(), Database, this);
 
         }
 

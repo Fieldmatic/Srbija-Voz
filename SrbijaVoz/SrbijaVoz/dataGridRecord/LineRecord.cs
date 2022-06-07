@@ -12,6 +12,7 @@ namespace SrbijaVoz.dataGridRecord
         public int Id { get; set; }
         
         public string Train { get; set; }
+
         public string TrainStops { get; set; }
 
         public LineRecord(Line line)
