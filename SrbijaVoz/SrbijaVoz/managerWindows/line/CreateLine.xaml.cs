@@ -22,25 +22,25 @@ namespace SrbijaVoz.managerWindows
     /// <summary>
     /// Interaction logic for AddLineForm.xaml
     /// </summary>
-    public partial class AddLineForm : Window
+    public partial class CreateLine : Window
     {
         Point startPoint = new Point();
 
-        public ObservableCollection<Station> Stations { get; set; }
+        public ObservableCollection<Station> AvailableStations { get; set; }
 
-        public ObservableCollection<Station> StationsSetted { get; set; }
+        public ObservableCollection<Station> SettedStations { get; set; }
 
         public Database Database { get; set; }
 
         public List<TimePicker> TimePickers { get; set; }
 
-        public AddLineForm(List<Station> stations, Database database)
+        public CreateLine(Database database)
         {
             InitializeComponent();
             this.DataContext = this;
-            Stations = new ObservableCollection<Station>(stations);
-            StationsSetted = new ObservableCollection<Station>();
             Database = database;
+            AvailableStations = new ObservableCollection<Station>(Database.Stations);
+            SettedStations = new ObservableCollection<Station>();
             PopulateTrainNames();
             TimePickers = new List<TimePicker>();
         }
@@ -96,13 +96,13 @@ namespace SrbijaVoz.managerWindows
             }
         }
 
-        private void ListView_Drop(object sender, DragEventArgs e)
+        private void ListView_DropSelected(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent("myFormat"))
             {
                 Station station = e.Data.GetData("myFormat") as Station;
-                Stations.Remove(station);
-                StationsSetted.Add(station);
+                AvailableStations.Remove(station);
+                SettedStations.Add(station);
                 
                 TimePicker timePicker = new TimePicker();
                 timePicker.Width = 100;
@@ -114,6 +114,19 @@ namespace SrbijaVoz.managerWindows
 
                 TimePanel.Children.Add(timePicker);
                 TimePickers.Add(timePicker);
+            }
+        }
+
+        private void ListView_DropGiven(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent("myFormat"))
+            {
+                Station station = e.Data.GetData("myFormat") as Station;
+                SettedStations.Remove(station);
+                AvailableStations.Add(station);
+                TimePicker lastElement = TimePickers.Last();
+                TimePickers.Remove(lastElement);
+                TimePanel.Children.Remove(lastElement);
             }
         }
 
@@ -145,10 +158,10 @@ namespace SrbijaVoz.managerWindows
         private List<TrainStop> getTrainStops()
         {
             List<TrainStop> trainStops = new();
-            for (int i = 0; i < StationsSetted.Count - 1; i++)
+            for (int i = 0; i < SettedStations.Count - 1; i++)
             {
-                Station station1 = StationsSetted[i];
-                Station station2 = StationsSetted[i + 1];
+                Station station1 = SettedStations[i];
+                Station station2 = SettedStations[i + 1];
                 TimeSpan departureTime = TimePickers[i].SelectedTime.Value.TimeOfDay;
                 TimeSpan arrivalTime = TimePickers[i + 1].SelectedTime.Value.TimeOfDay;
                 trainStops.Add(new TrainStop(station1, station2, departureTime, arrivalTime));

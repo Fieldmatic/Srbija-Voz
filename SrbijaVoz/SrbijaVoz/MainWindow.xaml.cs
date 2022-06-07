@@ -28,14 +28,21 @@ namespace SrbijaVoz
         {
             InitializeComponent();
             database = new Database();
-            
+            InitializeShortcut();
         }
 
         public MainWindow(Database db)
         {
             InitializeComponent();
             database = db;
-            
+            InitializeShortcut();
+        }
+
+        private void InitializeShortcut()
+        {
+            RoutedCommand login = new RoutedCommand();
+            login.InputGestures.Add(new KeyGesture(Key.Enter));
+            this.CommandBindings.Add(new CommandBinding(login, LoginEvent));
         }
 
         private void LoginEvent(object sender, RoutedEventArgs e)

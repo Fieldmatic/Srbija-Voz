@@ -44,6 +44,10 @@ namespace SrbijaVoz.managerWindows
             RoutedCommand addNewLine = new RoutedCommand();
             addNewLine.InputGestures.Add(new KeyGesture(Key.N, ModifierKeys.Control));
             managerWindow.CommandBindings.Add(new CommandBinding(addNewLine, AddLine_Executed));
+
+            RoutedCommand editLine = new RoutedCommand();
+            editLine.InputGestures.Add(new KeyGesture(Key.E, ModifierKeys.Control));
+            managerWindow.CommandBindings.Add(new CommandBinding(editLine, EditLine_Executed));
         }
 
         private void AddLine_CanExecute(object sender, CanExecuteRoutedEventArgs e)
@@ -53,7 +57,20 @@ namespace SrbijaVoz.managerWindows
 
         private void AddLine_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            var form = new AddLineForm(Stations, Database);
+            var form = new CreateLine(Database);
+            form.ShowDialog();
+        }
+
+        private void EditLine_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void EditLine_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            LineRecord lineRecord = (LineRecord)LineDataGrid.SelectedItem;
+            if (lineRecord == null) return;
+            var form = new UpdateLine(Database, lineRecord);
             form.ShowDialog();
         }
     }

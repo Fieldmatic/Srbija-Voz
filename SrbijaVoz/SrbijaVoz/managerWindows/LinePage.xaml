@@ -12,6 +12,8 @@
     <Page.CommandBindings>
         <CommandBinding Command="cmd:RoutedCommands.AddNewItem"
                         CanExecute="AddLine_CanExecute" Executed="AddLine_Executed"></CommandBinding>
+        <CommandBinding Command="cmd:RoutedCommands.EditItem"
+                        CanExecute="EditLine_CanExecute" Executed="EditLine_Executed"></CommandBinding>
     </Page.CommandBindings>
 
     <Page.Resources>
