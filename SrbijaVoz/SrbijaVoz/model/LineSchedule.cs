@@ -10,19 +10,28 @@ namespace SrbijaVoz.model
     {
         public Line Line { get; set; }
 
-        public DayOfWeek Day { get; set; }
+        public List<DayOfWeek> Days { get; set; }
 
-        public int DayNumber { get; set; }
+        public List<int> DaysNumbers { get; set; }
+
 
         public Dictionary<DateTime, List<int>> TakenSeats;
-        public LineSchedule(Line line, int day, Dictionary<DateTime, List<int>> takenSeats)
+
+        public LineSchedule(Line line, List<int> days, Dictionary<DateTime, List<int>> takenSeats)
         {
             Line = line;
-            Day = (DayOfWeek)day;
+            Days = new List<DayOfWeek>();
+            foreach (int day in days)
+            {
+                Days.Add((DayOfWeek)day);
+            }
             TakenSeats = takenSeats;
         }
 
-        public LineSchedule() {}
+        public LineSchedule() 
+        {
+            Days = new List<DayOfWeek>();
+        }
 
         
 

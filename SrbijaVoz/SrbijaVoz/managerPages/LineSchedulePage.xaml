@@ -4,9 +4,19 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SrbijaVoz.managerWindows"
+      xmlns:cmd="clr-namespace:SrbijaVoz.managerWindows.Commands"
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="1200"
       Title="LineSchedulePage">
+
+    <Page.CommandBindings>
+        <CommandBinding Command="cmd:RoutedCommands.AddNewItem"
+                        CanExecute="AddLineSchedule_CanExecute" Executed="AddLineSchedule_Executed"></CommandBinding>
+        <!--<CommandBinding Command="cmd:RoutedCommands.EditItem"
+                        CanExecute="EditLine_CanExecute" Executed="EditLine_Executed"></CommandBinding>
+        <CommandBinding Command="cmd:RoutedCommands.DeleteItem"
+                        CanExecute="DeleteLine_CanExecute" Executed="DeleteLine_Executed"></CommandBinding>-->
+    </Page.CommandBindings>
 
     <Page.Resources>
         <Image x:Key="Add" Source="../resources/plus.png"/>
@@ -19,17 +29,21 @@
             <ColumnDefinition Width="9*"/>
             <ColumnDefinition Width="1.3*"/>
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="LineDataGrid" Grid.Column="0"  AutoGenerateColumns="False" FontSize="18" IsReadOnly="True">
+        <DataGrid x:Name="LineScheduleDataGrid" Grid.Column="0"  AutoGenerateColumns="False"
+                  FontSize="18" IsReadOnly="True" ItemsSource="{Binding}"
+                  PreviewMouseLeftButtonDown="LineScheduleDataGrid_PreviewMouseLeftButtonDown">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="0.5*"/>
-                <DataGridTextColumn Header="Polazak" Binding="{Binding Day}" Width="*"/>
+                <DataGridTextColumn Header="Polazak" Binding="{Binding Days}" Width="*"/>
                 <DataGridTextColumn Header="Voz" Binding="{Binding Train}" Width="0.7*"/>
                 <DataGridTextColumn Header="Stanice" Binding="{Binding TrainStops}" Width="6*"/>
             </DataGrid.Columns>
         </DataGrid>
         <Grid Grid.Column="1" Background="White">
             <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                <Button Grid.Row="1" Background ="Transparent" BorderThickness="0" Content="{StaticResource Add}" Height="60" HorizontalAlignment="Center"></Button>
+                <Button Grid.Row="1" Background ="Transparent" BorderThickness="0"
+                        Content="{StaticResource Add}" Height="60" HorizontalAlignment="Center"
+                        ToolTip="Nova linija, Ctrl+N" Command="cmd:RoutedCommands.AddNewItem" />
                 <Button Background ="Transparent" BorderThickness="0" Content="{StaticResource Edit}" Margin="12 80 0 0" Height="60" RenderTransformOrigin="1.282,0.533"/>
                 <Button Grid.Row="3" Background ="Transparent" BorderThickness="0" Content="{StaticResource Delete}" Margin="0 80 0 0" Height="60"  HorizontalAlignment="Center"></Button>
             </StackPanel>

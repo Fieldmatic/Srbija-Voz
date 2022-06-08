@@ -173,7 +173,10 @@
       }
 
     },
-    "DayNumber": 3
+    "DaysNumbers": [
+      3,
+      4
+    ]
   },
   {
     "Line": {
@@ -269,7 +272,9 @@
       }
 
     },
-    "DayNumber": 3
+    "DaysNumbers": [
+      3
+    ]
   },
   {
     "Line": {
@@ -365,7 +370,9 @@
       }
 
     },
-    "DayNumber": 3
+    "DaysNumbers": [
+      3, 4, 6
+    ]
   },
   {
     "Line": {
@@ -461,7 +468,9 @@
       }
 
     },
-    "DayNumber": 3
+    "DaysNumbers": [
+      1, 2
+    ]
   },
   {
     "Line": {
@@ -561,7 +570,9 @@
         ]
       }
     },
-    "DayNumber": 1
+    "DaysNumbers": [
+      1, 4
+    ]
   }
 
 

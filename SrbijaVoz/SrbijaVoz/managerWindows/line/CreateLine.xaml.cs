@@ -34,6 +34,8 @@ namespace SrbijaVoz.managerWindows
 
         public List<TimePicker> TimePickers { get; set; }
 
+        public Delegate Create;
+
         public CreateLine(Database database)
         {
             InitializeComponent();
@@ -170,6 +172,7 @@ namespace SrbijaVoz.managerWindows
                                 "Dodavanje nove linije",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Information);
+            Create.DynamicInvoke();
             this.Close();
         }
 

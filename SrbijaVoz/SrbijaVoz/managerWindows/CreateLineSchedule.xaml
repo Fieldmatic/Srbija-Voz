@@ -1,0 +1,75 @@
+﻿<Window x:Class="SrbijaVoz.managerWindows.CreateLineSchedule"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SrbijaVoz.managerWindows"
+        mc:Ignorable="d"
+        Title="Dodavanje reda vožnje" Height="550" Width="950">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Lines -->
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Text="Linija:" FontSize="17" Margin="10 5 0 10"/>
+            <DataGrid x:Name="LineDataGrid" Grid.Row="1" AutoGenerateColumns="False"
+                  FontSize="16" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="0.5*"/>
+                    <DataGridTextColumn Header="Voz" Binding="{Binding Train}" Width="0.7*"/>
+                    <DataGridTextColumn Header="Stanice" Binding="{Binding TrainStops}" Width="6*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+        </Grid>
+
+        <!-- Days -->
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <TextBlock Text="Dani polaska:" Grid.Row="1" FontSize="17" Margin="10 0 0 0"/>
+            <CheckBox x:Name="Cb1" Grid.Row="1" Grid.Column="0" Content="Ponedeljak" Margin="10 0 0 0"/>
+            <CheckBox x:Name="Cb2" Grid.Row="1" Grid.Column="1" Content="Utorak" Margin="10 0 0 0"/>
+            <CheckBox x:Name="Cb3" Grid.Row="1" Grid.Column="2" Content="Sreda" Margin="10 0 0 0"/>
+            <CheckBox x:Name="Cb4" Grid.Row="1" Grid.Column="3" Content="Četvrtak" Margin="10 0 0 0"/>
+            <CheckBox x:Name="Cb5" Grid.Row="1" Grid.Column="4" Content="Petak" Margin="10 0 0 0"/>
+            <CheckBox x:Name="Cb6" Grid.Row="1" Grid.Column="5" Content="Subota" Margin="10 0 0 0"/>
+            <CheckBox x:Name="Cb7" Grid.Row="1" Grid.Column="6" Content="Nedelja" Margin="10 0 0 0"/>
+        </Grid>
+
+        <!-- Button -->
+        <Grid Grid.Row="2" VerticalAlignment="Bottom">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="SubmitBtn" Grid.Column="1" Content="Dodaj" Margin="0 0 0 20"
+                    Click="SubmitBtn_Click"/>
+        </Grid>
+    </Grid>
+</Window>

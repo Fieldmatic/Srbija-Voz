@@ -38,6 +38,8 @@ namespace SrbijaVoz.managerWindows
 
         public Line CurrentLine { get; set; }
 
+        public Delegate Update;
+
         public UpdateLine(Database database, LineRecord lineRecord)
         {
             InitializeComponent();
@@ -242,6 +244,8 @@ namespace SrbijaVoz.managerWindows
                                 "Ažuriranje linije",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Information);
+
+            Update?.DynamicInvoke();
             this.Close();
         }
 

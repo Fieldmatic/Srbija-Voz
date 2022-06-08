@@ -88,10 +88,14 @@ namespace SrbijaVoz.database
             TrainStops = JsonSerializer.Deserialize<List<TrainStop>>(File.ReadAllText("../../../data/trainStopsData.json"));
             Lines = JsonSerializer.Deserialize<List<Line>>(File.ReadAllText("../../../data/lineData.json"));
             LineSchedules = JsonSerializer.Deserialize<List<LineSchedule>>(File.ReadAllText("../../../data/lineScheduleData.json"));
-            foreach(LineSchedule ls in LineSchedules) {
-                                                        ls.Day = (DayOfWeek)ls.DayNumber;
-                                                        ls.TakenSeats = new Dictionary<DateTime, List<int>>();
-                                                       }
+            foreach(LineSchedule ls in LineSchedules) 
+            {
+                foreach (int day in ls.DaysNumbers)
+                {
+                    ls.Days.Add((DayOfWeek)day);
+                }
+                ls.TakenSeats = new Dictionary<DateTime, List<int>>();
+            }
         }
     }
 }

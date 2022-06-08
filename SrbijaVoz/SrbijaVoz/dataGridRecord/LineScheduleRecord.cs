@@ -11,38 +11,44 @@ namespace SrbijaVoz.dataGridRecord
     {
         public int Id { get; set; }
 
-        public string Day { get; set; }
+        public string Days { get; set; }
 
         public string Train { get; set; }
+
         public string TrainStops { get; set; }
 
         public LineScheduleRecord(LineSchedule schedule)
         {
             Id = schedule.Line.Id;
             Train = schedule.Line.Train.Name;
-            switch (schedule.Day.ToString())
+            foreach (DayOfWeek day in schedule.Days)
             {
-                case "Monday": 
-                            Day = "Ponedeljak";
-                            break;
-                case "Tuesday":
-                            Day = "Utorak";
-                            break;
-                case "Wednesday":
-                            Day = "Sreda";
-                            break;
-                case "Thursday":
-                            Day = "Cetvrtak";
-                            break;
-                case "Friday":
-                            Day = "Petak";
-                            break;
-                case "Saturday":
-                            Day = "Subota";
-                            break;
-                case "Sunday":
-                            Day = "Nedelja";
-                            break;
+                switch (day.ToString())
+                {
+                    case "Monday":
+                        Days += "Pon";
+                        break;
+                    case "Tuesday":
+                        Days += "Uto";
+                        break;
+                    case "Wednesday":
+                        Days += "Sre";
+                        break;
+                    case "Thursday":
+                        Days += "Čet";
+                        break;
+                    case "Friday":
+                        Days += "Pet";
+                        break;
+                    case "Saturday":
+                        Days += "Sub";
+                        break;
+                    case "Sunday":
+                        Days += "Ned";
+                        break;
+                }
+                if (day != schedule.Days.Last())
+                    Days += ", ";
             }
             string trainStops = schedule.Line.TrainStops[0].StartStation.Name + " (" + schedule.Line.TrainStops[0].DepartureTime.ToString() + ") ";
             foreach (TrainStop stop in schedule.Line.TrainStops) trainStops += " - " + stop.EndStation.Name + " (" + stop.ArrivalTime.ToString() + ") ";
