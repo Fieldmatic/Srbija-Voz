@@ -1,0 +1,146 @@
+﻿<Page x:Class="SrbijaVoz.managerPages.StationsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
+
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Stations">
+        
+    <Grid x:Name="Grid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+            <m:Map AllowDrop="True" Drop="StationsNetworkMap_Drop" x:Name="StationsNetworkMap" Grid.Row ="0" CredentialsProvider="iQjDgC2mhgFQu6XOv5bS~XnFH9EG2w6Rr7O4uMjYMHA~An1AXepW8hoBHMeSFnegGJ1zor10YIiOEHotPsQh9hCf5bw9KOABji4koIvUhEvr" Mode="Road"  ZoomLevel="10" Center="45.265519, 19.829519">
+            </m:Map>
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="4*"/>
+            </Grid.RowDefinitions>
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name = "PinIcon" PreviewMouseLeftButtonDown="AddNewStation_MouseLeftButtonDown" Grid.Column="0" 
+                Width="90"
+                Height="60"
+                Padding="0"
+                HorizontalAlignment="Center"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center"
+                Background="Transparent"
+                BorderThickness="0"
+                Foreground="Orange">
+                    <Button.Content>
+                        <StackPanel>
+                            <materialDesign:PackIcon Kind="Pin"  Width="40" Height="40"  HorizontalAlignment="Center"/>
+                            <TextBlock>Dodaj stanicu</TextBlock>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Button x:Name = "EraseIcon" PreviewMouseLeftButtonDown="DeleteStation_PreviewMouseLeftButtonDown" Grid.Column="1" 
+                Width="90"
+                Height="60"
+                Padding="0"
+                HorizontalAlignment="Center"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center"
+                Background="Transparent"
+                BorderThickness="0"
+                Foreground="Red">
+                    <Button.Content>
+                        <StackPanel>
+                            <materialDesign:PackIcon Kind="Eraser" Width="40" Height="40"  HorizontalAlignment="Center"/>
+                            <TextBlock>Obrisi stanicu</TextBlock>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+            </Grid>
+            <ListBox MouseDoubleClick="StationsListBox_MouseDoubleClick"
+                Grid.Row="1"
+                Name="StationsListBox"
+                HorizontalAlignment="Stretch"
+                Grid.IsSharedSizeScope="True"
+                Margin="12 0 12 0">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border
+                                x:Name="Border"
+                                HorizontalAlignment="Stretch"
+                                Padding="8"
+                                BorderThickness="0 0 0 1"
+                                BorderBrush="{DynamicResource MaterialDesignDivider}">
+                            <Grid x:Name="Grid">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition SharedSizeGroup="Checkerz"/>
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <ToggleButton x:Name="ButtonId"
+                                        VerticalAlignment="Center"
+                                        Style="{StaticResource MaterialDesignActionLightToggleButton}"
+                                        Content="{Binding Id}"/>
+                                <StackPanel
+                                        Margin="8 0 0 0"
+                                        Grid.Column="1"
+                                        VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+        <materialDesign:DialogHost x:Name="DialogHost"
+            DialogTheme="Inherit"
+            CloseOnClickAway="True">
+            <materialDesign:DialogHost.DialogContentTemplate>
+                <DataTemplate DataType="local:MessageBoxModel">
+                    <StackPanel
+                    Margin="16">
+                        <TextBlock Text="{Binding MessageBoxAction}" />
+                        <TextBox HorizontalAlignment="Stretch" Text="{Binding MessageBoxInput}" Margin="0 8 0 0"></TextBox>
+                        <StackPanel
+                Orientation="Horizontal"
+                HorizontalAlignment="Right">
+                            <Button
+                    Style="{StaticResource MaterialDesignFlatButton}"
+                    IsCancel="True"
+                    Margin="0 8 8 0"
+                    Content="Zatvori"
+                    Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}">
+                                <Button.CommandParameter>
+                                    <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
+                                        False
+                                    </system:Boolean>
+                                </Button.CommandParameter>
+                            </Button>
+                            <Button
+                    Style="{StaticResource MaterialDesignFlatButton}"
+                    IsDefault="True"
+                    Margin="0 8 8 0"
+                    Content="Dodaj stanicu"
+                    Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}">
+                                <Button.CommandParameter>
+                                    <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
+                                        True
+                                    </system:Boolean>
+                                </Button.CommandParameter>
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </materialDesign:DialogHost.DialogContentTemplate>
+        </materialDesign:DialogHost>
+
+    </Grid>
+</Page>
