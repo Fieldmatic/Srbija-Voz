@@ -26,16 +26,13 @@ namespace SrbijaVoz.managerPages
     {
         public List<Station> Stations;
 
-        public bool IsSelected = true;
-
         public StationsPage(List<Station> stations)
         {
             Stations = stations;
             InitializeComponent();
             StationsNetworkMap.Focus();
             DrawStationsOnMap();
-            StationsList.ItemsSource = Stations;
-
+            StationsListBox.ItemsSource = Stations;
         }
 
         private void DrawStationsOnMap()
@@ -67,9 +64,6 @@ namespace SrbijaVoz.managerPages
 
         public void AddNewStation_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            /*Point dropPosition = e.GetPosition(StationsNetworkMap);
-            Canvas.SetLeft(PinIcon, dropPosition.X);
-            Canvas.SetTop(PinIcon, dropPosition.X);*/
             DragDrop.DoDragDrop(PinIcon, "add", DragDropEffects.Move);
         }
 
@@ -93,7 +87,7 @@ namespace SrbijaVoz.managerPages
             {
                 Pushpin pin = CreateStationPin(station);
                 Stations.Remove(station);
-                StationsList.Items.Refresh();
+                StationsListBox.Items.Refresh();
                 StationsNetworkMap.Children.Clear();
                 DrawStationsOnMap();
 
@@ -104,9 +98,6 @@ namespace SrbijaVoz.managerPages
         {
             foreach(Station station in Stations)
             {
-                Trace.WriteLine(station.Name);
-                Trace.WriteLine("Latitude: " + (location.Latitude - station.Location.Latitude).ToString());
-                Trace.WriteLine("Longitude: " + (location.Longitude - station.Location.Longitude).ToString());
                 if ((Math.Abs(station.Location.Latitude - location.Latitude) <= 0.001) && (Math.Abs(station.Location.Longitude - location.Longitude) <= 0.001)) return station;
             }
             return null;
@@ -126,7 +117,7 @@ namespace SrbijaVoz.managerPages
                 int newId = Stations.Last().Id + 1;
                 Station newStation = new(newId, viewModel.MessageBoxInput, pinLocation);
                 Stations.Add(newStation);
-                StationsList.Items.Refresh();
+                StationsListBox.Items.Refresh();
                 AddStationOnMap(newStation);
                 return true;
             }
@@ -138,23 +129,6 @@ namespace SrbijaVoz.managerPages
             DragDrop.DoDragDrop(EraseIcon, "delete", DragDropEffects.Move);
         }
 
-        private void ToggleButton_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            //StationsNetworkMap.SetView();
-        }
-
-        private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            Grid grid = sender as Grid;
-            StackPanel panel = grid.Children[1] as StackPanel;
-            TextBlock textBlock = panel.Children[0] as TextBlock;
-
-            Station station = GetStationByName(textBlock.Text);
-            StationsNetworkMap.Center = station.Location;
-            StationsNetworkMap.Focus();
-            StationsNetworkMap.ZoomLevel = 15;
-        }
-
         public Station GetStationByName(String name)
         {
             foreach (Station station in Stations)
@@ -162,17 +136,22 @@ namespace SrbijaVoz.managerPages
             return null;
         }
 
-        private void Grid_MouseEnter(object sender, MouseEventArgs e)
+        private void StationsListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Grid grid = sender as Grid;
-            StackPanel panel = grid.Children[1] as StackPanel;
-            TextBlock textBlock = panel.Children[0] as TextBlock;
-
-            Station station = GetStationByName(textBlock.Text);
-            StationsNetworkMap.Center = station.Location;
+            Station selectedStation = StationsListBox.SelectedItem as Station;
+            StationsNetworkMap.Center = selectedStation.Location;
             StationsNetworkMap.Focus();
             StationsNetworkMap.ZoomLevel = 15;
         }
+
+        private void StationsListBox_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Station selectedStation = StationsListBox.SelectedItem as Station;
+            StationsNetworkMap.Center = selectedStation.Location;
+            StationsNetworkMap.Focus();
+            StationsNetworkMap.ZoomLevel = 15;
+        }
+
     }
 
     public class MessageBoxModel : INotifyPropertyChanged
