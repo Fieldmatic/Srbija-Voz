@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -115,7 +116,7 @@ namespace SrbijaVoz.managerWindows
         {
             LineScheduleRecord lineScheduleRecord = (LineScheduleRecord)LineScheduleDataGrid.SelectedItem;
             if (lineScheduleRecord == null) return;
-            //DeleteLine(lineScheduleRecord);
+            DeleteLineSchedule(lineScheduleRecord);
         }
 
         //private void UpdateLine_Drop(object sender, DragEventArgs e)
@@ -128,73 +129,73 @@ namespace SrbijaVoz.managerWindows
 
         //}
 
-        //private void DeleteLine_Drop(object sender, DragEventArgs e)
-        //{
-        //    LineRecord = e.Data.GetData("LineRecord") as LineRecord;
-        //    DeleteLine(LineRecord);
-        //}
+        private void DeleteLineSchedule_Drop(object sender, DragEventArgs e)
+        {
+            LineScheduleRecord = e.Data.GetData("LineScheduleRecord") as LineScheduleRecord;
+            DeleteLineSchedule(LineScheduleRecord);
+        }
 
-        //private void DeleteLine(LineScheduleRecord lineScheduleRecord)
-        //{
-        //    MessageBoxResult result = MessageBox.Show("Da li ste sigurni da želite da obrišete ovaj red vožnje?",
-        //                                              "Brisanje reda vožnje",
-        //                                              MessageBoxButton.YesNo,
-        //                                              MessageBoxImage.Warning);
-        //    if (result == MessageBoxResult.Yes)
-        //    {
-        //        LineSchedule lineScheduleForDelete = Database.LineSchedules.Find(item => item.Id == lineScheduleRecord.Id);
-        //        Database.Lines.Remove(lineScheduleForDelete);
-        //        MessageBox.Show("Linija uspešno obrisana!",
-        //                        "Brisanje linije",
-        //                        MessageBoxButton.OK,
-        //                        MessageBoxImage.Information);
-        //        this.LineDataGrid.DataContext = null;
-        //        InitializeLines();
-        //    }
-        //}
+        private void DeleteLineSchedule(LineScheduleRecord lineScheduleRecord)
+        {
+            MessageBoxResult result = MessageBox.Show("Da li ste sigurni da želite da obrišete ovaj red vožnje?",
+                                                      "Brisanje reda vožnje",
+                                                      MessageBoxButton.YesNo,
+                                                      MessageBoxImage.Warning);
+            if (result == MessageBoxResult.Yes)
+            {
+                LineSchedule lineScheduleForDelete = Database.LineSchedules.Find(item => item.Line.Id == lineScheduleRecord.Id);
+                Database.LineSchedules.Remove(lineScheduleForDelete);
+                MessageBox.Show("Linija uspešno obrisana!",
+                                "Brisanje linije",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Information);
+                this.LineScheduleDataGrid.DataContext = null;
+                InitializeLineSchedules();
+            }
+        }
 
         private void LineScheduleDataGrid_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            //selectedRowIndex = GetCurrentRowIndex(e.GetPosition);
-            //if (selectedRowIndex < 0)
-            //    return;
+            selectedRowIndex = GetCurrentRowIndex(e.GetPosition);
+            if (selectedRowIndex < 0)
+                return;
 
-            //LineDataGrid.SelectedIndex = selectedRowIndex;
-            //if (LineRecords[selectedRowIndex] is not LineRecord selectedEmp)
-            //    return;
-            //var dataObject = new DataObject();
-            //dataObject.SetData("LineRecord", selectedEmp);
-            //DragDrop.DoDragDrop(LineDataGrid, dataObject, DragDropEffects.Move);
+            LineScheduleDataGrid.SelectedIndex = selectedRowIndex;
+            if (LineScheduleRecords[selectedRowIndex] is not LineScheduleRecord selectedEmp)
+                return;
+            var dataObject = new DataObject();
+            dataObject.SetData("LineScheduleRecord", selectedEmp);
+            DragDrop.DoDragDrop(LineScheduleDataGrid, dataObject, DragDropEffects.Move);
         }
 
-        //private int GetCurrentRowIndex(GetPosition pos)
-        //{
-        //    int curIndex = -1;
-        //    for (int i = 0; i < LineDataGrid.Items.Count; i++)
-        //    {
-        //        DataGridRow itm = GetRowItem(i);
-        //        if (GetMouseTargetRow(itm, pos))
-        //        {
-        //            curIndex = i;
-        //            break;
-        //        }
-        //    }
-        //    return curIndex;
-        //}
+        private int GetCurrentRowIndex(GetPosition pos)
+        {
+            int curIndex = -1;
+            for (int i = 0; i < LineScheduleDataGrid.Items.Count; i++)
+            {
+                DataGridRow itm = GetRowItem(i);
+                if (GetMouseTargetRow(itm, pos))
+                {
+                    curIndex = i;
+                    break;
+                }
+            }
+            return curIndex;
+        }
 
-        //private static bool GetMouseTargetRow(Visual theTarget, GetPosition position)
-        //{
-        //    Rect rect = VisualTreeHelper.GetDescendantBounds(theTarget);
-        //    Point point = position((IInputElement)theTarget);
-        //    return rect.Contains(point);
-        //}
+        private static bool GetMouseTargetRow(Visual theTarget, GetPosition position)
+        {
+            Rect rect = VisualTreeHelper.GetDescendantBounds(theTarget);
+            Point point = position((IInputElement)theTarget);
+            return rect.Contains(point);
+        }
 
-        //private DataGridRow GetRowItem(int index)
-        //{
-        //    if (LineDataGrid.ItemContainerGenerator.Status != GeneratorStatus.ContainersGenerated)
-        //        return null;
-        //    return LineDataGrid.ItemContainerGenerator.ContainerFromIndex(index) as DataGridRow;
-        //}
+        private DataGridRow GetRowItem(int index)
+        {
+            if (LineScheduleDataGrid.ItemContainerGenerator.Status != GeneratorStatus.ContainersGenerated)
+                return null;
+            return LineScheduleDataGrid.ItemContainerGenerator.ContainerFromIndex(index) as DataGridRow;
+        }
 
         private List<LineRecord> GetLineRecords()
         {
