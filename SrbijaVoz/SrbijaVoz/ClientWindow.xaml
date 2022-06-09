@@ -37,7 +37,7 @@
                 <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="22"  Margin="5 0 5 0" Grid.Column="1" Click="LogoutEvent">Izloguj se</Button>
             </Grid>
         </Border>
-        <Frame x:Name="DataFrame" Grid.Row="1"/>
+        <Frame x:Name="DataFrame" NavigationUIVisibility="Hidden" Grid.Row="1"/>
 
     </Grid>
 </Window>

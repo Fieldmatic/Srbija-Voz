@@ -52,10 +52,17 @@
     <Compile Update="clientPages\ReservedTicketCard.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="managerPages\TicketCard.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
     <Page Update="clientPages\ReservedTicketCard.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="managerPages\TicketCard.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>

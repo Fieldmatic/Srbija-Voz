@@ -16,7 +16,7 @@
                 <ColumnDefinition Width="1.35*"/>
                 <ColumnDefinition Width="1.35*"/>
                 <ColumnDefinition Width="1.35*"/>
-                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="2.03*"/>
             </Grid.ColumnDefinitions>
 
             <Label x:Name="Line" Grid.Column="0" Content="Novi Sad - Beograd" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>

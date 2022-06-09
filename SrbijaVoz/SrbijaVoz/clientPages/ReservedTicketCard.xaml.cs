@@ -18,12 +18,12 @@ using static SrbijaVoz.clientPages.DeparturesPage;
 
 namespace SrbijaVoz.clientPages
 {
-    public partial class ReservedTicketCard : UserControl
+    public partial class TicketCard : UserControl
     {
         private Ticket Ticket;
         private Database database;
         private Client Client;
-        public ReservedTicketCard(Ticket ticket,Database db, Client client)
+        public TicketCard(Ticket ticket,Database db, Client client)
         {
             InitializeComponent();
             database = db;
@@ -36,6 +36,33 @@ namespace SrbijaVoz.clientPages
             Train.Content = Ticket.LineSchedule.Line.Train.Name;
             Seat.Content = Ticket.Seat.Number.ToString();
             Price.Content = Ticket.Price + " RSD";
+
+        }
+
+        private void TicketConfirmReservation(object sender, RoutedEventArgs e)
+        {
+            string sMessageBoxText = "Jeste li sigurni da zelite da potvrdite rezervaciju za ovu kartu?";
+
+            MessageBoxButton btnMessageBox = MessageBoxButton.YesNoCancel;
+            MessageBoxImage icnMessageBox = MessageBoxImage.Question;
+            string sCaption = "Potvrda rezervacije";
+
+            MessageBoxResult rsltMessageBox = MessageBox.Show(sMessageBoxText, sCaption, btnMessageBox, icnMessageBox);
+
+            switch (rsltMessageBox)
+            {
+                case MessageBoxResult.Yes:
+                    Ticket.TicketStatus = TicketStatus.BOUGHT;
+                    (this.Parent as StackPanel).Children.Remove(this);
+                    break;
+
+                case MessageBoxResult.No:
+                    break;
+
+                case MessageBoxResult.Cancel:
+                    break;
+            }
+
 
         }
 

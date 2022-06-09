@@ -89,6 +89,16 @@ namespace SrbijaVoz
 
         }
 
+        private void SwitchToSoldTicketsRide(object sender, RoutedEventArgs e)
+        {
+            DataFrame.Content = new SoldTicketsRide(Database);
+        }
+
+        private void SwitchToSoldTicketsMonth(object sender, RoutedEventArgs e)
+        {
+            DataFrame.Content = new SoldTicketsMonth(Database);
+        }
+
 
         private List<LineRecord> getLineGridData()
         {
@@ -103,5 +113,7 @@ namespace SrbijaVoz
             foreach (LineSchedule schedule in Database.LineSchedules) lineScheduleRecordData.Add(new LineScheduleRecord(schedule));
             return lineScheduleRecordData;
         }
+
+ 
     }
 }

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SrbijaVoz.managerWindows"
         mc:Ignorable="d"
         Title="Dodavanje voza" Height="450" Width="800"
-        Icon="resources/9696.png"
+        Icon="../resources/9696.png"
         WindowStartupLocation="CenterScreen"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"

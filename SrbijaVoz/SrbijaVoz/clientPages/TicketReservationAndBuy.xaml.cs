@@ -118,19 +118,30 @@ namespace SrbijaVoz.clientPages
             switch (rsltMessageBox)
             {
                 case MessageBoxResult.Yes:
-                    Ticket ticket = new Ticket(currentOffer.LineSchedule, TicketStatus.BOUGHT, Seat, Client, TicketPrice, currentOffer.StartStation, currentOffer.EndStation, currentOffer.StartTime, currentOffer.EndTime, currentOffer.Date);
-                    Client.Tickets.Add(ticket);
-                    database.Tickets.Add(ticket);
-                    if (currentOffer.LineSchedule.TakenSeats.ContainsKey(currentOffer.Date)) currentOffer.LineSchedule.TakenSeats[currentOffer.Date].Add(Seat.Number);
-                    else
+                    try
                     {
-                        List<int> newTakenSeats = new List<int>();
-                        newTakenSeats.Add(Seat.Number);
-                        currentOffer.LineSchedule.TakenSeats[currentOffer.Date] = newTakenSeats;
+                        Ticket ticket = new Ticket(currentOffer.LineSchedule, TicketStatus.BOUGHT, Seat, Client, TicketPrice, currentOffer.StartStation, currentOffer.EndStation, currentOffer.StartTime, currentOffer.EndTime, currentOffer.Date);
+                        Client.Tickets.Add(ticket);
+                        database.Tickets.Add(ticket);
+                        if (currentOffer.LineSchedule.TakenSeats.ContainsKey(currentOffer.Date)) currentOffer.LineSchedule.TakenSeats[currentOffer.Date].Add(Seat.Number);
+                        else
+                        {
+                            List<int> newTakenSeats = new List<int>();
+                            newTakenSeats.Add(Seat.Number);
+                            currentOffer.LineSchedule.TakenSeats[currentOffer.Date] = newTakenSeats;
+                        }
+                        this.Close();
+                        break;
                     }
-                    this.Close();
-                    break;
-
+                    catch (Exception ex)
+                    {
+                        if (ex is NullReferenceException || ex is InvalidOperationException)
+                        {
+                            MessageBox.Show("Morate odabrati sediste pre kupovine karte!", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                        break;
+                    }
+                   
                 case MessageBoxResult.No:
                     break;
 
@@ -154,18 +165,29 @@ namespace SrbijaVoz.clientPages
             switch (rsltMessageBox)
             {
                 case MessageBoxResult.Yes:
-                    Ticket ticket = new Ticket(currentOffer.LineSchedule, TicketStatus.RESERVED, Seat, Client, TicketPrice, currentOffer.StartStation, currentOffer.EndStation, currentOffer.StartTime, currentOffer.EndTime, currentOffer.Date);
-                    Client.Tickets.Add(ticket);
-                    database.Tickets.Add(ticket);
-                    if (currentOffer.LineSchedule.TakenSeats.ContainsKey(currentOffer.Date)) currentOffer.LineSchedule.TakenSeats[currentOffer.Date].Add(Seat.Number);
-                    else
+                    try
                     {
-                        List<int> newTakenSeats = new List<int>();
-                        newTakenSeats.Add(Seat.Number);
-                        currentOffer.LineSchedule.TakenSeats[currentOffer.Date] = newTakenSeats;
+                        Ticket ticket = new Ticket(currentOffer.LineSchedule, TicketStatus.RESERVED, Seat, Client, TicketPrice, currentOffer.StartStation, currentOffer.EndStation, currentOffer.StartTime, currentOffer.EndTime, currentOffer.Date);
+                        Client.Tickets.Add(ticket);
+                        database.Tickets.Add(ticket);
+                        if (currentOffer.LineSchedule.TakenSeats.ContainsKey(currentOffer.Date)) currentOffer.LineSchedule.TakenSeats[currentOffer.Date].Add(Seat.Number);
+                        else
+                        {
+                            List<int> newTakenSeats = new List<int>();
+                            newTakenSeats.Add(Seat.Number);
+                            currentOffer.LineSchedule.TakenSeats[currentOffer.Date] = newTakenSeats;
+                        }
+                        this.Close();
+                        break;
                     }
-                    this.Close();
-                    break;
+                    catch (Exception ex)
+                    {
+                        if (ex is NullReferenceException || ex is InvalidOperationException)
+                        {
+                            MessageBox.Show("Morate odabrati sediste pre rezervacije karte!", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                        break;
+                    }
 
                 case MessageBoxResult.No:
                     break;

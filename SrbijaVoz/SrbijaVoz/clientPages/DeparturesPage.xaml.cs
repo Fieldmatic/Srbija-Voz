@@ -74,7 +74,8 @@ namespace SrbijaVoz.clientPages
                         }
                     }
                 }
-                foreach(Offer offer in offers)
+                if (offers.Count == 0) MessageBox.Show("Zao nam je, nemamo polaske za izabrane kriterijume.", "Obavestenje", MessageBoxButton.OK, MessageBoxImage.Information);
+                foreach (Offer offer in offers)
                 {
                     OfferStackPanel.Children.Add(new OfferCard(offer, Database, Client));
 
