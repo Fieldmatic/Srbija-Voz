@@ -73,6 +73,7 @@ namespace SrbijaVoz.managerWindows
 
         private void SubmitBtn_Click(object sender, RoutedEventArgs e)
         {
+            int id = Database.LineSchedules.Count + 1;
             LineRecord lineRecord = (LineRecord)LineDataGrid.SelectedItem;
             if (lineRecord == null)
             {
@@ -115,7 +116,7 @@ namespace SrbijaVoz.managerWindows
             string trainIdStr = Trains.SelectedItem.ToString().Split(" (")[1];
             int trainId = int.Parse(trainIdStr.Substring(0, trainIdStr.Length - 1));
             Train train = Database.Trains.Find(t => t.Id.Equals(trainId));
-            Database.LineSchedules.Add(new LineSchedule(line, days, new Dictionary<DateTime, List<int>>(), trainStops, train));
+            Database.LineSchedules.Add(new LineSchedule(id, line, days, new Dictionary<DateTime, List<int>>(), trainStops, train));
             MessageBox.Show("Novi red vožnje uspešno dodat.",
                                 "Dodavanje novog reda vožnje",
                                 MessageBoxButton.OK,

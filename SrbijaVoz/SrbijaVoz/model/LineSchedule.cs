@@ -8,6 +8,8 @@ namespace SrbijaVoz.model
 {
     public class LineSchedule
     {
+        public int Id { get; set; }
+
         public Line Line { get; set; }
 
         public List<DayOfWeek> Days { get; set; }
@@ -20,8 +22,9 @@ namespace SrbijaVoz.model
 
         public Train Train { get; set; }
 
-        public LineSchedule(Line line, List<int> days, Dictionary<DateTime, List<int>> takenSeats, List<TrainStop> trainStops, Train train)
+        public LineSchedule(int id, Line line, List<int> days, Dictionary<DateTime, List<int>> takenSeats, List<TrainStop> trainStops, Train train)
         {
+            Id = id;
             Line = line;
             Days = new List<DayOfWeek>();
             foreach (int day in days)

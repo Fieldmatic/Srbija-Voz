@@ -19,7 +19,7 @@ namespace SrbijaVoz.dataGridRecord
 
         public LineScheduleRecord(LineSchedule schedule)
         {
-            Id = schedule.Line.Id;
+            Id = schedule.Id;
             Train = schedule.Train.Name;
             foreach (DayOfWeek day in schedule.Days)
             {

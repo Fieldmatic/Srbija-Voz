@@ -58,7 +58,7 @@ namespace SrbijaVoz.managerWindows
 
         private LineSchedule? LineScheduleRecordToLineSchedule(LineScheduleRecord lineScheduleRecord)
         {
-            LineSchedule lineSchedule = Database.LineSchedules.Find(l => l.Line.Id.Equals(lineScheduleRecord.Id));
+            LineSchedule lineSchedule = Database.LineSchedules.Find(l => l.Id.Equals(lineScheduleRecord.Id));
             return lineSchedule;
         }
 
@@ -135,13 +135,23 @@ namespace SrbijaVoz.managerWindows
 
             CurrentLineSchedule.Train = train;
             CurrentLineSchedule.TrainStops = trainStops;
-            // days
+            CurrentLineSchedule.Days = GetSettedDays(days);
             MessageBox.Show("Red vožnje uspešno ažuriran.",
                                 "Ažuriranje reda vožnje",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Information);
             Update.DynamicInvoke();
             this.Close();
+        }
+
+        private List<DayOfWeek> GetSettedDays(List<int> days)
+        {
+            List<DayOfWeek> daysOfWeek = new();
+            foreach (int day in days)
+            {
+                daysOfWeek.Add((DayOfWeek)(day % 7));
+            }
+            return daysOfWeek;
         }
 
         private bool CkeckTimesOrder()
