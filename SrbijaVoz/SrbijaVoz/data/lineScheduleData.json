@@ -2,7 +2,41 @@
   {
     "Line": {
       "Id": 1,
-      "Name": "Novi Sad - Beograd"
+      "Name": "Novi Sad - Beograd",
+      "Stations": [
+        {
+          "Id": 1,
+          "Name": "Novi Sad",
+          "Location": {
+            "Latitude": 45.265519,
+            "Longitude": 19.829519
+          }
+        },
+        {
+          "Id": 2,
+          "Name": "Sremski Karlovci",
+          "Location": {
+            "Latitude": 45.206631,
+            "Longitude": 19.932878
+          }
+        },
+        {
+          "Id": 3,
+          "Name": "Novi Beograd",
+          "Location": {
+            "Latitude": 44.806900,
+            "Longitude": 20.417764
+          }
+        },
+        {
+          "Id": 4,
+          "Name": "Beograd Centar",
+          "Location": {
+            "Latitude": 44.793832,
+            "Longitude": 20.452561
+          }
+        }
+      ]
     },
     "Train": {
       "Id": 1,
@@ -180,7 +214,41 @@
   {
     "Line": {
       "Id": 2,
-      "Name": "Novi Sad - Beograd"
+      "Name": "Novi Sad - Beograd",
+      "Stations": [
+        {
+          "Id": 4,
+          "Name": "Beograd Centar",
+          "Location": {
+            "Latitude": 44.793832,
+            "Longitude": 20.452561
+          }
+        },
+        {
+          "Id": 3,
+          "Name": "Novi Beograd",
+          "Location": {
+            "Latitude": 44.806900,
+            "Longitude": 20.417764
+          }
+        },
+        {
+          "Id": 2,
+          "Name": "Sremski Karlovci",
+          "Location": {
+            "Latitude": 45.206631,
+            "Longitude": 19.932878
+          }
+        },
+        {
+          "Id": 1,
+          "Name": "Novi Sad",
+          "Location": {
+            "Latitude": 45.265519,
+            "Longitude": 19.829519
+          }
+        }
+      ]
     },
     "Train": {
       "Id": 1,

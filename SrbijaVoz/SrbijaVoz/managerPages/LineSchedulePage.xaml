@@ -12,8 +12,8 @@
     <Page.CommandBindings>
         <CommandBinding Command="cmd:RoutedCommands.AddNewItem"
                         CanExecute="AddLineSchedule_CanExecute" Executed="AddLineSchedule_Executed"></CommandBinding>
-        <!--<CommandBinding Command="cmd:RoutedCommands.EditItem"
-                        CanExecute="EditLineSchedule_CanExecute" Executed="EditLineSchedule_Executed"></CommandBinding>-->
+        <CommandBinding Command="cmd:RoutedCommands.EditItem"
+                        CanExecute="EditLineSchedule_CanExecute" Executed="EditLineSchedule_Executed"></CommandBinding>
         <CommandBinding Command="cmd:RoutedCommands.DeleteItem"
                         CanExecute="DeleteLineSchedule_CanExecute" Executed="DeleteLineSchedule_Executed"></CommandBinding>
     </Page.CommandBindings>
@@ -47,7 +47,7 @@
                 <Button Background ="Transparent" BorderThickness="0" Content="{StaticResource Edit}"
                         Margin="12 80 0 0" Height="60" RenderTransformOrigin="1.282,0.533"
                         Command="cmd:RoutedCommands.EditItem" AllowDrop="True"
-                        ToolTip="Izmeni red vožnje, Ctrl+E"/>
+                        ToolTip="Izmeni red vožnje, Ctrl+E" Drop="UpdateLineSchedule_Drop"/>
                 <Button Grid.Row="3" Background ="Transparent" BorderThickness="0"
                         Content="{StaticResource Delete}" Margin="0 80 0 0" Height="60"  
                         HorizontalAlignment="Center" Command="cmd:RoutedCommands.DeleteItem"

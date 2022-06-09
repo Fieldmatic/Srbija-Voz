@@ -94,18 +94,20 @@ namespace SrbijaVoz.managerWindows
             form.ShowDialog();
         }
 
-        //private void EditLine_CanExecute(object sender, CanExecuteRoutedEventArgs e)
-        //{
-        //    e.CanExecute = true;
-        //}
+        private void EditLineSchedule_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
 
-        //private void EditLine_Executed(object sender, ExecutedRoutedEventArgs e)
-        //{
-        //    LineRecord lineRecord = (LineRecord)LineScheduleDataGrid.SelectedItem;
-        //    if (lineRecord == null) return;
-        //    var form = new UpdateLine(Database, lineRecord);
-        //    form.ShowDialog();
-        //}
+        private void EditLineSchedule_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            LineScheduleRecord lineScheduleRecord = (LineScheduleRecord)LineScheduleDataGrid.SelectedItem;
+            if (lineScheduleRecord == null) return;
+            var form = new UpdateLineSchedule(Database, lineScheduleRecord);
+            RefreshLineSchedulesListEvent += new RefreshLinesSchedules(InitializeLineSchedules);
+            form.Update = RefreshLineSchedulesListEvent;
+            form.ShowDialog();
+        }
 
         private void DeleteLineSchedule_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -119,15 +121,15 @@ namespace SrbijaVoz.managerWindows
             DeleteLineSchedule(lineScheduleRecord);
         }
 
-        //private void UpdateLine_Drop(object sender, DragEventArgs e)
-        //{
-        //    LineRecord = e.Data.GetData("LineRecord") as LineRecord;
-        //    UpdateLine updateLineWindow = new(Database, LineRecord);
-        //    RefreshLinesListEvent += new RefreshLines(InitializeLines);
-        //    updateLineWindow.Update = RefreshLinesListEvent;
-        //    updateLineWindow.Show();
+        private void UpdateLineSchedule_Drop(object sender, DragEventArgs e)
+        {
+            LineScheduleRecord = e.Data.GetData("LineScheduleRecord") as LineScheduleRecord;
+            UpdateLineSchedule updateLineScheduleWindow = new(Database, LineScheduleRecord);
+            RefreshLineSchedulesListEvent += new RefreshLinesSchedules(InitializeLineSchedules);
+            updateLineScheduleWindow.Update = RefreshLineSchedulesListEvent;
+            updateLineScheduleWindow.Show();
 
-        //}
+        }
 
         private void DeleteLineSchedule_Drop(object sender, DragEventArgs e)
         {

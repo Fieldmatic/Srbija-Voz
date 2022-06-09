@@ -1,19 +1,19 @@
-﻿<Window x:Class="SrbijaVoz.managerWindows.CreateLineSchedule"
+﻿<Window x:Class="SrbijaVoz.managerWindows.UpdateLineSchedule"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SrbijaVoz.managerWindows"
         mc:Ignorable="d"
-        Title="Dodavanje reda vožnje" Height="750" Width="950">
+        Title="Ažuriranje reda vožnje" Height="550" Width="950">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30*"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="20*"/>
             <RowDefinition Height="10*"/>
             <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
-        
+
         <!-- Lines -->
         <Grid Grid.Row="0">
             <Grid.RowDefinitions>
@@ -21,9 +21,9 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
 
-            <TextBlock Grid.Row="0" Text="Linije:" FontSize="17" Margin="10 5 0 10"/>
+            <TextBlock Grid.Row="0" Text="Linija:" FontSize="17" Margin="10 5 0 10"/>
             <DataGrid x:Name="LineDataGrid" Grid.Row="1" AutoGenerateColumns="False"
-                  FontSize="16" IsReadOnly="True" SelectionChanged="LineDataGrid_SelectionChanged">
+                  FontSize="16" IsReadOnly="True">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="0.5*"/>
                     <DataGridTextColumn Header="Stanice" Binding="{Binding Stations}" Width="6*"/>
@@ -31,7 +31,7 @@
             </DataGrid>
 
         </Grid>
-        
+
         <!-- Time pickers -->
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -78,7 +78,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            
+
             <TextBlock Text="Dani polaska:" Grid.Row="1" FontSize="17" Margin="10 0 0 0"/>
             <CheckBox x:Name="Cb1" Grid.Row="1" Grid.Column="0" Content="Ponedeljak" Margin="10 0 0 0"/>
             <CheckBox x:Name="Cb2" Grid.Row="1" Grid.Column="1" Content="Utorak" Margin="10 0 0 0"/>
