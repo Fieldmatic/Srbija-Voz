@@ -15,33 +15,19 @@
             <ColumnDefinition Width="8*"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="9*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1.25*"/>
-                <ColumnDefinition Width="2.78*"/>
-                <ColumnDefinition Width="1.35*"/>
-                <ColumnDefinition Width="1.35*"/>
-                <ColumnDefinition Width="1.35*"/>
-                <ColumnDefinition Width="1.35*"/>
-                <ColumnDefinition Width="1.25*"/>
-            </Grid.ColumnDefinitions>
+            <ScrollViewer Grid.Row ="0">
 
-            <Label x:Name="Client" Grid.Column="0" Content="Korisnik" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
-            <Label x:Name="Line" Grid.Column="1" Content="Voznja" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
-            <Label x:Name="Date" Grid.Column="2" Content="Datum" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
-            <Label x:Name="Departure" Grid.Column="3" Content="Polazak" VerticalAlignment="Center"  HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
-            <Label x:Name="Arrival" Grid.Column="4" Content="Dolazak" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
-            <Label x:Name="Price" Grid.Column="5" Content="Cena" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
-            <Label x:Name="Train" Grid.Column="6" Content="Voz" VerticalAlignment="Center"  HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
-
-            <ScrollViewer Grid.Row ="1" Grid.ColumnSpan="7">
-
-                <StackPanel Name="TicketStackPanel" Orientation="Vertical">
-
-                </StackPanel>
+                <DataGrid x:Name="TicketsDataGrid"  AutoGenerateColumns="False" FontSize="18" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Korisnik" Binding="{Binding Username}" Width="0.7*"/>
+                        <DataGridTextColumn Header="Voznja" Binding="{Binding Line}" Width="1.5*"/>
+                        <DataGridTextColumn Header="Datum" Binding="{Binding Date}" Width="0.8*"/>
+                        <DataGridTextColumn Header="Polazak" Binding="{Binding Departure}" Width="0.8*"/>
+                        <DataGridTextColumn Header="Dolazak" Binding="{Binding Arrival}" Width="0.8*"/>
+                        <DataGridTextColumn Header="Cena" Binding="{Binding Price}" Width="0.7*"/>
+                        <DataGridTextColumn Header="Voz" Binding="{Binding Train}" Width="0.6*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
             </ScrollViewer>
 
 
@@ -61,18 +47,17 @@
                 
                 <Border Grid.Row="1" BorderBrush="Gray" BorderThickness="0.5">
                     <Calendar Grid.Row="1" Name="MonthPicker" DisplayMode="Year" SelectionMode="None" 
-                 DisplayModeChanged="MonthPicker_DisplayModeChanged" VerticalAlignment="Center" Height="280" Width="250" HorizontalAlignment="Center" />
+                 DisplayModeChanged="MonthPicker_DisplayModeChanged" VerticalAlignment="Stretch" HorizontalAlignment ="Stretch" Margin="10 5 10 5"/>
                 </Border>
                 <Border Grid.Row="2" BorderBrush="Gray" BorderThickness="0.5">
                     <Button
                 x:Name="SearchTicketsButton"
                 Grid.Row="2"
-                Width="250"
                 Content="Prikazi karte"
                 FontSize="18"
-                HorizontalAlignment="Center"
+                HorizontalAlignment="Stretch"
             VerticalAlignment="Center"
-                Margin="5" 
+                Margin="15 0 15 0" 
                 Click="SearchTickets"/>
                 </Border>
             </Grid>

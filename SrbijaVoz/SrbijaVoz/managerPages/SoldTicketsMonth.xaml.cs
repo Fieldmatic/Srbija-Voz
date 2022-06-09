@@ -1,7 +1,9 @@
 ﻿using SrbijaVoz.database;
+using SrbijaVoz.dataGridRecord;
 using SrbijaVoz.model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,26 +38,21 @@ namespace SrbijaVoz.managerPages
             try
             {
                 DateTime month = MonthPicker.DisplayDate;
-                TicketStackPanel.Children.Clear();
                 MonthPicker.DisplayMode = CalendarMode.Year;
                 double revenue = 0;
                 int ticketSold = 0;
-                List<Ticket> soldTickets = new List<Ticket>();
+                ObservableCollection<TicketRecord> soldTickets = new ObservableCollection<TicketRecord>();
                 foreach (Ticket ticket in Database.Tickets)
                 {
                     if (ticket.Date.Month == (month.Month))
                     {
-                        soldTickets.Add(ticket);
+                        soldTickets.Add(new TicketRecord(ticket.Client.Username, ticket.StartStation.Name + "-" + ticket.ExitStation.Name, ticket.Date.ToShortDateString(), ticket.Departure.ToString(), ticket.Arrival.ToString(), ticket.LineSchedule.Line.Train.Name,ticket.Price + " RSD"));
                         revenue += ticket.Price;
                         ticketSold++;
                     }
                 }
-                    if (soldTickets.Count == 0) MessageBox.Show("Nemamo prodate voznje u tom mesecu!", "Obavestenje", MessageBoxButton.OK, MessageBoxImage.Information);
-                foreach (Ticket ticket in soldTickets)
-                {
-                    TicketStackPanel.Children.Add(new TicketCard(ticket));
-
-                }
+                if (soldTickets.Count == 0) MessageBox.Show("Nemamo prodate voznje u tom mesecu!", "Obavestenje", MessageBoxButton.OK, MessageBoxImage.Information);
+                TicketsDataGrid.ItemsSource = soldTickets;
                 RevenueLabel.Content = "Ukupno je zaradjeno " + revenue.ToString() + " RSD";
                 TicketSoldLabel.Content = "Ukupno je prodato " + ticketSold.ToString() + " karata";
             }

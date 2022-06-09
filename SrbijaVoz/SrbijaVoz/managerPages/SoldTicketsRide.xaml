@@ -6,75 +6,81 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:SrbijaVoz.managerPages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="450" d:DesignWidth="900"
       Title="SoldTickets">
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1.25*"/>
-            <RowDefinition Height="9*"/>
-        </Grid.RowDefinitions>
-        <Border BorderBrush="Gray" BorderThickness="0,0,0,1">
-            <StackPanel Grid.Row="0" Orientation="Horizontal">
-                <ComboBox             
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="8*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="1">
+            <ScrollViewer Grid.Row ="0">
+                <DataGrid x:Name="TicketsDataGrid"  AutoGenerateColumns="False" FontSize="18" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Korisnik" Binding="{Binding Username}" Width="0.7*"/>
+                        <DataGridTextColumn Header="Voznja" Binding="{Binding Line}" Width="1.5*"/>
+                        <DataGridTextColumn Header="Datum" Binding="{Binding Date}" Width="0.8*"/>
+                        <DataGridTextColumn Header="Polazak" Binding="{Binding Departure}" Width="0.8*"/>
+                        <DataGridTextColumn Header="Dolazak" Binding="{Binding Arrival}" Width="0.8*"/>
+                        <DataGridTextColumn Header="Cena" Binding="{Binding Price}" Width="0.7*"/>
+                        <DataGridTextColumn Header="Voz" Binding="{Binding Train}" Width="0.6*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </ScrollViewer>
+        </Grid>
+        <Border BorderBrush="Gray" BorderThickness="0.5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.8*"/>
+                    <RowDefinition Height="0.8*"/>
+                    <RowDefinition Height="0.6*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Vertical" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Label x:Name="RevenueLabel" Grid.Row="0" Content="" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="5 0 5 0" FontWeight="Bold" FontSize="18"/>
+                    <Label x:Name="TicketSoldLabel" Grid.Row="0" Content="" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="5 0 5 0" FontWeight="Bold" FontSize="18"/>
+                </StackPanel>
+                <Border Grid.Row ="1" BorderBrush="Gray" BorderThickness="0.5">
+                    <ComboBox             
                     x:Name="StartStationCombo"
+                    Grid.Row="1"
                     Style="{StaticResource MaterialDesignOutlinedComboBox}"   
                     FontSize="15"
-                    HorizontalAlignment="Left"
                     materialDesign:HintAssist.Hint="Pocetna stanica"
                     materialDesign:HintAssist.Foreground="Black"
-                    Width="Auto"
-                    Margin="5"/>
-                <ComboBox             
+                    HorizontalAlignment="Stretch"
+                    Margin="15 0 15 0"
+                    VerticalAlignment="Center"
+                    />
+                </Border>
+                <Border Grid.Row ="2" BorderBrush="Gray" BorderThickness="0.5">
+                    <ComboBox             
                     x:Name="EndStationCombo"
+                    Grid.Row="2"
                     Style="{StaticResource MaterialDesignOutlinedComboBox}"   
-                    HorizontalAlignment="Left"
+                    HorizontalAlignment="Stretch"
+                    Margin="15 0 15 0"
+                    VerticalAlignment="Center"
                     FontSize="15"
                     materialDesign:HintAssist.Hint="Izlazna stanica"
                     materialDesign:HintAssist.Foreground="Black"
-                    Width="Auto"
-                    Margin="5"/>
-                <Button
+                    />
+                </Border>
+                <Border Grid.Row ="3" BorderBrush="Gray" BorderThickness="0.5">
+                    <Button
                     x:Name="SearchTicketsButton"
-                    Width="150"
+                    HorizontalAlignment="Stretch"
+                    Margin="15 0 15 0"
+                    Grid.Row="3"
                     Content="Prikazi karte"
                     FontSize="18"
-                    HorizontalAlignment="Left"
-                    Margin="5" 
+                    VerticalAlignment="Center"
                     Click="SearchTickets"/>
-            </StackPanel>
+                </Border>
+            </Grid>
         </Border>
-        <Grid Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="9*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1.25*"/>
-                <ColumnDefinition Width="2.75*"/>
-                <ColumnDefinition Width="1.35*"/>
-                <ColumnDefinition Width="1.35*"/>
-                <ColumnDefinition Width="1.45*"/>
-                <ColumnDefinition Width="1.31*"/>
-                <ColumnDefinition Width="1.25*"/>
-            </Grid.ColumnDefinitions>
-
-            <Label x:Name="Client" Grid.Column="0" Content="Korisnik" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
-            <Label x:Name="Line" Grid.Column="1" Content="Voznja" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
-            <Label x:Name="Date" Grid.Column="2" Content="Datum" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
-            <Label x:Name="Departure" Grid.Column="3" Content="Polazak" VerticalAlignment="Center"  HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
-            <Label x:Name="Arrival" Grid.Column="4" Content="Dolazak" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
-            <Label x:Name="Price" Grid.Column="5" Content="Cena" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
-            <Label x:Name="Train" Grid.Column="6" Content="Voz" VerticalAlignment="Center"  HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
-
-            <ScrollViewer Grid.Row ="1" Grid.ColumnSpan="7">
-                
-                <StackPanel Name="TicketStackPanel" Orientation="Vertical">
-                    
-                </StackPanel>
-            </ScrollViewer>
-
-
-        </Grid>
+        
     </Grid>
 </Page>

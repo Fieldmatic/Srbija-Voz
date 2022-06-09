@@ -1,7 +1,9 @@
 ﻿using SrbijaVoz.database;
+using SrbijaVoz.dataGridRecord;
 using SrbijaVoz.model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,22 +36,25 @@ namespace SrbijaVoz.managerPages
         private void SearchTickets(object sender, RoutedEventArgs e)
         {
             try
-            {
-                TicketStackPanel.Children.Clear();
+            {            
                 String startStation = StartStationCombo.SelectedItem.ToString();
                 String endStation = EndStationCombo.SelectedItem.ToString();
-                List<Ticket> soldTickets = new List<Ticket>();
+                ObservableCollection<TicketRecord> soldTickets = new ObservableCollection<TicketRecord>();
+                double revenue = 0;
+                int ticketSold = 0;
                 foreach (Ticket ticket in Database.Tickets)
                 {
-                    if (ticket.StartStation.Name.Equals(startStation) && ticket.ExitStation.Name.Equals(endStation)) soldTickets.Add(ticket);
-
+                    if (ticket.StartStation.Name.Equals(startStation) && ticket.ExitStation.Name.Equals(endStation))
+                    {
+                        soldTickets.Add(new TicketRecord(ticket.Client.Username, ticket.StartStation.Name + "-" + ticket.ExitStation.Name, ticket.Date.ToShortDateString(), ticket.Departure.ToString(), ticket.Arrival.ToString(), ticket.LineSchedule.Line.Train.Name, ticket.Price + " RSD"));
+                        revenue += ticket.Price;
+                        ticketSold++;
+                    }
                 }
                 if (soldTickets.Count == 0) MessageBox.Show("Nemamo takvih prodatih voznji!", "Obavestenje", MessageBoxButton.OK, MessageBoxImage.Information);
-                foreach (Ticket ticket in soldTickets)
-                {
-                    TicketStackPanel.Children.Add(new TicketCard(ticket));
-
-                }
+                TicketsDataGrid.ItemsSource = soldTickets;
+                RevenueLabel.Content = "Ukupno je zaradjeno " + revenue.ToString() + " RSD";
+                TicketSoldLabel.Content = "Ukupno je prodato " + ticketSold.ToString() + " karata";
             }
             catch (Exception ex)
             {
