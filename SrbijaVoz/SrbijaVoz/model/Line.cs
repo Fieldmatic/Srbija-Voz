@@ -9,22 +9,19 @@ namespace SrbijaVoz.model
     public class Line
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public List<TrainStop> TrainStops { get; set; }
-        public Train Train { get; set; }
 
-        public Line(int id, string name, List<TrainStop> trainStops, Train train)
+        public string Name { get; set; }
+
+        public List<Station> Stations { get; set; }
+
+        public Line(int id, string name, List<Station> stations)
         {
             Id = id;
             Name = name;
-            TrainStops = trainStops;
-            Train = train;
+            Stations = stations;
         }
 
         public Line () {}
-
-
-
 
     }
 }

@@ -5,16 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SrbijaVoz.managerWindows"
         mc:Ignorable="d"
-        Title="Dodavanje reda vožnje" Height="550" Width="950">
+        Title="Dodavanje reda vožnje" Height="750" Width="950">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="60*"/>
+            <RowDefinition Height="30*"/>
             <RowDefinition Height="20*"/>
-            <RowDefinition Height="20*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
         
         <!-- Lines -->
-        <Grid>
+        <Grid Grid.Row="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition />
@@ -22,18 +23,48 @@
 
             <TextBlock Grid.Row="0" Text="Linija:" FontSize="17" Margin="10 5 0 10"/>
             <DataGrid x:Name="LineDataGrid" Grid.Row="1" AutoGenerateColumns="False"
-                  FontSize="16" IsReadOnly="True">
+                  FontSize="16" IsReadOnly="True" SelectionChanged="LineDataGrid_SelectionChanged">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="0.5*"/>
-                    <DataGridTextColumn Header="Voz" Binding="{Binding Train}" Width="0.7*"/>
-                    <DataGridTextColumn Header="Stanice" Binding="{Binding TrainStops}" Width="6*"/>
+                    <DataGridTextColumn Header="Stanice" Binding="{Binding Stations}" Width="6*"/>
                 </DataGrid.Columns>
             </DataGrid>
 
         </Grid>
+        
+        <!-- Time pickers -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <ScrollViewer Grid.Row="0" Grid.Column="1">
+                <Grid Grid.Row="0" Grid.Column="1" x:Name="TimeStationPanel" Margin="10 0 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                </Grid>
+            </ScrollViewer>
+
+            <!-- Form -->
+            <Grid Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10 10 20 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition Width="150" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Text="Voz:" FontSize="17" VerticalAlignment="Center" Margin="0 0 0 10"/>
+                <ComboBox x:Name="Trains" Grid.Column="1" Grid.Row="0" Margin="0 0 0 10"/>
+
+            </Grid>
+        </Grid>
 
         <!-- Days -->
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition />
@@ -59,7 +90,7 @@
         </Grid>
 
         <!-- Button -->
-        <Grid Grid.Row="2" VerticalAlignment="Bottom">
+        <Grid Grid.Row="3" VerticalAlignment="Bottom">
             <Grid.RowDefinitions>
                 <RowDefinition />
             </Grid.RowDefinitions>

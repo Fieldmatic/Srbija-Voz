@@ -2,578 +2,276 @@
   {
     "Line": {
       "Id": 1,
-      "Name": "Novi Sad - Beograd",
-      "TrainStops": [
+      "Name": "Novi Sad - Beograd"
+    },
+    "Train": {
+      "Id": 1,
+      "Name": "Soko",
+      "Prices": {
+        "0": 500,
+        "1": 300
+      },
+      "Seats": [
         {
-          "StartStation": {
-            "Id": 1,
-            "Name": "Novi Sad",
-            "Location": {
-              "Latitude": 45.265519,
-              "Longitude": 19.829519
-            }
-          },
-          "EndStation": {
-            "Id": 2,
-            "Name": "Sremski Karlovci",
-            "Location": {
-              "Latitude": 45.206631,
-              "Longitude": 19.932878
-            }
-          },
-          "DepartureTime": "08:00:00",
-          "ArrivalTime": "08:10:00"
+          "Number": 1,
+          "SeatClass": 0
         },
         {
-          "StartStation": {
-            "Id": 2,
-            "Name": "Sremski Karlovci",
-            "Location": {
-              "Latitude": 45.206631,
-              "Longitude": 19.932878
-            }
-          },
-          "EndStation": {
-            "Id": 3,
-            "Name": "Novi Beograd",
-            "Location": {
-              "Latitude": 44.806900,
-              "Longitude": 20.417764
-            }
-          },
-          "DepartureTime": "08:10:00",
-          "ArrivalTime": "08:35:00"
+          "Number": 2,
+          "SeatClass": 0
         },
         {
-          "StartStation": {
-            "Id": 3,
-            "Name": "Novi Beograd",
-            "Location": {
-              "Latitude": 44.806900,
-              "Longitude": 20.417764
-            }
-          },
-          "EndStation": {
-            "Id": 4,
-            "Name": "Beograd Centar",
-            "Location": {
-              "Latitude": 44.793832,
-              "Longitude": 20.452561
-            }
-          },
-          "DepartureTime": "08:35:00",
-          "ArrivalTime": "08:45:00"
+          "Number": 3,
+          "SeatClass": 0
+        },
+        {
+          "Number": 4,
+          "SeatClass": 0
+        },
+        {
+          "Number": 5,
+          "SeatClass": 0
+        },
+        {
+          "Number": 6,
+          "SeatClass": 0
+        },
+        {
+          "Number": 7,
+          "SeatClass": 0
+        },
+        {
+          "Number": 8,
+          "SeatClass": 0
+        },
+        {
+          "Number": 9,
+          "SeatClass": 1
+        },
+        {
+          "Number": 10,
+          "SeatClass": 1
+        },
+        {
+          "Number": 11,
+          "SeatClass": 1
+        },
+        {
+          "Number": 12,
+          "SeatClass": 1
+        },
+        {
+          "Number": 13,
+          "SeatClass": 1
+        },
+        {
+          "Number": 14,
+          "SeatClass": 1
+        },
+        {
+          "Number": 15,
+          "SeatClass": 1
+        },
+        {
+          "Number": 16,
+          "SeatClass": 1
+        },
+        {
+          "Number": 17,
+          "SeatClass": 1
+        },
+        {
+          "Number": 18,
+          "SeatClass": 1
+        },
+        {
+          "Number": 19,
+          "SeatClass": 1
+        },
+        {
+          "Number": 20,
+          "SeatClass": 1
+        },
+        {
+          "Number": 21,
+          "SeatClass": 1
+        },
+        {
+          "Number": 22,
+          "SeatClass": 1
+        },
+        {
+          "Number": 23,
+          "SeatClass": 1
+        },
+        {
+          "Number": 24,
+          "SeatClass": 1
         }
-      ],
-      "Train": {
-        "Id": 1,
-        "Name": "Soko",
-        "Prices": {
-          "0": 500,
-          "1": 300
-        },
-        "Seats": [
-          {
-            "Number": 1,
-            "SeatClass": 0
-          },
-          {
-            "Number": 2,
-            "SeatClass": 0
-          },
-          {
-            "Number": 3,
-            "SeatClass": 0
-          },
-          {
-            "Number": 4,
-            "SeatClass": 0
-          },
-          {
-            "Number": 5,
-            "SeatClass": 0
-          },
-          {
-            "Number": 6,
-            "SeatClass": 0
-          },
-          {
-            "Number": 7,
-            "SeatClass": 0
-          },
-          {
-            "Number": 8,
-            "SeatClass": 0
-          },
-          {
-            "Number": 9,
-            "SeatClass": 1
-          },
-          {
-            "Number": 10,
-            "SeatClass": 1
-          },
-          {
-            "Number": 11,
-            "SeatClass": 1
-          },
-          {
-            "Number": 12,
-            "SeatClass": 1
-          },
-          {
-            "Number": 13,
-            "SeatClass": 1
-          },
-          {
-            "Number": 14,
-            "SeatClass": 1
-          },
-          {
-            "Number": 15,
-            "SeatClass": 1
-          },
-          {
-            "Number": 16,
-            "SeatClass": 1
-          },
-          {
-            "Number": 17,
-            "SeatClass": 1
-          },
-          {
-            "Number": 18,
-            "SeatClass": 1
-          },
-          {
-            "Number": 19,
-            "SeatClass": 1
-          },
-          {
-            "Number": 20,
-            "SeatClass": 1
-          },
-          {
-            "Number": 21,
-            "SeatClass": 1
-          },
-          {
-            "Number": 22,
-            "SeatClass": 1
-          },
-          {
-            "Number": 23,
-            "SeatClass": 1
-          },
-          {
-            "Number": 24,
-            "SeatClass": 1
-          }
-        ]
-      }
-
+      ]
     },
     "DaysNumbers": [
       3,
       4
+    ],
+    "TrainStops": [
+      {
+        "StartStation": {
+          "Id": 1,
+          "Name": "Novi Sad",
+          "Location": {
+            "Latitude": 45.265519,
+            "Longitude": 19.829519
+          }
+        },
+        "EndStation": {
+          "Id": 2,
+          "Name": "Sremski Karlovci",
+          "Location": {
+            "Latitude": 45.206631,
+            "Longitude": 19.932878
+          }
+        },
+        "DepartureTime": "08:00:00",
+        "ArrivalTime": "08:10:00"
+      },
+      {
+        "StartStation": {
+          "Id": 2,
+          "Name": "Sremski Karlovci",
+          "Location": {
+            "Latitude": 45.206631,
+            "Longitude": 19.932878
+          }
+        },
+        "EndStation": {
+          "Id": 3,
+          "Name": "Novi Beograd",
+          "Location": {
+            "Latitude": 44.806900,
+            "Longitude": 20.417764
+          }
+        },
+        "DepartureTime": "08:10:00",
+        "ArrivalTime": "08:35:00"
+      },
+      {
+        "StartStation": {
+          "Id": 3,
+          "Name": "Novi Beograd",
+          "Location": {
+            "Latitude": 44.806900,
+            "Longitude": 20.417764
+          }
+        },
+        "EndStation": {
+          "Id": 4,
+          "Name": "Beograd Centar",
+          "Location": {
+            "Latitude": 44.793832,
+            "Longitude": 20.452561
+          }
+        },
+        "DepartureTime": "08:35:00",
+        "ArrivalTime": "08:45:00"
+      }
     ]
   },
   {
     "Line": {
       "Id": 2,
-      "Name": "Novi Sad - Beograd",
-      "TrainStops": [
-        {
-          "StartStation": {
-            "Id": 1,
-            "Name": "Novi Sad",
-            "Location": {
-              "Latitude": 45.265519,
-              "Longitude": 19.829519
-            }
-          },
-          "EndStation": {
-            "Id": 2,
-            "Name": "Sremski Karlovci",
-            "Location": {
-              "Latitude": 45.206631,
-              "Longitude": 19.932878
-            }
-          },
-          "DepartureTime": "12:00:00",
-          "ArrivalTime": "12:10:00"
-        },
-        {
-          "StartStation": {
-            "Id": 2,
-            "Name": "Sremski Karlovci",
-            "Location": {
-              "Latitude": 45.206631,
-              "Longitude": 19.932878
-            }
-          },
-          "EndStation": {
-            "Id": 3,
-            "Name": "Novi Beograd",
-            "Location": {
-              "Latitude": 44.806900,
-              "Longitude": 20.417764
-            }
-          },
-          "DepartureTime": "12:10:00",
-          "ArrivalTime": "12:35:00"
-        },
-        {
-          "StartStation": {
-            "Id": 3,
-            "Name": "Novi Beograd",
-            "Location": {
-              "Latitude": 44.806900,
-              "Longitude": 20.417764
-            }
-          },
-          "EndStation": {
-            "Id": 4,
-            "Name": "Beograd Centar",
-            "Location": {
-              "Latitude": 44.793832,
-              "Longitude": 20.452561
-            }
-          },
-          "DepartureTime": "12:35:00",
-          "ArrivalTime": "12:45:00"
-        }
-      ],
-      "Train": {
-        "Id": 1,
-        "Name": "Soko",
-        "Prices": {
-          "0": 500,
-          "1": 300
-        },
-        "Seats": [
-          {
-            "Number": 1,
-            "SeatClass": 0
-          },
-          {
-            "Number": 2,
-            "SeatClass": 0
-          },
-          {
-            "Number": 3,
-            "SeatClass": 0
-          },
-          {
-            "Number": 4,
-            "SeatClass": 1
-          }
-        ]
-      }
-
+      "Name": "Novi Sad - Beograd"
     },
-    "DaysNumbers": [
-      3
-    ]
-  },
-  {
-    "Line": {
+    "Train": {
       "Id": 1,
-      "Name": "Novi Sad - Beograd",
-      "TrainStops": [
+      "Name": "Soko",
+      "Prices": {
+        "0": 500,
+        "1": 300
+      },
+      "Seats": [
         {
-          "StartStation": {
-            "Id": 1,
-            "Name": "Novi Sad",
-            "Location": {
-              "Latitude": 45.265519,
-              "Longitude": 19.829519
-            }
-          },
-          "EndStation": {
-            "Id": 2,
-            "Name": "Sremski Karlovci",
-            "Location": {
-              "Latitude": 45.206631,
-              "Longitude": 19.932878
-            }
-          },
-          "DepartureTime": "16:00:00",
-          "ArrivalTime": "16:10:00"
+          "Number": 1,
+          "SeatClass": 0
         },
         {
-          "StartStation": {
-            "Id": 2,
-            "Name": "Sremski Karlovci",
-            "Location": {
-              "Latitude": 45.206631,
-              "Longitude": 19.932878
-            }
-          },
-          "EndStation": {
-            "Id": 3,
-            "Name": "Novi Beograd",
-            "Location": {
-              "Latitude": 44.806900,
-              "Longitude": 20.417764
-            }
-          },
-          "DepartureTime": "16:10:00",
-          "ArrivalTime": "16:35:00"
+          "Number": 2,
+          "SeatClass": 0
         },
         {
-          "StartStation": {
-            "Id": 3,
-            "Name": "Novi Beograd",
-            "Location": {
-              "Latitude": 44.806900,
-              "Longitude": 20.417764
-            }
-          },
-          "EndStation": {
-            "Id": 4,
-            "Name": "Beograd Centar",
-            "Location": {
-              "Latitude": 44.793832,
-              "Longitude": 20.452561
-            }
-          },
-          "DepartureTime": "16:35:00",
-          "ArrivalTime": "16:45:00"
+          "Number": 3,
+          "SeatClass": 0
+        },
+        {
+          "Number": 4,
+          "SeatClass": 1
         }
-      ],
-      "Train": {
-        "Id": 1,
-        "Name": "Soko",
-        "Prices": {
-          "0": 500,
-          "1": 300
-        },
-        "Seats": [
-          {
-            "Number": 1,
-            "SeatClass": 0
-          },
-          {
-            "Number": 2,
-            "SeatClass": 0
-          },
-          {
-            "Number": 3,
-            "SeatClass": 0
-          },
-          {
-            "Number": 4,
-            "SeatClass": 1
-          }
-        ]
-      }
-
+      ]
     },
     "DaysNumbers": [
-      3, 4, 6
-    ]
-  },
-  {
-    "Line": {
-      "Id": 1,
-      "Name": "Novi Sad - Beograd",
-      "TrainStops": [
-        {
-          "StartStation": {
-            "Id": 1,
-            "Name": "Novi Sad",
-            "Location": {
-              "Latitude": 45.265519,
-              "Longitude": 19.829519
-            }
-          },
-          "EndStation": {
-            "Id": 2,
-            "Name": "Sremski Karlovci",
-            "Location": {
-              "Latitude": 45.206631,
-              "Longitude": 19.932878
-            }
-          },
-          "DepartureTime": "20:00:00",
-          "ArrivalTime": "20:10:00"
-        },
-        {
-          "StartStation": {
-            "Id": 2,
-            "Name": "Sremski Karlovci",
-            "Location": {
-              "Latitude": 45.206631,
-              "Longitude": 19.932878
-            }
-          },
-          "EndStation": {
-            "Id": 3,
-            "Name": "Novi Beograd",
-            "Location": {
-              "Latitude": 44.806900,
-              "Longitude": 20.417764
-            }
-          },
-          "DepartureTime": "20:10:00",
-          "ArrivalTime": "20:35:00"
-        },
-        {
-          "StartStation": {
-            "Id": 3,
-            "Name": "Novi Beograd",
-            "Location": {
-              "Latitude": 44.806900,
-              "Longitude": 20.417764
-            }
-          },
-          "EndStation": {
-            "Id": 4,
-            "Name": "Beograd Centar",
-            "Location": {
-              "Latitude": 44.793832,
-              "Longitude": 20.452561
-            }
-          },
-          "DepartureTime": "20:35:00",
-          "ArrivalTime": "20:45:00"
-        }
-      ],
-      "Train": {
-        "Id": 1,
-        "Name": "Soko",
-        "Prices": {
-          "0": 500,
-          "1": 300
-        },
-        "Seats": [
-          {
-            "Number": 1,
-            "SeatClass": 0
-          },
-          {
-            "Number": 2,
-            "SeatClass": 0
-          },
-          {
-            "Number": 3,
-            "SeatClass": 0
-          },
-          {
-            "Number": 4,
-            "SeatClass": 1
+      5
+    ],
+    "TrainStops": [
+      {
+        "StartStation": {
+          "Id": 1,
+          "Name": "Novi Sad",
+          "Location": {
+            "Latitude": 45.265519,
+            "Longitude": 19.829519
           }
-        ]
-      }
-
-    },
-    "DaysNumbers": [
-      1, 2
-    ]
-  },
-  {
-    "Line": {
-      "Id": 2,
-      "Name": "Beograd - Novi Sad",
-      "TrainStops": [
-        {
-          "StartStation": {
-            "Id": 4,
-            "Name": "Beograd Centar",
-            "Location": {
-              "Latitude": 44.793832,
-              "Longitude": 20.452561
-            }
-          },
-          "EndStation": {
-            "Id": 3,
-            "Name": "Novi Beograd",
-            "Location": {
-              "Latitude": 44.806900,
-              "Longitude": 20.417764
-            }
-
-          },
-          "DepartureTime": "08:00:00",
-          "ArrivalTime": "08:10:00"
         },
-        {
-          "StartStation": {
-            "Id": 3,
-            "Name": "Novi Beograd",
-            "Location": {
-              "Latitude": 44.806900,
-              "Longitude": 20.417764
-            }
-
-          },
-          "EndStation": {
-            "Id": 2,
-            "Name": "Sremski Karlovci",
-            "Location": {
-              "Latitude": 45.206631,
-              "Longitude": 19.932878
-            }
-
-          },
-          "DepartureTime": "08:10:00",
-          "ArrivalTime": "08:35:00"
-        },
-        {
-          "StartStation": {
-            "Id": 2,
-            "Name": "Sremski Karlovci",
-            "Location": {
-              "Latitude": 45.206631,
-              "Longitude": 19.932878
-            }
-
-          },
-          "EndStation": {
-            "Id": 1,
-            "Name": "Novi Sad",
-            "Location": {
-              "Latitude": 45.265519,
-              "Longitude": 19.829519
-            }
-
-          },
-          "DepartureTime": "08:35:00",
-          "ArrivalTime": "08:45:00"
-        }
-      ],
-      "Train": {
-        "Id": 1,
-        "Name": "Soko",
-        "Prices": {
-          "0": 500,
-          "1": 300
-        },
-        "Seats": [
-          {
-            "Number": 1,
-            "SeatClass": 0
-          },
-          {
-            "Number": 2,
-            "SeatClass": 0
-          },
-          {
-            "Number": 3,
-            "SeatClass": 0
-          },
-          {
-            "Number": 4,
-            "SeatClass": 1
+        "EndStation": {
+          "Id": 2,
+          "Name": "Sremski Karlovci",
+          "Location": {
+            "Latitude": 45.206631,
+            "Longitude": 19.932878
           }
-        ]
+        },
+        "DepartureTime": "12:00:00",
+        "ArrivalTime": "12:10:00"
+      },
+      {
+        "StartStation": {
+          "Id": 2,
+          "Name": "Sremski Karlovci",
+          "Location": {
+            "Latitude": 45.206631,
+            "Longitude": 19.932878
+          }
+        },
+        "EndStation": {
+          "Id": 3,
+          "Name": "Novi Beograd",
+          "Location": {
+            "Latitude": 44.806900,
+            "Longitude": 20.417764
+          }
+        },
+        "DepartureTime": "12:10:00",
+        "ArrivalTime": "12:35:00"
+      },
+      {
+        "StartStation": {
+          "Id": 3,
+          "Name": "Novi Beograd",
+          "Location": {
+            "Latitude": 44.806900,
+            "Longitude": 20.417764
+          }
+        },
+        "EndStation": {
+          "Id": 4,
+          "Name": "Beograd Centar",
+          "Location": {
+            "Latitude": 44.793832,
+            "Longitude": 20.452561
+          }
+        },
+        "DepartureTime": "12:35:00",
+        "ArrivalTime": "12:45:00"
       }
-    },
-    "DaysNumbers": [
-      1, 4
     ]
   }
-
-
 ]

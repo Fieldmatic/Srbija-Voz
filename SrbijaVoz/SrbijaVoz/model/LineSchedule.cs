@@ -14,10 +14,13 @@ namespace SrbijaVoz.model
 
         public List<int> DaysNumbers { get; set; }
 
+        public Dictionary<DateTime, List<int>> TakenSeats { get; set; }
 
-        public Dictionary<DateTime, List<int>> TakenSeats;
+        public List<TrainStop> TrainStops { get; set; }
 
-        public LineSchedule(Line line, List<int> days, Dictionary<DateTime, List<int>> takenSeats)
+        public Train Train { get; set; }
+
+        public LineSchedule(Line line, List<int> days, Dictionary<DateTime, List<int>> takenSeats, List<TrainStop> trainStops, Train train)
         {
             Line = line;
             Days = new List<DayOfWeek>();
@@ -26,6 +29,8 @@ namespace SrbijaVoz.model
                 Days.Add((DayOfWeek)day);
             }
             TakenSeats = takenSeats;
+            TrainStops = trainStops;
+            Train = train;
         }
 
         public LineSchedule() 

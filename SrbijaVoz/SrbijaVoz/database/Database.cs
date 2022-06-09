@@ -51,17 +51,17 @@ namespace SrbijaVoz.database
             return null;
         }
 
-        public Dictionary<SeatClass, int> getPriceByDistance(Line Line, Station Start, Station End)
+        public Dictionary<SeatClass, int> getPriceByDistance(LineSchedule LineSchedule, Station Start, Station End)
         {
             Dictionary<SeatClass, int> prices = new Dictionary<SeatClass, int>();
-            Location routeStart = Line.TrainStops.First().StartStation.Location;
-            Location routeEnd = Line.TrainStops.Last().EndStation.Location;
+            Location routeStart = LineSchedule.Line.Stations.First().Location;
+            Location routeEnd = LineSchedule.Line.Stations.Last().Location;
             var routeStartCoord = new GeoCoordinate(routeStart.Latitude, routeStart.Longitude);
             var routeEndCoord = new GeoCoordinate(routeEnd.Latitude, routeEnd.Longitude);
             var wantedStart = new GeoCoordinate(Start.Location.Latitude, Start.Location.Longitude);
             var wantedEnd = new GeoCoordinate(End.Location.Latitude, End.Location.Longitude);
-            double pricePerMeterIIClass = Line.Train.Prices[SeatClass.II] / routeStartCoord.GetDistanceTo(routeEndCoord);
-            double pricePerMeterIClass = Line.Train.Prices[SeatClass.I] / routeStartCoord.GetDistanceTo(routeEndCoord);
+            double pricePerMeterIIClass = LineSchedule.Train.Prices[SeatClass.II] / routeStartCoord.GetDistanceTo(routeEndCoord);
+            double pricePerMeterIClass = LineSchedule.Train.Prices[SeatClass.I] / routeStartCoord.GetDistanceTo(routeEndCoord);
             prices.Add(SeatClass.I, (int) (wantedStart.GetDistanceTo(wantedEnd) * pricePerMeterIClass));
             prices.Add(SeatClass.II, (int) (wantedStart.GetDistanceTo(wantedEnd) * pricePerMeterIIClass));
             return prices;
@@ -69,7 +69,7 @@ namespace SrbijaVoz.database
 
         public Seat getSeatScheduledLine(LineSchedule lineSchedule, int seatNumber)
         {
-            foreach(Seat seat in lineSchedule.Line.Train.Seats)
+            foreach(Seat seat in lineSchedule.Train.Seats)
             {
                 if (seat.Number == seatNumber) return seat;
 

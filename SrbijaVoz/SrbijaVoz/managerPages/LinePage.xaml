@@ -34,8 +34,7 @@
                   PreviewMouseLeftButtonDown="LineDataGrid_PreviewMouseLeftButtonDown">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="0.5*"/>
-                <DataGridTextColumn Header="Voz" Binding="{Binding Train}" Width="0.7*"/>
-                <DataGridTextColumn Header="Stanice" Binding="{Binding TrainStops}" Width="6*"/>
+                <DataGridTextColumn Header="Stanice" Binding="{Binding Stations}" Width="6*"/>
             </DataGrid.Columns>
         </DataGrid>
         <Grid Grid.Column="1" Background="White">

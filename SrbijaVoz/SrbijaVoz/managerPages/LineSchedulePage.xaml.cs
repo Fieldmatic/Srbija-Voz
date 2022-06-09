@@ -75,9 +75,9 @@ namespace SrbijaVoz.managerWindows
             //editLineSchedule.InputGestures.Add(new KeyGesture(Key.E, ModifierKeys.Control));
             //managerWindow.CommandBindings.Add(new CommandBinding(editLineSchedule, EditLine_Executed));
 
-            //RoutedCommand deleteLineSchedule = new RoutedCommand();
-            //deleteLineSchedule.InputGestures.Add(new KeyGesture(Key.Delete, ModifierKeys.Shift));
-            //managerWindow.CommandBindings.Add(new CommandBinding(deleteLineSchedule, DeleteLine_Executed));
+            RoutedCommand deleteLineSchedule = new RoutedCommand();
+            deleteLineSchedule.InputGestures.Add(new KeyGesture(Key.Delete, ModifierKeys.Shift));
+            managerWindow.CommandBindings.Add(new CommandBinding(deleteLineSchedule, DeleteLineSchedule_Executed));
         }
 
         private void AddLineSchedule_CanExecute(object sender, CanExecuteRoutedEventArgs e)
@@ -106,17 +106,17 @@ namespace SrbijaVoz.managerWindows
         //    form.ShowDialog();
         //}
 
-        //private void DeleteLine_CanExecute(object sender, CanExecuteRoutedEventArgs e)
-        //{
-        //    e.CanExecute = true;
-        //}
+        private void DeleteLineSchedule_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
 
-        //private void DeleteLine_Executed(object sender, ExecutedRoutedEventArgs e)
-        //{
-        //    LineRecord lineRecord = (LineRecord)LineScheduleDataGrid.SelectedItem;
-        //    if (lineRecord == null) return;
-        //    DeleteLine(lineRecord);
-        //}
+        private void DeleteLineSchedule_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            LineScheduleRecord lineScheduleRecord = (LineScheduleRecord)LineScheduleDataGrid.SelectedItem;
+            if (lineScheduleRecord == null) return;
+            //DeleteLine(lineScheduleRecord);
+        }
 
         //private void UpdateLine_Drop(object sender, DragEventArgs e)
         //{
@@ -134,16 +134,16 @@ namespace SrbijaVoz.managerWindows
         //    DeleteLine(LineRecord);
         //}
 
-        //private void DeleteLine(LineRecord lineRecord)
+        //private void DeleteLine(LineScheduleRecord lineScheduleRecord)
         //{
-        //    MessageBoxResult result = MessageBox.Show("Da li ste sigurni da želite da obrišete ovu liniju?",
-        //                                              "Brisanje Linije",
+        //    MessageBoxResult result = MessageBox.Show("Da li ste sigurni da želite da obrišete ovaj red vožnje?",
+        //                                              "Brisanje reda vožnje",
         //                                              MessageBoxButton.YesNo,
         //                                              MessageBoxImage.Warning);
         //    if (result == MessageBoxResult.Yes)
         //    {
-        //        Line lineForDelete = Database.Lines.Find(item => item.Id == lineRecord.Id);
-        //        Database.Lines.Remove(lineForDelete);
+        //        LineSchedule lineScheduleForDelete = Database.LineSchedules.Find(item => item.Id == lineScheduleRecord.Id);
+        //        Database.Lines.Remove(lineScheduleForDelete);
         //        MessageBox.Show("Linija uspešno obrisana!",
         //                        "Brisanje linije",
         //                        MessageBoxButton.OK,

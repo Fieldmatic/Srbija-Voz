@@ -45,7 +45,7 @@ namespace SrbijaVoz.clientPages
 
         private void DrawSeats()
         {
-            List<Seat> Seats = currentOffer.LineSchedule.Line.Train.Seats;
+            List<Seat> Seats = currentOffer.LineSchedule.Train.Seats;
             int numberOfRows;
             if (Seats.Count() % 4 == 0) numberOfRows = Seats.Count() / 4;
             else numberOfRows = Seats.Count() / 4 + 1;

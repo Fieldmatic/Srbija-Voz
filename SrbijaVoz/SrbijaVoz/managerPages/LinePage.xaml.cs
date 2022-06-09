@@ -87,8 +87,10 @@ namespace SrbijaVoz.managerWindows
         {
             LineRecord lineRecord = (LineRecord)LineDataGrid.SelectedItem;
             if (lineRecord == null) return;
-            var form = new UpdateLine(Database, lineRecord);
-            form.ShowDialog();
+            var updateLineWindow = new UpdateLine(Database, lineRecord);
+            RefreshLinesListEvent += new RefreshLines(InitializeLines);
+            updateLineWindow.Update = RefreshLinesListEvent;
+            updateLineWindow.ShowDialog();
         }
 
         private void DeleteLine_CanExecute(object sender, CanExecuteRoutedEventArgs e)

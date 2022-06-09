@@ -13,9 +13,9 @@
         <CommandBinding Command="cmd:RoutedCommands.AddNewItem"
                         CanExecute="AddLineSchedule_CanExecute" Executed="AddLineSchedule_Executed"></CommandBinding>
         <!--<CommandBinding Command="cmd:RoutedCommands.EditItem"
-                        CanExecute="EditLine_CanExecute" Executed="EditLine_Executed"></CommandBinding>
+                        CanExecute="EditLineSchedule_CanExecute" Executed="EditLineSchedule_Executed"></CommandBinding>
         <CommandBinding Command="cmd:RoutedCommands.DeleteItem"
-                        CanExecute="DeleteLine_CanExecute" Executed="DeleteLine_Executed"></CommandBinding>-->
+                        CanExecute="DeleteLineSchedule_CanExecute" Executed="DeleteLineSchedule_Executed"></CommandBinding>-->
     </Page.CommandBindings>
 
     <Page.Resources>
@@ -44,8 +44,12 @@
                 <Button Grid.Row="1" Background ="Transparent" BorderThickness="0"
                         Content="{StaticResource Add}" Height="60" HorizontalAlignment="Center"
                         ToolTip="Nova linija, Ctrl+N" Command="cmd:RoutedCommands.AddNewItem" />
-                <Button Background ="Transparent" BorderThickness="0" Content="{StaticResource Edit}" Margin="12 80 0 0" Height="60" RenderTransformOrigin="1.282,0.533"/>
-                <Button Grid.Row="3" Background ="Transparent" BorderThickness="0" Content="{StaticResource Delete}" Margin="0 80 0 0" Height="60"  HorizontalAlignment="Center"></Button>
+                <Button Background ="Transparent" BorderThickness="0" Content="{StaticResource Edit}"
+                        Margin="12 80 0 0" Height="60" RenderTransformOrigin="1.282,0.533"
+                        Command="cmd:RoutedCommands.EditItem"/>
+                <Button Grid.Row="3" Background ="Transparent" BorderThickness="0"
+                        Content="{StaticResource Delete}" Margin="0 80 0 0" Height="60"  
+                        HorizontalAlignment="Center" Command="cmd:RoutedCommands.DeleteItem"/>
             </StackPanel>
 
         </Grid>

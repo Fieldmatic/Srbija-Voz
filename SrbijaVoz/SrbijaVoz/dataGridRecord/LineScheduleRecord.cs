@@ -20,7 +20,7 @@ namespace SrbijaVoz.dataGridRecord
         public LineScheduleRecord(LineSchedule schedule)
         {
             Id = schedule.Line.Id;
-            Train = schedule.Line.Train.Name;
+            Train = schedule.Train.Name;
             foreach (DayOfWeek day in schedule.Days)
             {
                 switch (day.ToString())
@@ -50,9 +50,14 @@ namespace SrbijaVoz.dataGridRecord
                 if (day != schedule.Days.Last())
                     Days += ", ";
             }
-            string trainStops = schedule.Line.TrainStops[0].StartStation.Name + " (" + schedule.Line.TrainStops[0].DepartureTime.ToString() + ") ";
-            foreach (TrainStop stop in schedule.Line.TrainStops) trainStops += " - " + stop.EndStation.Name + " (" + stop.ArrivalTime.ToString() + ") ";
-            TrainStops = trainStops;
+            TrainStops = schedule.TrainStops[0].StartStation.Name + " (" + schedule.TrainStops[0].DepartureTime.ToString() + ") " + " - ";
+            foreach (TrainStop stop in schedule.TrainStops)
+            {
+                if (stop == schedule.TrainStops.Last())
+                    TrainStops += stop.EndStation.Name + " (" + stop.ArrivalTime.ToString() + ") ";
+                else
+                    TrainStops += stop.EndStation.Name + " (" + stop.ArrivalTime.ToString() + ") " + " - ";
+            }
         }
     }
 }
