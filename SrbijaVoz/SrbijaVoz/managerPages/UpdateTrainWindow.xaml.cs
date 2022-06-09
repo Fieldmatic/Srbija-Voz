@@ -73,8 +73,8 @@ namespace SrbijaVoz.managerWindows
             List<Seat> seats = GetTrainSeats();
             Dictionary<SeatClass, int> seatsPrice = GetTrainSeatsPrice();
             trainForUpdate.Name = Name.Text;
-            trainForUpdate.Seats = seats;
-            trainForUpdate.Prices = seatsPrice;
+            //trainForUpdate.Seats = seats;
+            trainForUpdate.PricesPerMinute = seatsPrice;
 
             UpdateTrain.DynamicInvoke();
             this.Close();
@@ -85,7 +85,7 @@ namespace SrbijaVoz.managerWindows
             int newId = this.Trains.Last().Id + 1;
             List<Seat> seats = GetTrainSeats();
             Dictionary<SeatClass, int> seatsPrice = GetTrainSeatsPrice();
-            this.Trains.Add(new Train(newId, Name.Text, seats, seatsPrice));
+            //this.Trains.Add(new Train(newId, Name.Text, seats, seatsPrice));
             UpdateTrain.DynamicInvoke();
             this.Close();
         }
@@ -135,6 +135,11 @@ namespace SrbijaVoz.managerWindows
             seatsPriceIClass.Text = "";
             seatsNumIIClass.Text = "";
             seatsPriceIIClass.Text = "";
+        }
+
+        private void AddWagon_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 

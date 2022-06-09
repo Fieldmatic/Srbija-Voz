@@ -60,8 +60,8 @@ namespace SrbijaVoz.database
             var routeEndCoord = new GeoCoordinate(routeEnd.Latitude, routeEnd.Longitude);
             var wantedStart = new GeoCoordinate(Start.Location.Latitude, Start.Location.Longitude);
             var wantedEnd = new GeoCoordinate(End.Location.Latitude, End.Location.Longitude);
-            double pricePerMeterIIClass = Line.Train.Prices[SeatClass.II] / routeStartCoord.GetDistanceTo(routeEndCoord);
-            double pricePerMeterIClass = Line.Train.Prices[SeatClass.I] / routeStartCoord.GetDistanceTo(routeEndCoord);
+            double pricePerMeterIIClass = Line.Train.PricesPerMinute[SeatClass.II] / routeStartCoord.GetDistanceTo(routeEndCoord);
+            double pricePerMeterIClass = Line.Train.PricesPerMinute[SeatClass.I] / routeStartCoord.GetDistanceTo(routeEndCoord);
             prices.Add(SeatClass.I, (int) (wantedStart.GetDistanceTo(wantedEnd) * pricePerMeterIClass));
             prices.Add(SeatClass.II, (int) (wantedStart.GetDistanceTo(wantedEnd) * pricePerMeterIIClass));
             return prices;
@@ -69,10 +69,13 @@ namespace SrbijaVoz.database
 
         public Seat getSeatScheduledLine(LineSchedule lineSchedule, int seatNumber)
         {
-            foreach(Seat seat in lineSchedule.Line.Train.Seats)
+            foreach(Wagon wagon in lineSchedule.Line.Train.Wagons)
             {
-                if (seat.Number == seatNumber) return seat;
+                foreach (Seat seat in wagon.Seats)
+                {
+                    if (seat.Number == seatNumber) return seat;
 
+                }
             }
             return null;
 

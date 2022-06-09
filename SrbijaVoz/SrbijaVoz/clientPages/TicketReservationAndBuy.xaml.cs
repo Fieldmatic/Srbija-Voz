@@ -45,8 +45,8 @@ namespace SrbijaVoz.clientPages
 
         private void DrawSeats()
         {
-            List<Seat> Seats = currentOffer.LineSchedule.Line.Train.Seats;
-            int numberOfRows;
+            //List<Seat> Seats = currentOffer.LineSchedule.Line.Train.Seats;
+            /*int numberOfRows;
             if (Seats.Count() % 4 == 0) numberOfRows = Seats.Count() / 4;
             else numberOfRows = Seats.Count() / 4 + 1;
 
@@ -79,7 +79,7 @@ namespace SrbijaVoz.clientPages
                     seatRB.Click += new RoutedEventHandler(ChangeSeat);
                     SeatsGrid.Children.Add(seatRB);
                 }
-                }
+                }*/
         }
 
         void ChangeSeat(object sender, RoutedEventArgs e)

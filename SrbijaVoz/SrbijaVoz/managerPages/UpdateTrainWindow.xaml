@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SrbijaVoz.managerWindows"
         mc:Ignorable="d"
         Title="Dodavanje voza" Height="450" Width="800"
-        Icon="resources/9696.png"
+        Icon="../resources/9696.png"
         WindowStartupLocation="CenterScreen"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -16,67 +16,106 @@
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}">
-
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="2.5*"/>
-            <ColumnDefinition Width="1*"/>
-        </Grid.ColumnDefinitions>
-        <Grid  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-            </Grid.RowDefinitions>
+        <Grid >
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <TextBox
+        <Border Grid.Column ="1" BorderBrush="Gray" BorderThickness="1">
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox
                   Name="Name"      
                   Height="50"
                   FontSize="20"
                   Width="Auto"
-                  Margin="0 20 0 0"
+                  Margin="20 10 20 10"
                   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                  materialDesign:HintAssist.Hint="Ime" Grid.Row="0" Grid.ColumnSpan="2"/>
-            <TextBox
-                  Name="seatsNumIClass"      
-                  Height="50"
-                  FontSize="20"
-                  Width="Auto"
-                  Margin="0 20 20 0"
-                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                  materialDesign:HintAssist.Hint="Broj sedista I Razred" Grid.Row="1" Grid.Column="0"/>
-            <TextBox
-                  Name="seatsPriceIClass"      
-                  Height="50"
-                  FontSize="20"
-                  Width="Auto"
-                  Margin="0 20 20 0"
-                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                  materialDesign:HintAssist.Hint="Cena sedista I Razred" Grid.Row="1" Grid.Column="1"/>
-            <TextBox
-                  Name="seatsNumIIClass"      
-                  Height="50"
-                  FontSize="20"
-                  Width="Auto"
-                  Margin="0 20 20 0"
-                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                  materialDesign:HintAssist.Hint="Broj sedista II Razred" Grid.Row="2" Grid.Column="0"/>
-            <TextBox
-                  Name="seatsPriceIIClass"      
-                  Height="50"
-                  FontSize="20"
-                  Width="Auto"
-                  Margin="0 20 20 0"
-                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                  materialDesign:HintAssist.Hint="Cena sedista II Razred" Grid.Row="2" Grid.Column="1"/>
-            <Button x:Name="updateButton" Grid.Row="3" Grid.ColumnSpan="2" Click="UpdateOrAddTrain_Click"></Button>
-        </Grid>
+                  materialDesign:HintAssist.Hint="Ime" Grid.Row="0" Grid.ColumnSpan="3"/>
 
+                <GroupBox Grid.Row="1" Grid.Column="0" Header="Cena sedišta po minuti" Margin="20 10 0 10">
+                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <TextBox
+                      Name="seatsPriceIClass"      
+                      Height="50"
+                      FontSize="20"
+                      Width="Auto"
+                      Margin="0 20 20 0"
+                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                      materialDesign:HintAssist.Hint="I razred" Grid.Row="0"/>
+                        <TextBox
+                      Name="seatsPriceIIClass"      
+                      Height="50"
+                      FontSize="20"
+                      Width="Auto"
+                      Margin="0 20 20 0"
+                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                      materialDesign:HintAssist.Hint="II razred" Grid.Row="1"/>
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Grid.Row="1" Grid.Column="1" Header="Broj sedišta" Margin="20 10 0 10">
+                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <TextBox
+                      Name="seatsNumIClass"      
+                      Height="50"
+                      FontSize="20"
+                      Width="Auto"
+                      Margin="0 20 20 0"
+                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                      materialDesign:HintAssist.Hint="I razred" Grid.Row="0"/>
+                        <TextBox
+                      Name="seatsNumIIClass"      
+                      Height="50"
+                      FontSize="20"
+                      Width="Auto"
+                      Margin="0 20 20 0"
+                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                      materialDesign:HintAssist.Hint="II razred" Grid.Row="1"/>
+                    </Grid>
+                </GroupBox>
+                <StackPanel HorizontalAlignment="Center" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" Margin="10 10 20 10">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <materialDesign:PackIcon Kind="ArrowRightThin" Width="40" Height="40"/>
+
+                        <materialDesign:PackIcon Foreground="Green" Kind="PlusCircle" Width="40" Height="40" />
+                    </StackPanel>
+                    <TextBlock Foreground="#0F3256" FontWeight="Medium">Dodaj vagon</TextBlock>
+                </StackPanel>
+                <Button x:Name="updateButton" Grid.Row="3" Grid.ColumnSpan="3" Margin="20 10 20 10" Click="UpdateOrAddTrain_Click"></Button>
+            </Grid>
+        </Border>
+
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+            </Grid>
+            </Grid>
     </Grid>
 </Window>
