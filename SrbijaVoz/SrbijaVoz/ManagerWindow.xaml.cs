@@ -41,20 +41,24 @@ namespace SrbijaVoz
         public void InitializeManagerShortcuts()
         {
             RoutedCommand showTrains = new RoutedCommand();
-            showTrains.InputGestures.Add(new KeyGesture(Key.F1));
+            showTrains.InputGestures.Add(new KeyGesture(Key.D1, ModifierKeys.Control));
             this.CommandBindings.Add(new CommandBinding(showTrains, SwitchToTrainData));
 
             RoutedCommand showLines = new RoutedCommand();
-            showLines.InputGestures.Add(new KeyGesture(Key.F2));
+            showLines.InputGestures.Add(new KeyGesture(Key.D2, ModifierKeys.Control));
             this.CommandBindings.Add(new CommandBinding(showLines, SwitchToLineData));
 
             RoutedCommand showLineSchedules = new RoutedCommand();
-            showLineSchedules.InputGestures.Add(new KeyGesture(Key.F3));
+            showLineSchedules.InputGestures.Add(new KeyGesture(Key.D3, ModifierKeys.Control));
             this.CommandBindings.Add(new CommandBinding(showLineSchedules, SwitchToLineScheduleData));
 
-            //RoutedCommand showTrains = new RoutedCommand();
-            //showTrains.InputGestures.Add(new KeyGesture(Key.F4));
-            //this.CommandBindings.Add(new CommandBinding(showTrains, SwitchToTrainData));
+            RoutedCommand showNetwork = new RoutedCommand();
+            showNetwork.InputGestures.Add(new KeyGesture(Key.D4, ModifierKeys.Control));
+            this.CommandBindings.Add(new CommandBinding(showNetwork, SwitchToLineNetworkView));
+
+            //RoutedCommand showTickets = new RoutedCommand();
+            //showTickets.InputGestures.Add(new KeyGesture(Key.D5, ModifierKeys.Control));
+            //this.CommandBindings.Add(new CommandBinding(showTickets, SwitchToLineNetworkView));
         }
 
         private void LogoutEvent(object sender, RoutedEventArgs e)
@@ -79,13 +83,13 @@ namespace SrbijaVoz
 
         private void SwitchToLineData(object sender, RoutedEventArgs e)
         {
-            DataFrame.Content = new LinePage(getLineGridData(), Database, this);
+            DataFrame.Content = new LinePage(Database, this);
 
         }
 
         private void SwitchToLineScheduleData(object sender, RoutedEventArgs e)
         {
-            DataFrame.Content = new LineSchedulePage(getLineScheduleGridData());
+            DataFrame.Content = new LineSchedulePage(Database, this);
 
         }
 
@@ -114,6 +118,5 @@ namespace SrbijaVoz
             return lineScheduleRecordData;
         }
 
- 
     }
 }

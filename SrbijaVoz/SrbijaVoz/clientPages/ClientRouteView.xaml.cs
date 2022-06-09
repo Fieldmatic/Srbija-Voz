@@ -38,9 +38,9 @@ namespace SrbijaVoz.clientPages
             Pushpin startPin = new Pushpin();
             startPin.Content = counter.ToString();
             counter++;
-            startPin.Location = new Location(Ticket.LineSchedule.Line.TrainStops[0].StartStation.Location);
+            startPin.Location = new Location(Ticket.LineSchedule.TrainStops[0].StartStation.Location);
             TicketRouteView.Children.Add(startPin);
-            foreach (TrainStop trainStop in Ticket.LineSchedule.Line.TrainStops)
+            foreach (TrainStop trainStop in Ticket.LineSchedule.TrainStops)
             {
                 Pushpin endStation = new Pushpin();
                 endStation.Location = new Location(trainStop.EndStation.Location);
@@ -49,7 +49,7 @@ namespace SrbijaVoz.clientPages
                 TicketRouteView.Children.Add(endStation);
             }
             bool greenColor = false;
-            foreach (TrainStop trainStop in Ticket.LineSchedule.Line.TrainStops)
+            foreach (TrainStop trainStop in Ticket.LineSchedule.TrainStops)
             {
                 MapPolyline polyline = new MapPolyline();
                 if (!greenColor) polyline.Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Orange);

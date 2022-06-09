@@ -48,9 +48,9 @@ namespace SrbijaVoz.clientPages
                     bool containsEndStation = false;
                     TimeSpan startTime = new TimeSpan();
                     TimeSpan endTime = new TimeSpan();
-                    if (lineSchedule.Day == selectedDate.DayOfWeek)
+                    if (lineSchedule.Days.Contains(selectedDate.DayOfWeek))
                     {
-                        foreach (TrainStop trainStop in lineSchedule.Line.TrainStops)
+                        foreach (TrainStop trainStop in lineSchedule.TrainStops)
                         {
                             if (trainStop.StartStation.Name.Equals(startStation))
                             {
@@ -66,7 +66,7 @@ namespace SrbijaVoz.clientPages
                             {
                                 Station start = Database.GetStationByName(startStation);
                                 Station end = Database.GetStationByName(endStation);
-                                Dictionary<SeatClass, int> prices = Database.getPriceByDistance(lineSchedule.Line, start, end);
+                                Dictionary<SeatClass, int> prices = Database.getPriceByDistance(lineSchedule, start, end);
                                 offers.Add(new Offer(lineSchedule, start, end, prices[SeatClass.I], prices[SeatClass.II], selectedDate, startTime, endTime));
                                 break;
                             }

@@ -46,20 +46,20 @@ namespace SrbijaVoz.managerPages
                 polyline.Opacity = 0.7;
                 polyline.Locations = new LocationCollection();
                 int counter = 1;
-                Location startLocation = line.TrainStops[0].StartStation.Location;
+                Location startLocation = line.Stations[0].Location;
                 polyline.Locations.Add(startLocation);
                 Pushpin startPin = new Pushpin();
                 startPin.Content = counter.ToString();
                 counter++;
                 startPin.Location = new Location(startLocation);
                 LineNetworkMap.Children.Add(startPin);
-                foreach (TrainStop trainStop in line.TrainStops)
+                foreach (Station staion in line.Stations)
                     {
-                    polyline.Locations.Add(trainStop.EndStation.Location);
+                    polyline.Locations.Add(staion.Location);
                     Pushpin endStation = new Pushpin();
                     endStation.Content = counter.ToString();
                     counter++;
-                    endStation.Location = trainStop.EndStation.Location;
+                    endStation.Location = staion.Location;
                     LineNetworkMap.Children.Add(endStation);
                     }
                     LineNetworkMap.Children.Add(polyline);

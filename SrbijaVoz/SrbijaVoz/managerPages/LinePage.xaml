@@ -29,11 +29,12 @@
             <ColumnDefinition Width="9*"/>
             <ColumnDefinition Width="1.3*"/>
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="LineDataGrid" Grid.Column="0"  AutoGenerateColumns="False" FontSize="18" IsReadOnly="True">
+        <DataGrid x:Name="LineDataGrid" Grid.Column="0"  AutoGenerateColumns="False"
+                  FontSize="18" IsReadOnly="True" ItemsSource="{Binding}"
+                  PreviewMouseLeftButtonDown="LineDataGrid_PreviewMouseLeftButtonDown">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="0.5*"/>
-                <DataGridTextColumn Header="Voz" Binding="{Binding Train}" Width="0.7*"/>
-                <DataGridTextColumn Header="Stanice" Binding="{Binding TrainStops}" Width="6*"/>
+                <DataGridTextColumn Header="Stanice" Binding="{Binding Stations}" Width="6*"/>
             </DataGrid.Columns>
         </DataGrid>
         <Grid Grid.Column="1" Background="White">
@@ -44,11 +45,13 @@
                 <Button Background ="Transparent" BorderThickness="0"
                         Content="{StaticResource Edit}" Margin="12 80 0 0" Height="60"
                         RenderTransformOrigin="1.282,0.533"
-                        ToolTip="Izmeni liniju, Ctrl+E" Command="cmd:RoutedCommands.EditItem"/>
+                        ToolTip="Izmeni liniju, Ctrl+E" Command="cmd:RoutedCommands.EditItem"
+                        AllowDrop="True" Drop="UpdateLine_Drop"/>
                 <Button Grid.Row="3" Background ="Transparent" BorderThickness="0"
                         Content="{StaticResource Delete}" Margin="0 80 0 0" Height="60"
                         HorizontalAlignment="Center"
-                        ToolTip="Obriši liniju, Shift+Del" Command="cmd:RoutedCommands.DeleteItem"/>
+                        ToolTip="Obriši liniju, Shift+Del" Command="cmd:RoutedCommands.DeleteItem"
+                        AllowDrop="True" Drop="DeleteLine_Drop"/>
             </StackPanel>
 
         </Grid>

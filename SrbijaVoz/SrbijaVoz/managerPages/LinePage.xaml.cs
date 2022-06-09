@@ -3,11 +3,13 @@ using SrbijaVoz.dataGridRecord;
 using SrbijaVoz.model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -24,21 +26,29 @@ namespace SrbijaVoz.managerWindows
     /// </summary>
     public partial class LinePage : Page
     {
-        public List<Station> Stations { get; set; }
+        private readonly Database Database;
+        public ObservableCollection<LineRecord> LineRecords = new ObservableCollection<LineRecord>();
+        private LineRecord? LineRecord;
 
-        public Database Database { get; set; }
+        public delegate Point GetPosition(IInputElement element);
+        private int selectedRowIndex = -1;
 
-        public LinePage(List<LineRecord> lineRecords, Database database, ManagerWindow managerWindow)
+        public delegate void RefreshLines();
+        public event RefreshLines RefreshLinesListEvent;
+
+        public LinePage(Database database, ManagerWindow managerWindow)
         {
             InitializeComponent();
-            LineDataGrid.ItemsSource = lineRecords;
             Database = database;
-            Stations = Database.Stations;
 
             managerWindow.CommandBindings.Clear();
             managerWindow.InitializeManagerShortcuts();
             InitializeLinePageShortcuts(managerWindow);
+
+            InitializeLines();
         }
+
+        #region Shortcuts
 
         private void InitializeLinePageShortcuts(ManagerWindow managerWindow)
         {
@@ -63,6 +73,8 @@ namespace SrbijaVoz.managerWindows
         private void AddLine_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             var form = new CreateLine(Database);
+            RefreshLinesListEvent += new RefreshLines(InitializeLines);
+            form.Create = RefreshLinesListEvent;
             form.ShowDialog();
         }
 
@@ -75,8 +87,10 @@ namespace SrbijaVoz.managerWindows
         {
             LineRecord lineRecord = (LineRecord)LineDataGrid.SelectedItem;
             if (lineRecord == null) return;
-            var form = new UpdateLine(Database, lineRecord);
-            form.ShowDialog();
+            var updateLineWindow = new UpdateLine(Database, lineRecord);
+            RefreshLinesListEvent += new RefreshLines(InitializeLines);
+            updateLineWindow.Update = RefreshLinesListEvent;
+            updateLineWindow.ShowDialog();
         }
 
         private void DeleteLine_CanExecute(object sender, CanExecuteRoutedEventArgs e)
@@ -88,22 +102,101 @@ namespace SrbijaVoz.managerWindows
         {
             LineRecord lineRecord = (LineRecord)LineDataGrid.SelectedItem;
             if (lineRecord == null) return;
+            DeleteLine(lineRecord);
+        }
 
-            MessageBoxResult result = MessageBox.Show("Da li ste sigurni da želite da obrišete liniju?",
-                                "Brisanje linije",
-                                MessageBoxButton.YesNo,
-                                MessageBoxImage.Warning);
-            if (result == MessageBoxResult.No)
-                return;
-            else if (result == MessageBoxResult.Yes)
+        #endregion
+
+        private void InitializeLines()
+        {
+            LineRecords = GetLineGridData();
+            LineDataGrid.DataContext = LineRecords;
+            LineRecord = null;
+        }
+
+        private ObservableCollection<LineRecord> GetLineGridData()
+        {
+            ObservableCollection<LineRecord> lineRecordData = new();
+            foreach (Line line in Database.Lines) lineRecordData.Add(new LineRecord(line));
+            return lineRecordData;
+        }
+
+        private void UpdateLine_Drop(object sender, DragEventArgs e)
+        {
+            LineRecord = e.Data.GetData("LineRecord") as LineRecord;
+            UpdateLine updateLineWindow = new(Database, LineRecord);
+            RefreshLinesListEvent += new RefreshLines(InitializeLines);
+            updateLineWindow.Update = RefreshLinesListEvent;
+            updateLineWindow.Show();
+
+        }
+
+        private void DeleteLine_Drop(object sender, DragEventArgs e)
+        {
+            LineRecord = e.Data.GetData("LineRecord") as LineRecord;
+            DeleteLine(LineRecord);
+        }
+
+        private void DeleteLine(LineRecord lineRecord)
+        {
+            MessageBoxResult result = MessageBox.Show("Da li ste sigurni da želite da obrišete ovu liniju?",
+                                                      "Brisanje Linije",
+                                                      MessageBoxButton.YesNo,
+                                                      MessageBoxImage.Warning);
+            if (result == MessageBoxResult.Yes)
             {
-                Line line = Database.Lines.Where(l => l.Id.Equals(lineRecord.Id)).First();
-                Database.Lines.Remove(line);
-                MessageBox.Show("Linija uspešn obrisana!",
+                Line lineForDelete = Database.Lines.Find(item => item.Id == lineRecord.Id);
+                Database.Lines.Remove(lineForDelete);
+                MessageBox.Show("Linija uspešno obrisana!",
                                 "Brisanje linije",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Information);
+                this.LineDataGrid.DataContext = null;
+                InitializeLines();
             }
+        }
+
+        private void LineDataGrid_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            selectedRowIndex = GetCurrentRowIndex(e.GetPosition);
+            if (selectedRowIndex < 0)
+                return;
+            
+            LineDataGrid.SelectedIndex = selectedRowIndex;
+            if (LineRecords[selectedRowIndex] is not LineRecord selectedEmp)
+                return;
+            var dataObject = new DataObject();
+            dataObject.SetData("LineRecord", selectedEmp);
+            DragDrop.DoDragDrop(LineDataGrid, dataObject, DragDropEffects.Move);
+        }
+
+        private int GetCurrentRowIndex(GetPosition pos)
+        {
+            int curIndex = -1;
+            for (int i = 0; i < LineDataGrid.Items.Count; i++)
+            {
+                DataGridRow itm = GetRowItem(i);
+                if (GetMouseTargetRow(itm, pos))
+                {
+                    curIndex = i;
+                    break;
+                }
+            }
+            return curIndex;
+        }
+
+        private static bool GetMouseTargetRow(Visual theTarget, GetPosition position)
+        {
+            Rect rect = VisualTreeHelper.GetDescendantBounds(theTarget);
+            Point point = position((IInputElement)theTarget);
+            return rect.Contains(point);
+        }
+
+        private DataGridRow GetRowItem(int index)
+        {
+            if (LineDataGrid.ItemContainerGenerator.Status != GeneratorStatus.ContainersGenerated)
+                return null;
+            return LineDataGrid.ItemContainerGenerator.ContainerFromIndex(index) as DataGridRow;
         }
     }
 }

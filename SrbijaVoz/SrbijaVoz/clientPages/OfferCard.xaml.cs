@@ -36,7 +36,7 @@ namespace SrbijaVoz.clientPages
             Date.Content = Offer.Date.ToShortDateString();
             Departure.Content = Offer.StartTime.ToString();
             Arrival.Content = Offer.EndTime.ToString();
-            Train.Content = Offer.LineSchedule.Line.Train.Name;
+            Train.Content = Offer.LineSchedule.Train.Name;
             Price.Content = "Od " + Offer.SecondClassPrice.ToString() + " RSD";
 
         }

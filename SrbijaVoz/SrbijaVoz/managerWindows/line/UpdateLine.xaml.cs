@@ -34,9 +34,9 @@ namespace SrbijaVoz.managerWindows
 
         public Database Database { get; set; }
 
-        public List<TimePicker> TimePickers { get; set; }
-
         public Line CurrentLine { get; set; }
+
+        public Delegate Update;
 
         public UpdateLine(Database database, LineRecord lineRecord)
         {
@@ -44,50 +44,21 @@ namespace SrbijaVoz.managerWindows
             this.DataContext = this;
             Database = database;
             CurrentLine = LineRecordToLine(lineRecord);
-            SetLineName();
-            PopulateTrainNames();
             SettedStations = SetSettedStations();
-            AvailableStations = SetAvailableStations();          
-            TimePickers = SetTimePickers();
-        }
-
-        private List<TimePicker> SetTimePickers()
-        {
-            List<TimePicker> timePickers = new();
-            int i = 0;
-            foreach (TrainStop trainStop in CurrentLine.TrainStops)
-            {
-                timePickers.Add(new TimePicker());
-                timePickers[i].SelectedTime = Convert.ToDateTime(trainStop.DepartureTime.ToString());
-                timePickers[i].Width = 100;
-                timePickers[i].Is24Hours = true;
-                timePickers[i].Style = (Style)Resources["MaterialDesignFloatingHintTimePicker"];
-                Thickness margin = timePickers[i].Margin;
-                margin.Bottom = 8;
-                timePickers[i].Margin = margin;
-                TimePanel.Children.Add(timePickers[i]);
-                if (trainStop == CurrentLine.TrainStops.Last())
-                {
-                    timePickers.Add(new TimePicker());
-                    timePickers[i + 1].SelectedTime = Convert.ToDateTime(trainStop.ArrivalTime.ToString());
-                    timePickers[i + 1].Width = 100;
-                    timePickers[i + 1].Is24Hours = true;
-                    timePickers[i + 1].Style = (Style)Resources["MaterialDesignFloatingHintTimePicker"];
-                    timePickers[i + 1].Margin = margin;
-                    TimePanel.Children.Add(timePickers[i + 1]);
-                }
-                
-                i++;
-            }
-            return timePickers;
+            AvailableStations = SetAvailableStations();
         }
 
         private ObservableCollection<Station> SetAvailableStations()
         {
             ObservableCollection<Station> stations = new();
+            ObservableCollection<string> stationNames = new();
+            foreach (Station station in SettedStations)
+            {
+                stationNames.Add(station.Name);
+            }
             foreach (Station station in Database.Stations)
             {
-                if (SettedStations.Contains(station))   // OVO NEMA SMISLA ALI RADI
+                if (!stationNames.Contains(station.Name))
                     stations.Add(station);
             }
             return stations;
@@ -96,12 +67,8 @@ namespace SrbijaVoz.managerWindows
         private ObservableCollection<Station> SetSettedStations()
         {
             ObservableCollection<Station> stations = new();
-            foreach (TrainStop trainStop in CurrentLine.TrainStops)
-            {
-                stations.Add(trainStop.StartStation);
-                if (trainStop == CurrentLine.TrainStops.Last())
-                    stations.Add(trainStop.EndStation);
-            }
+            foreach (Station station in CurrentLine.Stations)
+                stations.Add(station);         
             return stations;
         }
 
@@ -109,12 +76,6 @@ namespace SrbijaVoz.managerWindows
         {
             Line line = Database.Lines.Where(l => l.Id.Equals(lineRecord.Id)).First();
             return line;
-        }
-
-        private void SetLineName()
-        {
-            StartStation.Text = CurrentLine.Name.Split(" - ")[0];
-            EndStation.Text = CurrentLine.Name.Split(" - ")[1];
         }
 
         private void ListView_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -175,17 +136,6 @@ namespace SrbijaVoz.managerWindows
                 Station station = e.Data.GetData("myFormat") as Station;
                 AvailableStations.Remove(station);
                 SettedStations.Add(station);
-
-                TimePicker timePicker = new TimePicker();
-                timePicker.Width = 100;
-                timePicker.Is24Hours = true;
-                timePicker.Style = (Style)Resources["MaterialDesignFloatingHintTimePicker"];
-                Thickness margin = timePicker.Margin;
-                margin.Bottom = 8;
-                timePicker.Margin = margin;
-
-                TimePanel.Children.Add(timePicker);
-                TimePickers.Add(timePicker);
             }
         }
 
@@ -194,43 +144,14 @@ namespace SrbijaVoz.managerWindows
             if (e.Data.GetDataPresent("myFormat"))
             {
                 Station station = e.Data.GetData("myFormat") as Station;
-                int index = SettedStations.IndexOf(station);
                 SettedStations.Remove(station);
                 AvailableStations.Add(station);
-                TimePicker elementToRemove = TimePickers.ElementAt(index);
-                TimePickers.Remove(elementToRemove);
-                TimePanel.Children.Remove(elementToRemove);
             }
-        }
-
-        private void PopulateTrainNames()
-        {
-            foreach (Train train in Database.Trains)
-            {
-                string name = train.Name + " (" + train.Id + ")";
-                Trains.Items.Add(name);
-            }
-
-            Trains.SelectedIndex = CurrentLine.Train.Id - 1;
         }
 
         private void SubmitBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (StartStation.Text.Length == 0 || EndStation.Text.Length == 0)
-            {
-                MessageBox.Show("Morate popuniti nazive za početnu i krajnju stanicu!",
-                                "Greška",
-                                MessageBoxButton.OK,
-                                MessageBoxImage.Error);
-                return;
-            }
-            CurrentLine.Name = StartStation.Text + " - " + EndStation.Text;
-            string selectedTrainId = Trains.SelectedValue.ToString().Split(" (")[1];
-            selectedTrainId = selectedTrainId.Substring(0, selectedTrainId.Length - 1);
-            CurrentLine.Train = Database.Trains.Where(t => t.Id.Equals(int.Parse(selectedTrainId))).First();
-            CurrentLine.TrainStops = GetTrainStops();
-
-            if (CurrentLine.TrainStops == null)
+            if (SettedStations.Count < 2)
             {
                 MessageBox.Show("Morate uneti bar 2 stanice!",
                                 "Greška",
@@ -238,28 +159,46 @@ namespace SrbijaVoz.managerWindows
                                 MessageBoxImage.Error);
                 return;
             }
-            MessageBox.Show("Linija uspešno izmenjena.",
-                                "Ažuriranje linije",
-                                MessageBoxButton.OK,
-                                MessageBoxImage.Information);
+            if (LineAlreadyExist())
+            {
+                MessageBox.Show("Ovakva linija već postoji!",
+                                   "Greška",
+                                   MessageBoxButton.OK,
+                                   MessageBoxImage.Error);
+                return;
+            }
+            CurrentLine.Name = SettedStations.First().Name + " - " + SettedStations.Last().Name;
+            CurrentLine.Stations = SettedStations.ToList();
+            MessageBox.Show("Linija uspešno ažurirana!",
+                                   "Ažuriranje linije",
+                                   MessageBoxButton.OK,
+                                   MessageBoxImage.Information);
+            Update.DynamicInvoke();
             this.Close();
         }
 
-        private List<TrainStop>? GetTrainStops()
+        private bool LineAlreadyExist()
         {
-            if (SettedStations.Count < 2)
-                return null;
-
-            List<TrainStop> trainStops = new();
-            for (int i = 0; i < SettedStations.Count - 1; i++)
+            bool alreadyExist = false;
+            foreach (Line line in Database.Lines)
             {
-                Station station1 = SettedStations[i];
-                Station station2 = SettedStations[i + 1];
-                TimeSpan departureTime = TimePickers[i].SelectedTime.Value.TimeOfDay;
-                TimeSpan arrivalTime = TimePickers[i + 1].SelectedTime.Value.TimeOfDay;
-                trainStops.Add(new TrainStop(station1, station2, departureTime, arrivalTime));
+                if (line.Stations.Count != SettedStations.Count)
+                    continue;
+                for (int i = 0; i < SettedStations.Count; i++)
+                {
+                    if (SettedStations[i].Name == line.Stations[i].Name)
+                    {
+                        alreadyExist = true;
+                        continue;
+                    }
+                    alreadyExist = false;
+                    break;
+                }
+                if (alreadyExist)
+                    return true;
             }
-            return trainStops;
+            return alreadyExist;
         }
+
     }
 }
