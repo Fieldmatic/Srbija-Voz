@@ -46,7 +46,7 @@ namespace SrbijaVoz.managerPages
                 {
                     if (ticket.Date.Month == (month.Month))
                     {
-                        soldTickets.Add(new TicketRecord(ticket.Client.Username, ticket.StartStation.Name + "-" + ticket.ExitStation.Name, ticket.Date.ToShortDateString(), ticket.Departure.ToString(), ticket.Arrival.ToString(), ticket.LineSchedule.Line.Train.Name,ticket.Price + " RSD"));
+                        soldTickets.Add(new TicketRecord(ticket.Client.Username, ticket.StartStation.Name + "-" + ticket.ExitStation.Name, ticket.Date.ToShortDateString(), ticket.Departure.ToString(), ticket.Arrival.ToString(), ticket.LineSchedule.Train.Name,ticket.Price + " RSD"));
                         revenue += ticket.Price;
                         ticketSold++;
                     }
