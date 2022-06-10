@@ -1,5 +1,6 @@
 ﻿using SrbijaVoz.database;
 using SrbijaVoz.dataGridRecord;
+using SrbijaVoz.managerWindows.line;
 using SrbijaVoz.model;
 using System;
 using System.Collections.Generic;
@@ -156,18 +157,21 @@ namespace SrbijaVoz.managerWindows
             }
         }
 
-        private void LineDataGrid_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void LineDataGrid_MouseMove(object sender, MouseEventArgs e)
         {
-            selectedRowIndex = GetCurrentRowIndex(e.GetPosition);
-            if (selectedRowIndex < 0)
-                return;
-            
-            LineDataGrid.SelectedIndex = selectedRowIndex;
-            if (LineRecords[selectedRowIndex] is not LineRecord selectedEmp)
-                return;
-            var dataObject = new DataObject();
-            dataObject.SetData("LineRecord", selectedEmp);
-            DragDrop.DoDragDrop(LineDataGrid, dataObject, DragDropEffects.Move);
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                selectedRowIndex = GetCurrentRowIndex(e.GetPosition);
+                if (selectedRowIndex < 0)
+                    return;
+
+                LineDataGrid.SelectedIndex = selectedRowIndex;
+                if (LineRecords[selectedRowIndex] is not LineRecord selectedEmp)
+                    return;
+                var dataObject = new DataObject();
+                dataObject.SetData("LineRecord", selectedEmp);
+                DragDrop.DoDragDrop(LineDataGrid, dataObject, DragDropEffects.Move);
+            }
         }
 
         private int GetCurrentRowIndex(GetPosition pos)
@@ -197,6 +201,14 @@ namespace SrbijaVoz.managerWindows
             if (LineDataGrid.ItemContainerGenerator.Status != GeneratorStatus.ContainersGenerated)
                 return null;
             return LineDataGrid.ItemContainerGenerator.ContainerFromIndex(index) as DataGridRow;
+        }
+
+        private void ShowLineRoute(object sender, RoutedEventArgs e)
+        {
+            int ID = (int) ((Button)sender).CommandParameter;
+            Line line = Database.GetLineById(ID);
+            LineNetworkView lineNetworkView = new LineNetworkView(line);
+            lineNetworkView.Show();
         }
     }
 }

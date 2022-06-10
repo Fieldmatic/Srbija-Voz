@@ -29,6 +29,7 @@ namespace SrbijaVoz.clientPages
             TicketRouteView.Center = ticket.StartStation.Location;
             TicketRouteView.Focus();
             DrawRoute();
+            CenterWindowOnScreen();
 
         }
 
@@ -52,7 +53,7 @@ namespace SrbijaVoz.clientPages
             foreach (TrainStop trainStop in Ticket.LineSchedule.TrainStops)
             {
                 MapPolyline polyline = new MapPolyline();
-                if (!greenColor) polyline.Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Orange);
+                if (!greenColor) polyline.Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.MidnightBlue);
                 else polyline.Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Green);
                 polyline.StrokeThickness = 5;
                 polyline.Opacity = 0.7;
@@ -70,7 +71,17 @@ namespace SrbijaVoz.clientPages
             
         }
 
+        private void CenterWindowOnScreen()
+        {
+            double screenWidth = System.Windows.SystemParameters.PrimaryScreenWidth;
+            double screenHeight = System.Windows.SystemParameters.PrimaryScreenHeight;
+            double windowWidth = this.Width;
+            double windowHeight = this.Height;
+            this.Left = (screenWidth / 2) - (windowWidth / 2);
+            this.Top = (screenHeight / 2) - (windowHeight / 2);
+        }
 
-    
+
+
     }
 }

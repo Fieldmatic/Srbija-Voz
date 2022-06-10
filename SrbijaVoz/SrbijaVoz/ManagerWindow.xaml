@@ -33,7 +33,7 @@
                     <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="22" Margin="0 0 10 0" Click="SwitchToTrainData">Vozovi</Button>
                     <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="22" Margin="0 0 10 0" Click="SwitchToLineData">Linije</Button>
                     <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="22" Margin="0 0 10 0" Click="SwitchToLineScheduleData">Redovi Voznje</Button>
-                    <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="22" Margin="0 0 10 0" Click="SwitchToLineNetworkView">Mrezni Pregled Linija</Button>
+
                     <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="22" Margin="0 0 10 0" Click="SwitchToSoldTicketsRide">Izvestaj voznji</Button>
                     <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="22" Margin="0 0 10 0" Click="SwitchToSoldTicketsMonth">Mesecni izvestaj</Button>
                 </StackPanel>

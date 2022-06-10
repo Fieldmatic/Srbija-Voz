@@ -33,7 +33,7 @@ namespace SrbijaVoz
             InitializeComponent();
             Database = database;
             Manager = manager;
-
+            CenterWindowOnScreen();
             InitializeManagerShortcuts();
             
         }
@@ -52,9 +52,13 @@ namespace SrbijaVoz
             showLineSchedules.InputGestures.Add(new KeyGesture(Key.D3, ModifierKeys.Control));
             this.CommandBindings.Add(new CommandBinding(showLineSchedules, SwitchToLineScheduleData));
 
-            RoutedCommand showNetwork = new RoutedCommand();
-            showNetwork.InputGestures.Add(new KeyGesture(Key.D4, ModifierKeys.Control));
-            this.CommandBindings.Add(new CommandBinding(showNetwork, SwitchToLineNetworkView));
+            RoutedCommand showSoldTicketsRide = new RoutedCommand();
+            showSoldTicketsRide.InputGestures.Add(new KeyGesture(Key.D4, ModifierKeys.Control));
+            this.CommandBindings.Add(new CommandBinding(showSoldTicketsRide, SwitchToSoldTicketsRide));
+
+            RoutedCommand showSoldTicketsMonth = new RoutedCommand();
+            showSoldTicketsMonth.InputGestures.Add(new KeyGesture(Key.D5, ModifierKeys.Control));
+            this.CommandBindings.Add(new CommandBinding(showSoldTicketsMonth, SwitchToSoldTicketsMonth));
 
             //RoutedCommand showTickets = new RoutedCommand();
             //showTickets.InputGestures.Add(new KeyGesture(Key.D5, ModifierKeys.Control));
@@ -66,12 +70,6 @@ namespace SrbijaVoz
             MainWindow mainWindow = new MainWindow(Database);
             mainWindow.Show();
             this.Close();
-
-        }
-
-        private void SwitchToLineNetworkView(object sender, RoutedEventArgs e)
-        {
-            DataFrame.Content = new LineNetwork(Database.Lines);
 
         }
 
@@ -116,6 +114,16 @@ namespace SrbijaVoz
             List<LineScheduleRecord> lineScheduleRecordData = new List<LineScheduleRecord>();
             foreach (LineSchedule schedule in Database.LineSchedules) lineScheduleRecordData.Add(new LineScheduleRecord(schedule));
             return lineScheduleRecordData;
+        }
+
+        private void CenterWindowOnScreen()
+        {
+            double screenWidth = System.Windows.SystemParameters.PrimaryScreenWidth;
+            double screenHeight = System.Windows.SystemParameters.PrimaryScreenHeight;
+            double windowWidth = this.Width;
+            double windowHeight = this.Height;
+            this.Left = (screenWidth / 2) - (windowWidth / 2);
+            this.Top = (screenHeight / 2) - (windowHeight / 2);
         }
 
     }

@@ -36,6 +36,15 @@ namespace SrbijaVoz.database
             LoadData();
         }
 
+        public Line GetLineById(int Id)
+        {
+            foreach(Line line in Lines)
+            {
+                if (line.Id == Id) return line;
+            }
+            return null;
+        }
+
         public List<String> GetStationNames()
         {
             List<String> stations = new List<String>();
