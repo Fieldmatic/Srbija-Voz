@@ -58,6 +58,11 @@
                   Margin="40 20 40 0"
                   materialDesign:HintAssist.Hint="Lozinka" Grid.Row="2"/>
                 <Button x:Name="LoginButton" IsDefault="True" Grid.Row="3" Click="LoginEvent" VerticalAlignment="Top" Margin="40 40 40 30" Width="Auto" FontWeight="DemiBold" FontSize="18">Prijavi se</Button>
+                <TextBlock Grid.Row="3" VerticalAlignment="Bottom" HorizontalAlignment="Center"
+                           Foreground="Blue" Margin="0 0 0 5" FontSize="16"
+                           TextDecorations="Underline"
+                           MouseLeftButtonDown="Register_MouseLeftButtonDown"
+                           Cursor="Hand">Registracija</TextBlock>
             </Grid>
         </materialDesign:Card>
 

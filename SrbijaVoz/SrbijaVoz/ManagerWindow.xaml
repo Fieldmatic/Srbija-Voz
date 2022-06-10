@@ -37,7 +37,7 @@
                     <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="22" Margin="0 0 10 0" Click="SwitchToSoldTicketsRide" ToolTip="Crtl+5">Izvestaj voznji</Button>
                     <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="22" Margin="0 0 10 0" Click="SwitchToSoldTicketsMonth" ToolTip="Crtl+6">Mesecni izvestaj</Button>
                 </StackPanel>
-                <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="22" Grid.Column="1" Click="LogoutEvent" Margin="5 0 5 0" ToolTip="Crtl+0">Izloguj se</Button>
+                <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="22" Grid.Column="1" Click="LogoutEvent" Margin="5 0 5 0" ToolTip="Crtl+Backspace">Izloguj se</Button>
             </Grid>
         </Border>
         <Frame x:Name="DataFrame" NavigationUIVisibility="Hidden" Grid.Row="1"/>

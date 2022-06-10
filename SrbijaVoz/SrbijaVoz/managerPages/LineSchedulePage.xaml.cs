@@ -205,5 +205,11 @@ namespace SrbijaVoz.managerWindows
             foreach (Line line in Database.Lines) lineRecordData.Add(new LineRecord(line));
             return lineRecordData;
         }
+
+        private void LineScheduleDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            EditBtn.IsEnabled = true;
+            DeleteBtn.IsEnabled = true;
+        }
     }
 }

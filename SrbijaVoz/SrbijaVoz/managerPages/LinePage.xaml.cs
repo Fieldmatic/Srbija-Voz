@@ -198,5 +198,11 @@ namespace SrbijaVoz.managerWindows
                 return null;
             return LineDataGrid.ItemContainerGenerator.ContainerFromIndex(index) as DataGridRow;
         }
+
+        private void LineDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            EditBtn.IsEnabled = true;
+            DeleteBtn.IsEnabled = true;
+        }
     }
 }

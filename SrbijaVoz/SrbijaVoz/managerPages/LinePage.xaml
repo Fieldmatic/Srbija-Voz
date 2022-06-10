@@ -31,7 +31,8 @@
         </Grid.ColumnDefinitions>
         <DataGrid x:Name="LineDataGrid" Grid.Column="0"  AutoGenerateColumns="False"
                   FontSize="18" IsReadOnly="True" ItemsSource="{Binding}"
-                  PreviewMouseLeftButtonDown="LineDataGrid_PreviewMouseLeftButtonDown">
+                  PreviewMouseLeftButtonDown="LineDataGrid_PreviewMouseLeftButtonDown"
+                  SelectionChanged="LineDataGrid_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="0.5*"/>
                 <DataGridTextColumn Header="Stanice" Binding="{Binding Stations}" Width="6*"/>
@@ -42,16 +43,18 @@
                 <Button Grid.Row="1" Background ="Transparent" BorderThickness="0"
                         Content="{StaticResource Add}" Height="60" HorizontalAlignment="Center"
                         ToolTip="Nova linija, Ctrl+N" Command="cmd:RoutedCommands.AddNewItem" />
-                <Button Background ="Transparent" BorderThickness="0"
+                <Button x:Name="EditBtn" Background ="Transparent" BorderThickness="0"
                         Content="{StaticResource Edit}" Margin="12 80 0 0" Height="60"
                         RenderTransformOrigin="1.282,0.533"
                         ToolTip="Izmeni liniju, Ctrl+E" Command="cmd:RoutedCommands.EditItem"
-                        AllowDrop="True" Drop="UpdateLine_Drop"/>
-                <Button Grid.Row="3" Background ="Transparent" BorderThickness="0"
+                        AllowDrop="True" Drop="UpdateLine_Drop"
+                        IsEnabled="False"/>
+                <Button x:Name="DeleteBtn" Grid.Row="3" Background ="Transparent" BorderThickness="0"
                         Content="{StaticResource Delete}" Margin="0 80 0 0" Height="60"
                         HorizontalAlignment="Center"
                         ToolTip="Obriši liniju, Shift+Del" Command="cmd:RoutedCommands.DeleteItem"
-                        AllowDrop="True" Drop="DeleteLine_Drop"/>
+                        AllowDrop="True" Drop="DeleteLine_Drop"
+                        IsEnabled="False"/>
             </StackPanel>
 
         </Grid>
