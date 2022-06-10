@@ -8,8 +8,15 @@ namespace SrbijaVoz.model
 {
     public class Wagon
     {
+       
         public Wagon()
         {
+        }
+
+        public Wagon(Wagon wagon)
+        {
+            Number = wagon.Number;
+            Seats = wagon.Seats;
         }
 
         public Wagon(int number, List<Seat> seats)

@@ -40,8 +40,8 @@ namespace SrbijaVoz.managerWindows
             this.operationType = operationType;
             SetVariableWindowInfos();
             List<Wagon> Wagons = new List<Wagon>(Trains.Find(item => item.Id == this.selectedTrain.Id).Wagons);
-            DrawWagons(Wagons);
             this.selectedWagons = Wagons;
+            DrawWagons();
             Name.Text = Train.Name;
             seatsPriceIClass.Text = Train.FirstClassPrice.ToString();
             seatsPriceIIClass.Text = Train.SecondClassPrice.ToString();
@@ -59,15 +59,43 @@ namespace SrbijaVoz.managerWindows
 
         }
 
-        private void DrawWagons(List<Wagon> Wagons)
-        {    
-            int numberOfRows = Wagons.Count;
+        private void DrawWagons()
+        {
+            WagonsPanel.Children.Clear();
+            int numberOfRows = selectedWagons.Count;
             for (int i = 0; i < numberOfRows; i++)
             {
-                Wagon wagon = Wagons[i];
+                Wagon wagon = selectedWagons[i];
                 GroupBox groupBox = new GroupBox();
                 groupBox.Width = 170;
-                groupBox.Header = "Broj sedišta - Vagon " + wagon.Number;
+
+                //header panel
+                StackPanel stackPanel = new StackPanel();
+                stackPanel.Orientation = Orientation.Horizontal;
+                stackPanel.VerticalAlignment = VerticalAlignment.Center;
+                stackPanel.HorizontalAlignment = HorizontalAlignment.Center;
+                TextBlock headerText = new TextBlock();
+                headerText.Foreground = Brushes.White;
+                headerText.Text = "Broj sedišta - Vagon " + wagon.Number;
+                headerText.Name = "_" + wagon.Number; 
+                headerText.FontWeight = FontWeights.Medium;
+                stackPanel.Children.Add(headerText);
+
+                var closeIcon = new MaterialDesignThemes.Wpf.PackIcon();
+                closeIcon.Kind = MaterialDesignThemes.Wpf.PackIconKind.CloseCircle;
+                closeIcon.Foreground = Brushes.Red;
+                closeIcon.Width = 19;
+                closeIcon.Height = 19;
+                closeIcon.Cursor = Cursors.Hand;
+                closeIcon.MouseDown += DeleteWagon_Event;
+                Thickness thickness = closeIcon.Margin;
+                thickness.Right = 0;
+                thickness.Left = 8;
+                closeIcon.Margin = thickness;
+                stackPanel.Children.Add(closeIcon);
+                groupBox.Header = stackPanel;
+
+
                 Grid.SetRow(groupBox, 1);
                 Grid.SetColumn(groupBox, 1);
                 Thickness margin = groupBox.Margin;
@@ -221,16 +249,52 @@ namespace SrbijaVoz.managerWindows
             WagonNumber++;
             Wagon newWagon = new Wagon();
             newWagon.Seats = GetWagonSeats(Int32.Parse(seatsNumIClass.Text), Int32.Parse(seatsNumIIClass.Text));
-            if (selectedTrain == null) 
-                newWagon.Number = WagonNumber;
+            if (selectedTrain == null)
+            {
+                if (selectedWagons.Count == 0)
+                {
+                    newWagon.Number = 1;
+                } else
+                {
+                    Wagon lastWagon = new Wagon(selectedWagons.Last());
+                    newWagon.Number = lastWagon.Number + 1;
+                }
+            }
             else
-                newWagon.Number = selectedTrain.WagonsNumber + 1;
+                newWagon.Number = selectedWagons.Last().Number + 1;
             selectedWagons = getAllWagons();
             selectedWagons.Add(newWagon);
             ClearWagonInputs();
-            WagonsPanel.Children.Clear();
-            DrawWagons(selectedWagons);
+            DrawWagons();
             
+        }
+
+        private void ReplaceWagonsNumber(int deletedWagonNumber)
+        {
+            //kada se vagon obrise moram da prilagodim brojeve vagona
+            foreach(Wagon wagon in selectedWagons)
+            {
+                if (wagon.Number > deletedWagonNumber)
+                {
+                    wagon.Number = wagon.Number - 1;
+                }
+            }
+        }
+
+        private void DeleteWagon_Event(object sender, MouseButtonEventArgs e)
+        {
+            StackPanel panel = (StackPanel) VisualTreeHelper.GetParent((MaterialDesignThemes.Wpf.PackIcon)sender);
+            TextBlock textBlock = (TextBlock) panel.Children[0];
+            int wagonNumber = Int32.Parse(textBlock.Name.Replace("_", ""));
+
+            Wagon deleteWagon = selectedWagons.FirstOrDefault(w => w.Number == wagonNumber);
+            if (deleteWagon != null)
+            {
+                ReplaceWagonsNumber(deleteWagon.Number);
+                selectedWagons.Remove(deleteWagon);
+            }
+            DrawWagons();
+
         }
 
     }
