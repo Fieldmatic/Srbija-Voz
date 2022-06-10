@@ -104,6 +104,11 @@ namespace SrbijaVoz
         {
             DataFrame.Content = new SoldTicketsMonth(Database);
         }
+        private void SwitchToStationsData(object sender, RoutedEventArgs e)
+        {
+            DataFrame.Content = new StationsPage(Database.Stations);
+
+        }
 
 
         private List<LineRecord> getLineGridData()
