@@ -57,7 +57,7 @@ namespace SrbijaVoz.managerWindows
         private void UpdateTrain_Drop(object sender, DragEventArgs e)
         {
             this.Train = e.Data.GetData("TrainRecord") as TrainRecord;
-            UpdateTrainWindow updateTrainWindow = new(this.Train, Database.Trains, "update");
+            AddTrainWindow updateTrainWindow = new(this.Train, Database.Trains, "update");
             RefreshTrainsListEvent += new RefreshTrains(InitializeTrains); // event initialization
             updateTrainWindow.UpdateTrain = RefreshTrainsListEvent;
             updateTrainWindow.Show();
@@ -80,10 +80,11 @@ namespace SrbijaVoz.managerWindows
 
         private void Add_Train_Event(object sender, RoutedEventArgs e)
         {
-            UpdateTrainWindow addTrain;
+            AddTrainWindow addTrain;
             if (this.Train is not null)
             {
                 addTrain = new(this.Train, Database.Trains, "add");
+                this.Train = null;
             }
             else
             {

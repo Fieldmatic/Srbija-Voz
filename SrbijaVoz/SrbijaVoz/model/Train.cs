@@ -14,7 +14,7 @@ namespace SrbijaVoz.model
         public List<Wagon> Wagons { get; set; }
         public Dictionary<SeatClass, int> PricesPerMinute { get; set; }
 
-        public Train(int id, string name, List<Seat> seats, List<Wagon> wagons, Dictionary<SeatClass, int> prices)
+        public Train(int id, string name, List<Wagon> wagons, Dictionary<SeatClass, int> prices)
         {
             Id = id;
             Name = name;
@@ -31,7 +31,7 @@ namespace SrbijaVoz.model
             {
                 foreach (Seat seat in wagon.Seats)
                 {
-                    if (seat.SeatClass == SeatClass.I) count++;
+                    if (seat.SeatClass == SeatClass.I) count ++;
                 }
             }
             return count;
@@ -45,11 +45,16 @@ namespace SrbijaVoz.model
             {
                 foreach (Seat seat in wagon.Seats)
                 {
-                    if (seat.SeatClass == SeatClass.II) count++;
+                    if (seat.SeatClass == SeatClass.II) count ++;
                 }
             }
             return count;
 
+        }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
         }
 
     }
