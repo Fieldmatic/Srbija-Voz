@@ -24,6 +24,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="4*"/>
+                <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
             <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0">
                 <Grid.ColumnDefinitions>
@@ -99,7 +100,12 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
+            <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button Content="Demo" HorizontalAlignment="Stretch" MinWidth="100" Margin="10 0 10 0"></Button>
+                <Button Content="Pomoc" HorizontalAlignment="Stretch"  MinWidth="100" Margin="10 0 10 0"></Button>
+            </StackPanel>
         </Grid>
+        
         <materialDesign:DialogHost x:Name="DialogHost"
             DialogTheme="Inherit"
             CloseOnClickAway="True">

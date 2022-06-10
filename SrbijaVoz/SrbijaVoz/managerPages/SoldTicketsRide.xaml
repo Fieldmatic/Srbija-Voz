@@ -11,10 +11,10 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="8*"/>
+            <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="1">
+        <Grid Grid.Column="0">
             <ScrollViewer Grid.Row ="0">
                 <DataGrid x:Name="TicketsDataGrid"  AutoGenerateColumns="False" FontSize="18" IsReadOnly="True">
                     <DataGrid.Columns>
@@ -29,8 +29,8 @@
                 </DataGrid>
             </ScrollViewer>
         </Grid>
-        <Border BorderBrush="Gray" BorderThickness="0.5">
-            <Grid>
+        <Border Grid.Column="1" BorderBrush="Gray" BorderThickness="0.5">
+            <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="0.8*"/>

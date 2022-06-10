@@ -6,18 +6,18 @@
         xmlns:local="clr-namespace:SrbijaVoz.managerWindows"
         mc:Ignorable="d"
         Icon="../../resources/9696.png"
-        Title="Dodavanje nove linije" MinHeight="450" MinWidth="800">
+        Title="Dodavanje nove linije" Height="500" Width="700" MinHeight="500" MinWidth="700">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="70*"/>
-            <RowDefinition Height="30*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
 
         <!-- Table -->
         <Grid Grid.Row="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="8*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -26,8 +26,7 @@
 
             <TextBlock Grid.Row="0" Grid.Column="0" Text="Dostupne stanice:" FontSize="17" Margin="10 10 0 10"/>
             <TextBlock Grid.Row="0" Grid.Column="1" Text="Izabrane stanice:" FontSize="17" Margin="10 10 0 10"/>
-
-            <ScrollViewer Grid.Column="0" Grid.Row="1">
+            <Border BorderBrush="Gray" Grid.Column="0" Grid.Row="1" BorderThickness="1">
                 <ListView Grid.Column="0" Grid.Row="1" ItemsSource="{Binding AvailableStations}"
                           AllowDrop="True" PreviewMouseLeftButtonDown="ListView_PreviewMouseLeftButtonDown"
                           MouseMove="ListView_MouseMove" DragEnter="ListView_DragEnter" Drop="ListView_DropGiven"
@@ -40,25 +39,21 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-            </ScrollViewer>
-
-            <ScrollViewer Grid.Column="1" Grid.Row="1">
+            </Border>
+            <Border BorderBrush="Gray" Grid.Column="1" Grid.Row="1" BorderThickness="1">
                 <ListView Grid.Column="1" Grid.Row="1" ItemsSource="{Binding SettedStations}"
                           AllowDrop="True" DragEnter="ListView_DragEnter" Drop="ListView_DropSelected" 
                           BorderThickness="1,1,1,1" BorderBrush="#FF343434" MouseMove="ListView_MouseMove"
                           PreviewMouseLeftButtonDown="ListView_PreviewMouseLeftButtonDown">
                     <ListView.ItemTemplate>
-                        <ItemContainerTemplate>
-                            <TextBlock Text="{Binding Name}" FontWeight="Bold" Cursor="Hand"/>
-                        </ItemContainerTemplate>
-                        <!--<DataTemplate>
-                            --><!--<WrapPanel>-->
-                                
-                            <!--</WrapPanel>--><!--
-                        </DataTemplate>-->
+                        <DataTemplate>
+                            <WrapPanel>
+                                <TextBlock Text="{Binding Name}" FontWeight="Bold" Cursor="Hand"/>
+                            </WrapPanel>
+                        </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-            </ScrollViewer>
+            </Border>
         </Grid>
 
         <!-- Button -->

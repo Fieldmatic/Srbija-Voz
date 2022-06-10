@@ -44,17 +44,17 @@ namespace SrbijaVoz
             showTrains.InputGestures.Add(new KeyGesture(Key.D1, ModifierKeys.Control));
             this.CommandBindings.Add(new CommandBinding(showTrains, SwitchToTrainData));
 
+            RoutedCommand showStations = new();
+            showStations.InputGestures.Add(new KeyGesture(Key.D2, ModifierKeys.Control));
+            this.CommandBindings.Add(new CommandBinding(showStations, SwitchToStationsData));
+
             RoutedCommand showLines = new();
-            showLines.InputGestures.Add(new KeyGesture(Key.D2, ModifierKeys.Control));
+            showLines.InputGestures.Add(new KeyGesture(Key.D3, ModifierKeys.Control));
             this.CommandBindings.Add(new CommandBinding(showLines, SwitchToLineData));
 
             RoutedCommand showLineSchedules = new();
-            showLineSchedules.InputGestures.Add(new KeyGesture(Key.D3, ModifierKeys.Control));
+            showLineSchedules.InputGestures.Add(new KeyGesture(Key.D4, ModifierKeys.Control));
             this.CommandBindings.Add(new CommandBinding(showLineSchedules, SwitchToLineScheduleData));
-
-            RoutedCommand showNetwork = new();
-            showNetwork.InputGestures.Add(new KeyGesture(Key.D4, ModifierKeys.Control));
-            this.CommandBindings.Add(new CommandBinding(showNetwork, SwitchToLineNetworkView));
 
             RoutedCommand showTickets = new();
             showTickets.InputGestures.Add(new KeyGesture(Key.D5, ModifierKeys.Control));

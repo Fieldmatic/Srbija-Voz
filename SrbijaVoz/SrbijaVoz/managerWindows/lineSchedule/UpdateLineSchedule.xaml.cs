@@ -46,6 +46,7 @@ namespace SrbijaVoz.managerWindows
             PopulateTrainNames();
             DisplayStationsAndTimes();
             DisplaySettedDays();
+            CenterWindowOnScreen();
         }
 
         private List<LineRecord> SetCurrentLine()
@@ -209,7 +210,7 @@ namespace SrbijaVoz.managerWindows
                 SelectedTime = time
             };
             Thickness margin = timePicker.Margin;
-            margin.Bottom = 7;
+            margin.Bottom = 40;
             timePicker.Margin = margin;
 
             TimeStationPanel.Children.Add(timePicker);
@@ -237,6 +238,15 @@ namespace SrbijaVoz.managerWindows
                 }
             }
             return trainStops;
+        }
+        private void CenterWindowOnScreen()
+        {
+            double screenWidth = System.Windows.SystemParameters.PrimaryScreenWidth;
+            double screenHeight = System.Windows.SystemParameters.PrimaryScreenHeight;
+            double windowWidth = this.Width;
+            double windowHeight = this.Height;
+            this.Left = (screenWidth / 2) - (windowWidth / 2);
+            this.Top = (screenHeight / 2) - (windowHeight / 2);
         }
     }
 }

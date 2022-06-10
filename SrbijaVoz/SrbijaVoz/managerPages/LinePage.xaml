@@ -31,8 +31,7 @@
         </Grid.ColumnDefinitions>
         <DataGrid x:Name="LineDataGrid" Grid.Column="0"  AutoGenerateColumns="False"
                   FontSize="18" IsReadOnly="True" ItemsSource="{Binding}"
-                  MouseMove="LineDataGrid_MouseMove">
-                  PreviewMouseLeftButtonDown="LineDataGrid_PreviewMouseLeftButtonDown"
+                  MouseMove="LineDataGrid_MouseMove"
                   SelectionChanged="LineDataGrid_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="0.5*"/>

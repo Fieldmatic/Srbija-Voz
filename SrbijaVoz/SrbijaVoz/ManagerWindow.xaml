@@ -31,15 +31,14 @@
                 <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
                     <Image Source="resources/SrbijaVozLogo.png" Margin="10"/>
 
-                    <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="22" Margin="0 0 10 0" Click="SwitchToTrainData" ToolTip="Crtl+1">Vozovi</Button>
-                    <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="22" Margin="0 0 10 0" Click="SwitchToStationsData">Stanice</Button>
-                    <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="22" Margin="0 0 10 0" Click="SwitchToLineData" ToolTip="Crtl+2">Linije</Button>
-                    <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="22" Margin="0 0 10 0" Click="SwitchToLineScheduleData" ToolTip="Crtl+3">Redovi Voznje</Button>
-                    <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="22" Margin="0 0 10 0" Click="SwitchToLineNetworkView" ToolTip="Crtl+4">Mrezni Pregled Linija</Button>
-                    <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="22" Margin="0 0 10 0" Click="SwitchToSoldTicketsRide" ToolTip="Crtl+5">Izvestaj voznji</Button>
-                    <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="22" Margin="0 0 10 0" Click="SwitchToSoldTicketsMonth" ToolTip="Crtl+6">Mesecni izvestaj</Button>
-
-                <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="22" Grid.Column="1" Click="LogoutEvent" Margin="5 0 5 0" ToolTip="Crtl+Backspace">Izloguj se</Button>
+                    <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="22" Margin="0 0 10 0" Click="SwitchToTrainData" ToolTip="Ctrl+1">Vozovi</Button>
+                    <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="22" Margin="0 0 10 0" Click="SwitchToStationsData"  ToolTip="Ctrl+2">Stanice</Button>
+                    <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="22" Margin="0 0 10 0" Click="SwitchToLineData" ToolTip="Ctrl+2">Linije</Button>
+                    <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="22" Margin="0 0 10 0" Click="SwitchToLineScheduleData" ToolTip="Ctrl+3">Redovi Voznje</Button>
+                    <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="22" Margin="0 0 10 0" Click="SwitchToSoldTicketsRide" ToolTip="Ctrl+5">Izvestaj voznji</Button>
+                    <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="22" Margin="0 0 10 0" Click="SwitchToSoldTicketsMonth" ToolTip="Ctrl+6">Mesecni izvestaj</Button>
+                </StackPanel>
+                <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="22" Grid.Column="1" Click="LogoutEvent" Margin="5 0 5 0" ToolTip="Ctrl+Backspace">Izloguj se</Button>
             </Grid>
         </Border>
         <Frame x:Name="DataFrame" NavigationUIVisibility="Hidden" Grid.Row="1"/>

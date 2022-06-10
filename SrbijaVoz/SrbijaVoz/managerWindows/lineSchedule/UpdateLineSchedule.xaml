@@ -6,11 +6,11 @@
         xmlns:local="clr-namespace:SrbijaVoz.managerWindows"
         mc:Ignorable="d"
         Icon="../../resources/9696.png"
-        Title="Ažuriranje reda vožnje" MinHeight="550" MinWidth="950">
+        Title="Ažuriranje reda vožnje" Height="700" Width="750" MinHeight="750" MinWidth="750">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="20*"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="40*"/>
             <RowDefinition Height="10*"/>
             <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
@@ -34,7 +34,7 @@
         </Grid>
 
         <!-- Time pickers -->
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1"> 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
@@ -48,7 +48,7 @@
                 </Grid>
             </ScrollViewer>
 
-            <!-- Form -->
+            <!-- Train -->
             <Grid Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10 10 20 0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="150" />
@@ -100,7 +100,7 @@
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Button x:Name="SubmitBtn" Grid.Column="1" Content="Dodaj" Margin="0 0 0 20"
+            <Button x:Name="SubmitBtn" Grid.Column="1" Content="Azuriraj" Margin="0 0 0 20"
                     Click="SubmitBtn_Click"/>
         </Grid>
     </Grid>
