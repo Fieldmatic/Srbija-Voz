@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Icon="../../resources/9696.png"
-        Title="Dodavanje nove linije" Height="550" Width="800">
+        Title="Dodavanje nove linije" MinHeight="550" MinWidth="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>

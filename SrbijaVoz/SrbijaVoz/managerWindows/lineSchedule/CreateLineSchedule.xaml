@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SrbijaVoz.managerWindows"
         mc:Ignorable="d"
-        Title="Dodavanje reda vožnje" Height="750" Width="950">
+        Icon="../../resources/9696.png"
+        Title="Dodavanje reda vožnje" MinHeight="750" MinWidth="950">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30*"/>
