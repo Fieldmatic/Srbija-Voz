@@ -90,5 +90,12 @@ namespace SrbijaVoz
         }
 
 
+        private void Register_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            RegisterWindow registerWindow = new(database);
+            registerWindow.Show();
+            this.Close();
+        }
+
     }
 }

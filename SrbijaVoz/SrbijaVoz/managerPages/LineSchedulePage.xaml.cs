@@ -145,7 +145,7 @@ namespace SrbijaVoz.managerWindows
                                                       MessageBoxImage.Warning);
             if (result == MessageBoxResult.Yes)
             {
-                LineSchedule lineScheduleForDelete = Database.LineSchedules.Find(item => item.Line.Id == lineScheduleRecord.Id);
+                LineSchedule lineScheduleForDelete = Database.LineSchedules.Find(item => item.Id == lineScheduleRecord.Id);
                 Database.LineSchedules.Remove(lineScheduleForDelete);
                 MessageBox.Show("Linija uspešno obrisana!",
                                 "Brisanje linije",
@@ -204,6 +204,12 @@ namespace SrbijaVoz.managerWindows
             List<LineRecord> lineRecordData = new List<LineRecord>();
             foreach (Line line in Database.Lines) lineRecordData.Add(new LineRecord(line));
             return lineRecordData;
+        }
+
+        private void LineScheduleDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            EditBtn.IsEnabled = true;
+            DeleteBtn.IsEnabled = true;
         }
     }
 }

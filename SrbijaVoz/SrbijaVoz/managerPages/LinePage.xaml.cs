@@ -210,5 +210,11 @@ namespace SrbijaVoz.managerWindows
             LineNetworkView lineNetworkView = new LineNetworkView(line);
             lineNetworkView.Show();
         }
+
+        private void LineDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            EditBtn.IsEnabled = true;
+            DeleteBtn.IsEnabled = true;
+        }
     }
 }

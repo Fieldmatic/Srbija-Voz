@@ -40,29 +40,33 @@ namespace SrbijaVoz
 
         public void InitializeManagerShortcuts()
         {
-            RoutedCommand showTrains = new RoutedCommand();
+            RoutedCommand showTrains = new();
             showTrains.InputGestures.Add(new KeyGesture(Key.D1, ModifierKeys.Control));
             this.CommandBindings.Add(new CommandBinding(showTrains, SwitchToTrainData));
 
-            RoutedCommand showLines = new RoutedCommand();
+            RoutedCommand showLines = new();
             showLines.InputGestures.Add(new KeyGesture(Key.D2, ModifierKeys.Control));
             this.CommandBindings.Add(new CommandBinding(showLines, SwitchToLineData));
 
-            RoutedCommand showLineSchedules = new RoutedCommand();
+            RoutedCommand showLineSchedules = new();
             showLineSchedules.InputGestures.Add(new KeyGesture(Key.D3, ModifierKeys.Control));
             this.CommandBindings.Add(new CommandBinding(showLineSchedules, SwitchToLineScheduleData));
 
-            RoutedCommand showSoldTicketsRide = new RoutedCommand();
-            showSoldTicketsRide.InputGestures.Add(new KeyGesture(Key.D4, ModifierKeys.Control));
-            this.CommandBindings.Add(new CommandBinding(showSoldTicketsRide, SwitchToSoldTicketsRide));
+            RoutedCommand showNetwork = new();
+            showNetwork.InputGestures.Add(new KeyGesture(Key.D4, ModifierKeys.Control));
+            this.CommandBindings.Add(new CommandBinding(showNetwork, SwitchToLineNetworkView));
 
-            RoutedCommand showSoldTicketsMonth = new RoutedCommand();
-            showSoldTicketsMonth.InputGestures.Add(new KeyGesture(Key.D5, ModifierKeys.Control));
-            this.CommandBindings.Add(new CommandBinding(showSoldTicketsMonth, SwitchToSoldTicketsMonth));
+            RoutedCommand showTickets = new();
+            showTickets.InputGestures.Add(new KeyGesture(Key.D5, ModifierKeys.Control));
+            this.CommandBindings.Add(new CommandBinding(showTickets, SwitchToSoldTicketsRide));
 
-            //RoutedCommand showTickets = new RoutedCommand();
-            //showTickets.InputGestures.Add(new KeyGesture(Key.D5, ModifierKeys.Control));
-            //this.CommandBindings.Add(new CommandBinding(showTickets, SwitchToLineNetworkView));
+            RoutedCommand showMonthReport = new();
+            showMonthReport.InputGestures.Add(new KeyGesture(Key.D6, ModifierKeys.Control));
+            this.CommandBindings.Add(new CommandBinding(showMonthReport, SwitchToSoldTicketsMonth));
+
+            RoutedCommand logout = new();
+            logout.InputGestures.Add(new KeyGesture(Key.Back, ModifierKeys.Control));
+            this.CommandBindings.Add(new CommandBinding(logout, LogoutEvent));
         }
 
         private void LogoutEvent(object sender, RoutedEventArgs e)

@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SrbijaVoz.managerWindows"
         mc:Ignorable="d"
-        Title="Ažuriranje reda vožnje" Height="550" Width="950">
+        Icon="../../resources/9696.png"
+        Title="Ažuriranje reda vožnje" MinHeight="550" MinWidth="950">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>

@@ -119,7 +119,7 @@ namespace SrbijaVoz.managerWindows
 
         private void SubmitBtn_Click(object sender, RoutedEventArgs e)
         {
-            int id = Database.Lines.Count() + 1;
+            int id = Database.Lines.Count + 1;
             if (SettedStations.Count < 2)
             {
                 MessageBox.Show("Morate uneti bar 2 stanice!",
