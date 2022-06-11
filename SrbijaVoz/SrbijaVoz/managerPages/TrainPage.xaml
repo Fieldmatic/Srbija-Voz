@@ -22,11 +22,12 @@
         <DataGrid x:Name="TrainDataGrid"  RowHeaderWidth="0" ItemsSource="{Binding}" Grid.Column="0"  AutoGenerateColumns="False" FontSize="20" PreviewMouseLeftButtonDown="TrainDataGrid_PreviewMouseLeftButtonDown" CanUserAddRows="false" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="trainRow" Header="Id" Binding="{Binding Id}" Width="0.5*"/>
-                <DataGridTextColumn Header="Ime"  Binding="{Binding Name}" Width="0.75*"/>
-                <DataGridTextColumn Header="Broj Sedista I Razred" Binding="{Binding FirstClassSeatsNumber}" Width="1.1*"/>
-                <DataGridTextColumn Header="Broj Sedista II Razred"  Binding="{Binding SecondClassSeatsNumber}" Width="1.1*"/>
-                <DataGridTextColumn Header="Cena I Razred" Binding="{Binding FirstClassPrice}" Width="0.75*"/>
-                <DataGridTextColumn Header="Cena II Razred" Binding="{Binding SecondClassPrice}" Width="0.75*"/>
+                <DataGridTextColumn Header="Naziv"  Binding="{Binding Name}" Width="0.65*"/>
+                <DataGridTextColumn Header="Broj vagona" Binding="{Binding WagonsNumber}" Width="0.65*"/>
+                <DataGridTextColumn Header="Broj sedišta I razred" Binding="{Binding FirstClassSeatsNumber}" Width="1*"/>
+                <DataGridTextColumn Header="Broj sedišta II razred"  Binding="{Binding SecondClassSeatsNumber}" Width="1*"/>
+                <DataGridTextColumn Header="Cena/min I razred" Binding="{Binding FirstClassPrice}" Width="1*"/>
+                <DataGridTextColumn Header="Cena/min II razred" Binding="{Binding SecondClassPrice}" Width="1*"/>
             </DataGrid.Columns>
         </DataGrid>
         <Grid Grid.Column="1">
