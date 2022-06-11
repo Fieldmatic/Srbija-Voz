@@ -1,20 +1,13 @@
-﻿using SrbijaVoz.database;
-using SrbijaVoz.dataGridRecord;
+﻿using SrbijaVoz.dataGridRecord;
 using SrbijaVoz.model;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace SrbijaVoz.managerWindows
 {
@@ -39,7 +32,7 @@ namespace SrbijaVoz.managerWindows
             this.selectedTrain = Train;
             this.operationType = operationType;
             SetVariableWindowInfos();
-            List<Wagon> Wagons = new List<Wagon>(Trains.Find(item => item.Id == this.selectedTrain.Id).Wagons);
+            List<Wagon> Wagons = new List<Wagon>((Trains.Find(item => item.Id == this.selectedTrain.Id).Wagons).Select(w => new Wagon(w)));
             this.selectedWagons = Wagons;
             DrawWagons();
             Name.Text = Train.Name;
@@ -151,9 +144,13 @@ namespace SrbijaVoz.managerWindows
                 TextBox seatsIIClass = (TextBox)children[1];
 
                 Wagon wagon = new Wagon();
-                wagon.Seats = GetWagonSeats(Int32.Parse(seatsIClass.Text), Int32.Parse(seatsIIClass.Text));
-                wagon.Number = selectedWagons[i].Number;
-                wagons.Add(wagon);
+                if (Int32.TryParse(seatsIClass.Text, out int seatsIClassInt) && Int32.TryParse(seatsIIClass.Text, out int seatsIIClassInt))
+                {
+                    wagon.Seats = GetWagonSeats(seatsIClassInt, seatsIIClassInt);
+                    wagon.Number = selectedWagons[i].Number;
+                    wagons.Add(wagon);
+                }
+                else return null;
             }
             return wagons;
         }
@@ -172,28 +169,65 @@ namespace SrbijaVoz.managerWindows
 
         private void UpdateTrain_Click(object sender, RoutedEventArgs e)
         {
-            Train trainForUpdate = Trains.Find(item => item.Id == this.selectedTrain.Id);
-            trainForUpdate.Name = Name.Text;
-            trainForUpdate.PricesPerMinute = GetTrainSeatsPrice();
-            trainForUpdate.Wagons = getAllWagons();
-            UpdateTrain.DynamicInvoke();
-            this.Close();
+            try
+            {
+                Train trainForUpdate = Trains.Find(item => item.Id == this.selectedTrain.Id);
+                if (Name.Text == "") throw new ArgumentException();
+                trainForUpdate.Name = Name.Text;
+                List<Wagon> allWagons = getAllWagons();
+
+                if (Int32.TryParse(seatsPriceIClass.Text, out int seatsPriceIClassInt) && Int32.TryParse(seatsPriceIIClass.Text, out int seatsPriceIIClassInt) && allWagons is not null)
+                {
+                    trainForUpdate.PricesPerMinute = GetTrainSeatsPrice(seatsPriceIClassInt, seatsPriceIIClassInt);
+                    trainForUpdate.Wagons = getAllWagons();
+                    UpdateTrain.DynamicInvoke();
+                    this.Close();
+
+                }
+                else
+                {
+                    MessageBox.Show("Za cenu i broj sedišta dozvoljeni su samo brojevi. Molim vas, pokušajte ponovo.", "Pogrešan unos", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show("Naziv vagona je obavezno polje. Molim vas, pokušajte ponovo. ", "Pogrešan unos", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+            }
         }
 
         private void AddTrain_Click(object sender, RoutedEventArgs e)
         {
-            Train newTrain = new Train();
-            newTrain.Name = Name.Text;
-            newTrain.PricesPerMinute = GetTrainSeatsPrice();
-            newTrain.Id = this.Trains.Last().Id + 1;
-            newTrain.Wagons = getAllWagons();
-            this.Trains.Add(newTrain);
-            UpdateTrain.DynamicInvoke();
-            this.Close();
+            try
+            {
+                Train newTrain = new Train();
+                if (Name.Text == "") throw new ArgumentException();
+                newTrain.Name = Name.Text;
+                List<Wagon> allWagons = getAllWagons();
+
+                if (Int32.TryParse(seatsPriceIClass.Text, out int seatsPriceIClassInt) && Int32.TryParse(seatsPriceIIClass.Text, out int seatsPriceIIClassInt) && allWagons is not null)
+                {
+                    newTrain.PricesPerMinute = GetTrainSeatsPrice(seatsPriceIClassInt, seatsPriceIIClassInt);
+                    newTrain.Id = this.Trains.Last().Id + 1;
+                    newTrain.Wagons = allWagons;
+                    this.Trains.Add(newTrain);
+                    UpdateTrain.DynamicInvoke();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Za cenu i broj sedišta dozvoljeni su samo brojevi.", "Pogrešan unos", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show("Naziv vagona je obavezno polje. Molim vas, pokušajte ponovo. ", "Pogrešan unos", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+            }
         }
 
         private List<Seat> GetWagonSeats(int seatsIClass, int seatsIIClass)
-        {
+        { 
             List<Seat> seats = new List<Seat>();
             for (int i = 1; i <= seatsIClass; i++)
             {
@@ -208,11 +242,12 @@ namespace SrbijaVoz.managerWindows
 
         }
 
-        private Dictionary<SeatClass, int> GetTrainSeatsPrice()
+        private Dictionary<SeatClass, int> GetTrainSeatsPrice(int seatsIClass, int seatsIIClass)
         {
+
             Dictionary<SeatClass, int> seatsPrice = new Dictionary<SeatClass, int>();
-            seatsPrice.Add(SeatClass.I, Int32.Parse(seatsPriceIClass.Text));
-            seatsPrice.Add(SeatClass.II, Int32.Parse(seatsPriceIIClass.Text));
+            seatsPrice.Add(SeatClass.I, seatsIClass);
+            seatsPrice.Add(SeatClass.II, seatsIIClass);
             return seatsPrice;
         }
 
@@ -244,29 +279,40 @@ namespace SrbijaVoz.managerWindows
             seatsNumIIClass.Text = "";
         }
 
+        
         private void AddWagon_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            WagonNumber++;
-            Wagon newWagon = new Wagon();
-            newWagon.Seats = GetWagonSeats(Int32.Parse(seatsNumIClass.Text), Int32.Parse(seatsNumIIClass.Text));
-            if (selectedTrain == null)
+            try
             {
-                if (selectedWagons.Count == 0)
+                Wagon newWagon = new Wagon();
+                List<Wagon> existingWagons = getAllWagons();
+                if (Int32.TryParse(seatsNumIClass.Text, out int seatsIClassInt) && Int32.TryParse(seatsNumIIClass.Text, out int seatsIIClassInt) && existingWagons is not null)
                 {
-                    newWagon.Number = 1;
-                } else
+                    newWagon.Seats = GetWagonSeats(seatsIClassInt, seatsIIClassInt);
+                    if (selectedWagons.Count == 0)
+                    {
+                        newWagon.Number = 1;
+                    }
+                    else
+                    {
+                        Wagon lastWagon = new Wagon(selectedWagons.Last());
+                        newWagon.Number = lastWagon.Number + 1;
+                    }
+                    selectedWagons = existingWagons;
+                    selectedWagons.Add(newWagon);
+                    ClearWagonInputs();
+                    DrawWagons();
+                }
+                else
                 {
-                    Wagon lastWagon = new Wagon(selectedWagons.Last());
-                    newWagon.Number = lastWagon.Number + 1;
+                    MessageBox.Show("Za broj sedišta vagona dozvoljeni su samo brojevi. Molim vas, pokušajte ponovo. ", "Pogrešan unos", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
-            else
-                newWagon.Number = selectedWagons.Last().Number + 1;
-            selectedWagons = getAllWagons();
-            selectedWagons.Add(newWagon);
-            ClearWagonInputs();
-            DrawWagons();
-            
+            catch (Exception ex)
+            {
+                MessageBox.Show("Niste uneli broj sedišta za oba razreda vagona. Molim vas, pokušajte ponovo. ", "Pogrešan unos", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+            }
         }
 
         private void ReplaceWagonsNumber(int deletedWagonNumber)

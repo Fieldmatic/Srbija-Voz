@@ -75,7 +75,7 @@
                     </StackPanel>
                 </ScrollViewer>
 
-                <GroupBox HorizontalAlignment="Right" Width="170" Grid.Row="1" Grid.Column="0" Margin="0 10 0 10">
+                <GroupBox HorizontalAlignment="Right" Header = "Broj sedišta - Novi vagon" Width="170" Grid.Row="1" Grid.Column="0" Margin="0 10 0 10">
                     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="1*"/>
@@ -97,7 +97,7 @@
                       materialDesign:HintAssist.Hint="II razred" Grid.Row="1"/>
                     </Grid>
                 </GroupBox>
-                <StackPanel Height="Auto" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Margin="0 50 10 10">
+                <StackPanel Height="Auto" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Margin="0 15 10 10">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <materialDesign:PackIcon Foreground="#0F3256" Kind="ArrowRightThin" Width="40" Height="40"/>
 
@@ -117,7 +117,7 @@
                     </StackPanel>
                     <TextBlock Foreground="#0F3256" FontWeight="Medium">Dodaj vagon</TextBlock>
                 </StackPanel>
-                <Button x:Name="updateButton" Grid.Row="3" Grid.ColumnSpan="3" Margin="30 10 30 10" Click="UpdateOrAddTrain_Click"></Button>
+                <Button x:Name="updateButton" Grid.Row="3" Grid.ColumnSpan="3" Margin="30 0 30 10" Click="UpdateOrAddTrain_Click"></Button>
             </Grid>
         </Border>
 
