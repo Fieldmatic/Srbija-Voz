@@ -1,6 +1,7 @@
 ﻿using Hangfire.Annotations;
 using MaterialDesignThemes.Wpf;
 using Microsoft.Maps.MapControl.WPF;
+using SrbijaVoz.managerWindows.help;
 using SrbijaVoz.model;
 using System;
 using System.Collections.Generic;
@@ -152,6 +153,11 @@ namespace SrbijaVoz.managerPages
             StationsNetworkMap.ZoomLevel = 15;
         }
 
+        private void playDemo(object sender, RoutedEventArgs e)
+        {
+            DemoVideo m = new DemoVideo(@"../../../demo/Stanice.mp4");
+            m.ShowDialog();
+         }
     }
 
     public class MessageBoxModel : INotifyPropertyChanged

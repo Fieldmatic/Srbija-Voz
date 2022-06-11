@@ -1,5 +1,6 @@
 ﻿using SrbijaVoz.database;
 using SrbijaVoz.dataGridRecord;
+using SrbijaVoz.managerWindows.help;
 using SrbijaVoz.model;
 using System;
 using System.Collections.Generic;
@@ -63,6 +64,11 @@ namespace SrbijaVoz.managerPages
             }
         }
 
+        private void playDemo(object sender, RoutedEventArgs e)
+        {
+            DemoVideo m = new DemoVideo(@"../../../demo/Stanice.mp4");
+            m.ShowDialog();
+        }
         protected override void OnPreviewMouseUp(MouseButtonEventArgs e)
         {
             base.OnPreviewMouseUp(e);

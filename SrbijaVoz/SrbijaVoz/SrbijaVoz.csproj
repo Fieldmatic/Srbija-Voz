@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="demo\Stanice.mp4" />
     <None Remove="resources\9696.png" />
     <None Remove="resources\backgroundd.jpg" />
     <None Remove="resources\BG.jpg" />
@@ -46,6 +47,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="demo\Stanice.mp4" />
     <Resource Include="resources\9696.png" />
     <Resource Include="resources\BG.jpg" />
     <Resource Include="resources\delete.png" />

@@ -1,5 +1,6 @@
 ﻿using SrbijaVoz.database;
 using SrbijaVoz.dataGridRecord;
+using SrbijaVoz.managerWindows.help;
 using SrbijaVoz.model;
 using System;
 using System.Collections.Generic;
@@ -109,6 +110,12 @@ namespace SrbijaVoz.managerWindows
             DragDrop.DoDragDrop(TrainDataGrid, dataObject, DragDropEffects.Move);
          
 
+        }
+
+        private void playDemo(object sender, RoutedEventArgs e)
+        {
+            DemoVideo m = new DemoVideo(@"../../../demo/Stanice.mp4");
+            m.ShowDialog();
         }
 
         private int GetCurrentRowIndex(GetPosition pos)

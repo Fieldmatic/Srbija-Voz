@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SrbijaVoz.managerWindows"
-      xmlns:cmd="clr-namespace:SrbijaVoz.managerWindows.Commands"
+      xmlns:cmd="clr-namespace:SrbijaVoz.managerWindows.Commands" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="1200"
       Title="LinePage">
@@ -26,8 +26,8 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="9*"/>
-            <ColumnDefinition Width="1.3*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <DataGrid x:Name="LineDataGrid" Grid.Column="0"  AutoGenerateColumns="False"
                   FontSize="18" IsReadOnly="True" ItemsSource="{Binding}"
@@ -46,26 +46,53 @@
 
             </DataGrid.Columns>
         </DataGrid>
-        <Grid Grid.Column="1" Background="White">
-            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                <Button Grid.Row="1" Background ="Transparent" BorderThickness="0"
+        <Border BorderBrush="Gray" Grid.Column="1" BorderThickness="0.5 0 0 0">
+            <Grid Grid.Column="1" Background="White">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="8*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center" Grid.Row="0">
+                    <Button Grid.Row="1" Background ="Transparent" BorderThickness="0"
                         Content="{StaticResource Add}" Height="60" HorizontalAlignment="Center"
                         ToolTip="Nova linija, Ctrl+N" Command="cmd:RoutedCommands.AddNewItem" />
-                <Button x:Name="EditBtn" Background ="Transparent" BorderThickness="0"
+                    <Button x:Name="EditBtn" Background ="Transparent" BorderThickness="0"
                         Content="{StaticResource Edit}" Margin="12 80 0 0" Height="60"
                         RenderTransformOrigin="1.282,0.533"
                         ToolTip="Izmeni liniju, Ctrl+E" Command="cmd:RoutedCommands.EditItem"
                         AllowDrop="True" Drop="UpdateLine_Drop"
                         IsEnabled="False"/>
-                <Button x:Name="DeleteBtn" Grid.Row="3" Background ="Transparent" BorderThickness="0"
+                    <Button x:Name="DeleteBtn" Grid.Row="3" Background ="Transparent" BorderThickness="0"
                         Content="{StaticResource Delete}" Margin="0 80 0 0" Height="60"
                         HorizontalAlignment="Center"
                         ToolTip="Obriši liniju, Shift+Del" Command="cmd:RoutedCommands.DeleteItem"
                         AllowDrop="True" Drop="DeleteLine_Drop"
                         IsEnabled="False"/>
-            </StackPanel>
+                </StackPanel>
+                <Border BorderBrush="Gray" Grid.Row="1" BorderThickness="0 0.5 0 0">
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Button HorizontalAlignment="Stretch" Height="Auto" Margin="10 0 10 0" MinWidth="100" Click="playDemo">
+                            <Button.Content>
+                                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <materialDesign:PackIcon Kind="Video" Height="20" Width="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Video</TextBlock>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                        <Button HorizontalAlignment="Stretch" Height="Auto" Margin="10 0 10 0" MinWidth="100">
+                            <Button.Content>
+                                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <materialDesign:PackIcon Kind="HelpCircle" Height="20" Width="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Pomoć</TextBlock>
+                                </StackPanel>
+                            </Button.Content>
 
-        </Grid>
+                        </Button>
+                    </StackPanel>
+                </Border>
+
+            </Grid>
+        </Border>
 
     </Grid>
 </Page>

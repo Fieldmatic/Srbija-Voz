@@ -61,47 +61,51 @@
                     <Button.Content>
                         <StackPanel>
                             <materialDesign:PackIcon Kind="Eraser" Width="40" Height="40"  HorizontalAlignment="Center"/>
-                            <TextBlock>Obrisi stanicu</TextBlock>
+                            <TextBlock>Obriši stanicu</TextBlock>
                         </StackPanel>
                     </Button.Content>
                 </Button>
             </Grid>
-            <ListBox MouseDoubleClick="StationsListBox_MouseDoubleClick"
+            <Border BorderBrush="Gray" Grid.Row="1" Grid.Column="1" BorderThickness="0 0.5 0 0.5">
+                <ListBox MouseDoubleClick="StationsListBox_MouseDoubleClick"
                 Grid.Row="1"
                 Name="StationsListBox"
                 HorizontalAlignment="Stretch"
                 Grid.IsSharedSizeScope="True"
                 Margin="12 0 12 0">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <Border
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Border
                                 x:Name="Border"
                                 HorizontalAlignment="Stretch"
                                 Padding="8"
+                                Width="400"
                                 BorderThickness="0 0 0 1"
                                 BorderBrush="{DynamicResource MaterialDesignDivider}">
-                            <Grid x:Name="Grid">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition SharedSizeGroup="Checkerz"/>
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <ToggleButton x:Name="ButtonId"
+                                <Grid x:Name="Grid">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition SharedSizeGroup="Checkerz"/>
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <ToggleButton x:Name="ButtonId"
                                         VerticalAlignment="Center"
                                         Style="{StaticResource MaterialDesignActionLightToggleButton}"
                                         Content="{Binding Id}"/>
-                                <StackPanel
+                                    <StackPanel
                                         Margin="8 0 0 0"
                                         Grid.Column="1"
                                         VerticalAlignment="Center">
-                                    <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
-                                </StackPanel>
-                            </Grid>
-                        </Border>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                                        <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Border>
+
             <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Button HorizontalAlignment="Stretch" Height="Auto" Margin="10 0 10 0" MinWidth="100">
+                <Button HorizontalAlignment="Stretch" Height="Auto" Margin="10 0 10 0" MinWidth="100" Click="playDemo">
                     <Button.Content>
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <materialDesign:PackIcon Kind="Video" Height="20" Width="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>

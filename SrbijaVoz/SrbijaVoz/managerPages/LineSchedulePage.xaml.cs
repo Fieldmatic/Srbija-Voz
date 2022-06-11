@@ -1,5 +1,6 @@
 ﻿using SrbijaVoz.database;
 using SrbijaVoz.dataGridRecord;
+using SrbijaVoz.managerWindows.help;
 using SrbijaVoz.model;
 using System;
 using System.Collections.Generic;
@@ -64,6 +65,12 @@ namespace SrbijaVoz.managerWindows
             foreach (LineSchedule lineSchedule in Database.LineSchedules)
                 lineScheduleRecordData.Add(new LineScheduleRecord(lineSchedule));
             return lineScheduleRecordData;
+        }
+
+        private void playDemo(object sender, RoutedEventArgs e)
+        {
+            DemoVideo m = new DemoVideo(@"../../../demo/Stanice.mp4");
+            m.ShowDialog();
         }
 
         private void InitializeLinePageShortcuts(ManagerWindow managerWindow)

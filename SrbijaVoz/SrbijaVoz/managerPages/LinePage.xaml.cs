@@ -1,5 +1,6 @@
 ﻿using SrbijaVoz.database;
 using SrbijaVoz.dataGridRecord;
+using SrbijaVoz.managerWindows.help;
 using SrbijaVoz.managerWindows.line;
 using SrbijaVoz.model;
 using System;
@@ -106,7 +107,14 @@ namespace SrbijaVoz.managerWindows
             DeleteLine(lineRecord);
         }
 
+
         #endregion
+
+        private void playDemo(object sender, RoutedEventArgs e)
+        {
+            DemoVideo m = new DemoVideo(@"../../../demo/Stanice.mp4");
+            m.ShowDialog();
+        }
 
         private void InitializeLines()
         {

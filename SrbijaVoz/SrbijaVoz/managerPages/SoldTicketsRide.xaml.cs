@@ -1,5 +1,6 @@
 ﻿using SrbijaVoz.database;
 using SrbijaVoz.dataGridRecord;
+using SrbijaVoz.managerWindows.help;
 using SrbijaVoz.model;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,12 @@ namespace SrbijaVoz.managerPages
             Database = db;
             StartStationCombo.ItemsSource = db.GetStationNames();
             EndStationCombo.ItemsSource = db.GetStationNames();
+        }
+
+        private void playDemo(object sender, RoutedEventArgs e)
+        {
+            DemoVideo m = new DemoVideo(@"../../../demo/Stanice.mp4");
+            m.ShowDialog();
         }
 
         private void SearchTickets(object sender, RoutedEventArgs e)
