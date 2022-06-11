@@ -6,6 +6,7 @@ using SrbijaVoz.model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -69,6 +70,10 @@ namespace SrbijaVoz.managerWindows
             RoutedCommand openDemo = new();
             openDemo.InputGestures.Add(new KeyGesture(Key.D, ModifierKeys.Control));
             managerWindow.CommandBindings.Add(new CommandBinding(openDemo, playDemo));
+
+            RoutedCommand openHelp = new();
+            openHelp.InputGestures.Add(new KeyGesture(Key.H, ModifierKeys.Control));
+            managerWindow.CommandBindings.Add(new CommandBinding(openHelp, HelpBtn_Click));
         }
 
         private void AddLine_CanExecute(object sender, CanExecuteRoutedEventArgs e)
@@ -225,8 +230,30 @@ namespace SrbijaVoz.managerWindows
 
         private void LineDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            EditBtn.IsEnabled = true;
-            DeleteBtn.IsEnabled = true;
+            LineRecord lineRecord = (LineRecord)LineDataGrid.SelectedItem;
+            if (lineRecord != null)
+            {
+                EditBtn.IsEnabled = true;
+                DeleteBtn.IsEnabled = true;
+            }
+            else
+            {
+                EditBtn.IsEnabled = false;
+                DeleteBtn.IsEnabled = false;
+            }
+            
+        }
+
+        private void HelpBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var p = new Process
+            {
+                StartInfo = new ProcessStartInfo(@"../../../../help/lineHelp.html")
+                {
+                    UseShellExecute = true
+                }
+            };
+            p.Start();
         }
     }
 }

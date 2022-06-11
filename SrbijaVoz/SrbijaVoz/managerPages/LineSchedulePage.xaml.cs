@@ -219,8 +219,17 @@ namespace SrbijaVoz.managerWindows
 
         private void LineScheduleDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            EditBtn.IsEnabled = true;
-            DeleteBtn.IsEnabled = true;
+            LineScheduleRecord lineScheduleRecord = (LineScheduleRecord)LineScheduleDataGrid.SelectedItem;
+            if (lineScheduleRecord != null)
+            {
+                EditBtn.IsEnabled = true;
+                DeleteBtn.IsEnabled = true;
+            }
+            else
+            {
+                EditBtn.IsEnabled = false;
+                DeleteBtn.IsEnabled = false;
+            }
         }
     }
 }

@@ -222,8 +222,17 @@ namespace SrbijaVoz.managerWindows
 
         private void TrainDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            EditBtn.IsEnabled = true;
-            DeleteBtn.IsEnabled = true;
+            TrainRecord trainRecord = (TrainRecord)TrainDataGrid.SelectedItem;
+            if (trainRecord != null)
+            {
+                EditBtn.IsEnabled = true;
+                DeleteBtn.IsEnabled = true;
+            }
+            else
+            {
+                EditBtn.IsEnabled = false;
+                DeleteBtn.IsEnabled = false;
+            }
         }
     }
 }
