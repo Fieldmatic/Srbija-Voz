@@ -32,19 +32,19 @@
         "Number": 2,
         "Seats": [
           {
-            "Number": 1,
+            "Number": 5,
             "SeatClass": 0
           },
           {
-            "Number": 2,
+            "Number": 6,
             "SeatClass": 0
           },
           {
-            "Number": 3,
+            "Number": 7,
             "SeatClass": 0
           },
           {
-            "Number": 4,
+            "Number": 8,
             "SeatClass": 1
           }
         ]

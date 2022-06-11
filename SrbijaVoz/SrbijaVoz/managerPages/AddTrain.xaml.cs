@@ -1,4 +1,5 @@
-﻿using SrbijaVoz.dataGridRecord;
+﻿using SrbijaVoz.database;
+using SrbijaVoz.dataGridRecord;
 using SrbijaVoz.model;
 using System;
 using System.Collections.Generic;
@@ -17,18 +18,18 @@ namespace SrbijaVoz.managerWindows
     public partial class AddTrainWindow : Window
     {
         private List<Train> Trains;
+        private Database database;
         private TrainRecord selectedTrain;
         private readonly String operationType;
         private List<Wagon> selectedWagons = new();
-        private int WagonNumber = 0;
 
         public Delegate UpdateTrain;
 
-        public AddTrainWindow(TrainRecord Train, List<Train> trains, String operationType)
+        public AddTrainWindow(TrainRecord Train, Database database, String operationType)
         {
             InitializeComponent();
-            
-            this.Trains = trains;
+            this.database = database;
+            this.Trains = database.Trains;
             this.selectedTrain = Train;
             this.operationType = operationType;
             SetVariableWindowInfos();
@@ -41,11 +42,12 @@ namespace SrbijaVoz.managerWindows
 
         }
 
-        public AddTrainWindow(List<Train> trains, String operationType)
+        public AddTrainWindow(Database database, String operationType)
         {
             //za dodavanje voza
             InitializeComponent();
-            this.Trains = trains;
+            this.database = database;
+            this.Trains = database.Trains;
             this.operationType = operationType;
             SetVariableWindowInfos();
             ClearAllFields();
@@ -134,7 +136,8 @@ namespace SrbijaVoz.managerWindows
         {
             List<Wagon> wagons = new List<Wagon>();
             UIElementCollection panel = WagonsPanel.Children;
-    
+            selectedWagons = selectedWagons.OrderBy(wagon => wagon.Number).ToList();
+
             for (int i = 0; i < selectedWagons.Count; i++)
             {
                 GroupBox groupBox = (GroupBox)panel[i];
@@ -146,9 +149,10 @@ namespace SrbijaVoz.managerWindows
                 Wagon wagon = new Wagon();
                 if (Int32.TryParse(seatsIClass.Text, out int seatsIClassInt) && Int32.TryParse(seatsIIClass.Text, out int seatsIIClassInt))
                 {
-                    wagon.Seats = GetWagonSeats(seatsIClassInt, seatsIIClassInt);
                     wagon.Number = selectedWagons[i].Number;
+                    wagon.Seats = GetWagonSeats(seatsIClassInt, seatsIIClassInt, wagon.Number);
                     wagons.Add(wagon);
+                    selectedWagons[wagon.Number - 1] = wagon;
                 }
                 else return null;
             }
@@ -180,6 +184,11 @@ namespace SrbijaVoz.managerWindows
                 {
                     trainForUpdate.PricesPerMinute = GetTrainSeatsPrice(seatsPriceIClassInt, seatsPriceIIClassInt);
                     trainForUpdate.Wagons = getAllWagons();
+                    foreach(LineSchedule ls in database.LineSchedules)
+                    {
+                        if (ls.Train.Id == this.selectedTrain.Id)
+                            ls.Train = trainForUpdate;
+                    }
                     UpdateTrain.DynamicInvoke();
                     this.Close();
 
@@ -226,17 +235,19 @@ namespace SrbijaVoz.managerWindows
             }
         }
 
-        private List<Seat> GetWagonSeats(int seatsIClass, int seatsIIClass)
-        { 
+        private List<Seat> GetWagonSeats(int seatsIClass, int seatsIIClass, int wagonNumber)
+        {
+            int lastSeatNumber = 1;
+            if (wagonNumber != 1) lastSeatNumber = selectedWagons.Where(w => w.Number < wagonNumber).Last().Seats.Last().Number + 1; 
             List<Seat> seats = new List<Seat>();
-            for (int i = 1; i <= seatsIClass; i++)
+            for (int i = lastSeatNumber; i < lastSeatNumber + seatsIClass; i++)
             {
                 seats.Add(new Seat(i, SeatClass.I));
             }
 
-            for (int i = 1; i <= seatsIIClass; i++)
+            for (int i = 0; i < seatsIIClass; i++)
             {
-                seats.Add(new Seat(i, SeatClass.II));
+                seats.Add(new Seat(lastSeatNumber + seatsIClass + i, SeatClass.II));
             }
             return seats;
 
@@ -288,7 +299,6 @@ namespace SrbijaVoz.managerWindows
                 List<Wagon> existingWagons = getAllWagons();
                 if (Int32.TryParse(seatsNumIClass.Text, out int seatsIClassInt) && Int32.TryParse(seatsNumIIClass.Text, out int seatsIIClassInt) && existingWagons is not null)
                 {
-                    newWagon.Seats = GetWagonSeats(seatsIClassInt, seatsIIClassInt);
                     if (selectedWagons.Count == 0)
                     {
                         newWagon.Number = 1;
@@ -298,6 +308,7 @@ namespace SrbijaVoz.managerWindows
                         Wagon lastWagon = new Wagon(selectedWagons.Last());
                         newWagon.Number = lastWagon.Number + 1;
                     }
+                    newWagon.Seats = GetWagonSeats(seatsIClassInt, seatsIIClassInt, newWagon.Number);
                     selectedWagons = existingWagons;
                     selectedWagons.Add(newWagon);
                     ClearWagonInputs();
