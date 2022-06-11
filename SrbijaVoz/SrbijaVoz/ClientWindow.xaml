@@ -29,12 +29,40 @@
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" >
                     <Image Source="resources/SrbijaVozLogo.png" Margin="10"/>
-                    <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="22" Margin="0 0 5 0" Click="SwitchToDeparturesPage">Polasci</Button>
-                    <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="22"  Margin="0 0 5 0" Click="SwitchToReservedTicketsPage">Rezervisane Karte</Button>
-                    <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="22"  Margin="0 0 5 0" Click="SwitchToBoughtTicketsPage">Kupljene Karte</Button>
+                    <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Medium" FontSize="22" Margin="0 0 5 0" Click="SwitchToDeparturesPage">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Image Source="resources/icons8-timetable-48.png" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="6 0 0 0">Redovi vožnje</TextBlock>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                    <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Medium" FontSize="22"  Margin="0 0 5 0" Click="SwitchToReservedTicketsPage">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Image Source="resources/icons8-tickets-64.png" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="6 0 0 0">Rezervisane karte</TextBlock>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                    <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Medium" FontSize="22"  Margin="0 0 5 0" Click="SwitchToBoughtTicketsPage">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Image Source="resources/icons8-ticket-confirmed-48.png" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="6 0 0 0">Kupljene karte</TextBlock>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
                     
                 </StackPanel>
-                <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="22"  Margin="5 0 5 0" Grid.Column="1" Click="LogoutEvent">Izloguj se</Button>
+                <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Medium" FontSize="22"  Margin="5 0 0 0" Grid.Column="1" Click="LogoutEvent">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Image Source="resources/icons8-logout-48.png" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="6 0 0 0"> Izloguj se</TextBlock>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
             </Grid>
         </Border>
         <Frame x:Name="DataFrame" NavigationUIVisibility="Hidden" Grid.Row="1"/>

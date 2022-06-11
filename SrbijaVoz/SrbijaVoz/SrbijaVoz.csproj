@@ -13,6 +13,13 @@
     <None Remove="resources\BG.jpg" />
     <None Remove="resources\delete.png" />
     <None Remove="resources\edit.png" />
+    <None Remove="resources\icons8-journey-48.png" />
+    <None Remove="resources\icons8-logout-48.png" />
+    <None Remove="resources\icons8-report-64.png" />
+    <None Remove="resources\icons8-ticket-confirmed-48.png" />
+    <None Remove="resources\icons8-tickets-64.png" />
+    <None Remove="resources\icons8-timetable-48.png" />
+    <None Remove="resources\locations-91.png" />
     <None Remove="resources\loginBackground.jpg" />
     <None Remove="resources\loginbg.jpg" />
     <None Remove="resources\plus.png" />
@@ -20,6 +27,7 @@
     <None Remove="resources\Screenshot_1.png" />
     <None Remove="resources\SrbijaVoz.png" />
     <None Remove="resources\SrbijaVozLogo.png" />
+    <None Remove="resources\train-48.png" />
     <None Remove="resources\VOZSRBIJA.png" />
     <None Remove="SrbijaVozICON.png" />
   </ItemGroup>
@@ -42,10 +50,18 @@
     <Resource Include="resources\BG.jpg" />
     <Resource Include="resources\delete.png" />
     <Resource Include="resources\edit.png" />
+    <Resource Include="resources\icons8-journey-48.png" />
+    <Resource Include="resources\icons8-logout-48.png" />
+    <Resource Include="resources\icons8-report-64.png" />
+    <Resource Include="resources\icons8-ticket-confirmed-48.png" />
+    <Resource Include="resources\icons8-tickets-64.png" />
+    <Resource Include="resources\icons8-timetable-48.png" />
+    <Resource Include="resources\locations-91.png" />
     <Resource Include="resources\plus.png" />
     <Resource Include="resources\SrbijaVoz.png" />
     <Resource Include="resources\SrbijaVozICON.png" />
     <Resource Include="resources\SrbijaVozLogo.png" />
+    <Resource Include="resources\train-48.png" />
     <Resource Include="resources\VOZSRBIJA.png" />
   </ItemGroup>
 
