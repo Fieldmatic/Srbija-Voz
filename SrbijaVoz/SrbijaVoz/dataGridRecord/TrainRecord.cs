@@ -17,6 +17,8 @@ namespace SrbijaVoz.dataGridRecord
 
         public int FirstClassPrice { get; set; }
 
+        public int WagonsNumber { get; set; }
+
         public int SecondClassPrice { get; set; }
 
         public TrainRecord(Train train)
@@ -25,8 +27,9 @@ namespace SrbijaVoz.dataGridRecord
             Name = train.Name;
             FirstClassSeatsNumber = train.getFirstClassSeatsCount();
             SecondClassSeatsNumber = train.getSecondClassSeatsCount();
-            FirstClassPrice = train.Prices[SeatClass.I];
-            SecondClassPrice = train.Prices[SeatClass.II];
+            WagonsNumber = train.Wagons.Count();
+            FirstClassPrice = train.PricesPerMinute[SeatClass.I];
+            SecondClassPrice = train.PricesPerMinute[SeatClass.II];
         }
 
         public TrainRecord() { }
