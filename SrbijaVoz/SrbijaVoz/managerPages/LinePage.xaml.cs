@@ -65,6 +65,10 @@ namespace SrbijaVoz.managerWindows
             RoutedCommand deleteLine = new RoutedCommand();
             deleteLine.InputGestures.Add(new KeyGesture(Key.Delete, ModifierKeys.Shift));
             managerWindow.CommandBindings.Add(new CommandBinding(deleteLine, DeleteLine_Executed));
+
+            RoutedCommand openDemo = new();
+            openDemo.InputGestures.Add(new KeyGesture(Key.D, ModifierKeys.Control));
+            managerWindow.CommandBindings.Add(new CommandBinding(openDemo, playDemo));
         }
 
         private void AddLine_CanExecute(object sender, CanExecuteRoutedEventArgs e)

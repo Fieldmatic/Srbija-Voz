@@ -25,12 +25,34 @@ namespace SrbijaVoz.managerWindows
         public delegate void RefreshTrains();
         public event RefreshTrains RefreshTrainsListEvent;
 
-        public TrainPage(Database database)
+        public TrainPage(Database database, ManagerWindow managerWindow)
         {
             InitializeComponent();
             this.Database = database;
             InitializeTrains();
-            
+
+            managerWindow.CommandBindings.Clear();
+            managerWindow.InitializeManagerShortcuts();
+            InitializeTrainPageShortcuts(managerWindow);
+        }
+
+        private void InitializeTrainPageShortcuts(ManagerWindow managerWindow)
+        {
+            RoutedCommand addNewTrain = new();
+            addNewTrain.InputGestures.Add(new KeyGesture(Key.N, ModifierKeys.Control));
+            managerWindow.CommandBindings.Add(new CommandBinding(addNewTrain, AddTrain_Executed));
+
+            RoutedCommand editTrain = new();
+            editTrain.InputGestures.Add(new KeyGesture(Key.E, ModifierKeys.Control));
+            managerWindow.CommandBindings.Add(new CommandBinding(editTrain, EditTrain_Executed));
+
+            RoutedCommand deleteTrain = new();
+            deleteTrain.InputGestures.Add(new KeyGesture(Key.Delete, ModifierKeys.Shift));
+            managerWindow.CommandBindings.Add(new CommandBinding(deleteTrain, DeleteTrain_Executed));
+
+            RoutedCommand openDemo = new();
+            openDemo.InputGestures.Add(new KeyGesture(Key.D, ModifierKeys.Control));
+            managerWindow.CommandBindings.Add(new CommandBinding(openDemo, playDemo));
         }
 
         private void InitializeTrains()
@@ -47,6 +69,45 @@ namespace SrbijaVoz.managerWindows
             return trainRecordData;
         }
 
+        private void AddTrain_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void AddTrain_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            var form = new AddTrainWindow(Database.Trains, "add");
+            RefreshTrainsListEvent += new RefreshTrains(InitializeTrains);
+            form.UpdateTrain = RefreshTrainsListEvent;
+            form.ShowDialog();
+        }
+
+        private void EditTrain_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void EditTrain_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            TrainRecord trainRecord = (TrainRecord)TrainDataGrid.SelectedItem;
+            if (trainRecord == null) return;
+            var updateTrainWindow = new AddTrainWindow(trainRecord, Database.Trains, "update");
+            RefreshTrainsListEvent += new RefreshTrains(InitializeTrains);
+            updateTrainWindow.UpdateTrain = RefreshTrainsListEvent;
+            updateTrainWindow.ShowDialog();
+        }
+
+        private void DeleteTrain_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void DeleteTrain_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            this.Train = (TrainRecord)TrainDataGrid.SelectedItem;
+            if (Train == null) return;
+            DeleteTrain();
+        }
 
         private void AddTrain_Drop(object sender, DragEventArgs e)
         {
@@ -68,15 +129,26 @@ namespace SrbijaVoz.managerWindows
         private void DeleteTrain_Drop(object sender, DragEventArgs e)
         {
             this.Train = e.Data.GetData("TrainRecord") as TrainRecord;
-            MessageBoxResult result = MessageBox.Show("Da li ste sigurni da želite da obrišete voz " + this.Train.Name + "?", "Brisanje voza", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-            if ( result == MessageBoxResult.Yes)
+            DeleteTrain();
+        }
+
+        private void DeleteTrain()
+        {
+            MessageBoxResult result = MessageBox.Show("Da li ste sigurni da želite da obrišete voz " + this.Train.Name + "?",
+                                                      "Brisanje voza", 
+                                                      MessageBoxButton.YesNo,
+                                                      MessageBoxImage.Warning);
+            if (result == MessageBoxResult.Yes)
             {
                 Train trainForDelete = Database.Trains.Find(item => item.Id == this.Train.Id);
                 Database.Trains.Remove(trainForDelete);
+                MessageBox.Show("Voz uspešno obrisan!",
+                                "Brisanje voza",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Information);
                 this.TrainDataGrid.DataContext = null;
                 InitializeTrains();
             }
-            
         }
 
         private void Add_Train_Event(object sender, RoutedEventArgs e)
@@ -146,6 +218,12 @@ namespace SrbijaVoz.managerWindows
             if (TrainDataGrid.ItemContainerGenerator.Status != GeneratorStatus.ContainersGenerated)
                 return null;
             return TrainDataGrid.ItemContainerGenerator.ContainerFromIndex(index) as DataGridRow;
+        }
+
+        private void TrainDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            EditBtn.IsEnabled = true;
+            DeleteBtn.IsEnabled = true;
         }
     }
 }

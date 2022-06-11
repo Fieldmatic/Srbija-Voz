@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Icon="resources/SrbijaVozLogo.png"
         WindowStartupLocation="CenterScreen"
-        Title="Srbija Voz - Menadzer" Height="800" Width="1500"
+        Title="Srbija Voz - Menadžer" Height="800" Width="1500"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"

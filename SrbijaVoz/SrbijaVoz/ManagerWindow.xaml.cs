@@ -79,7 +79,7 @@ namespace SrbijaVoz
 
         private void SwitchToTrainData(object sender, RoutedEventArgs e)
         {
-            DataFrame.Content = new TrainPage(Database);
+            DataFrame.Content = new TrainPage(Database, this);
 
         }
 
@@ -97,32 +97,18 @@ namespace SrbijaVoz
 
         private void SwitchToSoldTicketsRide(object sender, RoutedEventArgs e)
         {
-            DataFrame.Content = new SoldTicketsRide(Database);
+            DataFrame.Content = new SoldTicketsRide(Database, this);
         }
 
         private void SwitchToSoldTicketsMonth(object sender, RoutedEventArgs e)
         {
-            DataFrame.Content = new SoldTicketsMonth(Database);
+            DataFrame.Content = new SoldTicketsMonth(Database, this);
         }
+
         private void SwitchToStationsData(object sender, RoutedEventArgs e)
         {
-            DataFrame.Content = new StationsPage(Database.Stations);
+            DataFrame.Content = new StationsPage(Database.Stations, this);
 
-        }
-
-
-        private List<LineRecord> getLineGridData()
-        {
-            List<LineRecord> lineRecordData = new List<LineRecord>();
-            foreach (Line line in Database.Lines) lineRecordData.Add(new LineRecord(line));
-            return lineRecordData;
-        }
-
-        private List<LineScheduleRecord> getLineScheduleGridData()
-        {
-            List<LineScheduleRecord> lineScheduleRecordData = new List<LineScheduleRecord>();
-            foreach (LineSchedule schedule in Database.LineSchedules) lineScheduleRecordData.Add(new LineScheduleRecord(schedule));
-            return lineScheduleRecordData;
         }
 
         private void CenterWindowOnScreen()

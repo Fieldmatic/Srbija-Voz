@@ -71,7 +71,7 @@
                 </StackPanel>
                 <Border BorderBrush="Gray" Grid.Row="1" BorderThickness="0 0.5 0 0">
                     <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <Button HorizontalAlignment="Stretch" Height="Auto" Margin="10 0 10 0" MinWidth="100" Click="playDemo">
+                        <Button HorizontalAlignment="Stretch" Height="Auto" Margin="10 0 10 0" MinWidth="100" Click="playDemo" ToolTip="Demo, Ctrl+D">
                             <Button.Content>
                                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                                     <materialDesign:PackIcon Kind="Video" Height="20" Width="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
