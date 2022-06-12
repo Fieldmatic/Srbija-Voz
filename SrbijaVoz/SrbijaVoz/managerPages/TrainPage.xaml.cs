@@ -76,7 +76,7 @@ namespace SrbijaVoz.managerWindows
 
         private void AddTrain_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            var form = new AddTrainWindow(Database.Trains, "add");
+            var form = new AddTrainWindow(Database, "add");
             RefreshTrainsListEvent += new RefreshTrains(InitializeTrains);
             form.UpdateTrain = RefreshTrainsListEvent;
             form.ShowDialog();
@@ -91,7 +91,7 @@ namespace SrbijaVoz.managerWindows
         {
             TrainRecord trainRecord = (TrainRecord)TrainDataGrid.SelectedItem;
             if (trainRecord == null) return;
-            var updateTrainWindow = new AddTrainWindow(trainRecord, Database.Trains, "update");
+            var updateTrainWindow = new AddTrainWindow(trainRecord, Database, "update");
             RefreshTrainsListEvent += new RefreshTrains(InitializeTrains);
             updateTrainWindow.UpdateTrain = RefreshTrainsListEvent;
             updateTrainWindow.ShowDialog();
