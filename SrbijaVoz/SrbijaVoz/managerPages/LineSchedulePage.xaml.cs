@@ -5,6 +5,7 @@ using SrbijaVoz.model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -90,6 +91,10 @@ namespace SrbijaVoz.managerWindows
             RoutedCommand openDemo = new();
             openDemo.InputGestures.Add(new KeyGesture(Key.D, ModifierKeys.Control));
             managerWindow.CommandBindings.Add(new CommandBinding(openDemo, playDemo));
+
+            RoutedCommand openHelp = new();
+            openHelp.InputGestures.Add(new KeyGesture(Key.H, ModifierKeys.Control));
+            managerWindow.CommandBindings.Add(new CommandBinding(openHelp, HelpBtn_Click));
         }
 
         private void AddLineSchedule_CanExecute(object sender, CanExecuteRoutedEventArgs e)
@@ -230,6 +235,13 @@ namespace SrbijaVoz.managerWindows
                 EditBtn.IsEnabled = false;
                 DeleteBtn.IsEnabled = false;
             }
+        }
+
+        private void HelpBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var path = Environment.CurrentDirectory;
+            string filePath = path + "/../../../help/lineScheduleHelp.html";
+            Process.Start(new ProcessStartInfo(filePath) { UseShellExecute = true });
         }
     }
 }

@@ -100,7 +100,7 @@
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Button x:Name="SubmitBtn" Grid.Column="1" Content="Azuriraj" Margin="0 0 0 20"
+            <Button x:Name="SubmitBtn" Grid.Column="1" Content="Sačuvaj" Margin="0 0 0 20"
                     Click="SubmitBtn_Click"/>
         </Grid>
     </Grid>
