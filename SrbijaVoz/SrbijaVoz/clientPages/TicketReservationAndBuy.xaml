@@ -3,50 +3,94 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:SrbijaVoz.clientPages"
         mc:Ignorable="d"
         Icon="../resources/9696.png"
-        Title="TicketReservationAndBuy" Height="451" Width="660">
+        Title="Kupovina karte" Height="580" Width="660">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="1.8*"/>
             <RowDefinition Height="4*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
-        <ScrollViewer Grid.Row="0">
-            <Grid x:Name="SeatsGrid" Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Vertical" Grid.Row="0"  Grid.Column="1" HorizontalAlignment="Right" Margin="0 20 20 0">
+        <TextBlock>
+             <Label FontSize="14" FontWeight="Medium" Content="I razred sedište: "/>
+             <materialDesign:PackIcon Foreground="Goldenrod" Kind="Seat" Width="30" Height="30"/>
+        </TextBlock>
+        <TextBlock>
+             <Label FontSize="14" FontWeight="Medium" Content="II razred sedište: "/>
+             <materialDesign:PackIcon Foreground="#0F3256" Kind="Seat" Width="30" Height="30"/>
+        </TextBlock>
+        <TextBlock>
+             <Label FontSize="14" FontWeight="Medium" Content="Zauzeto sedište: "/>
+             <materialDesign:PackIcon Foreground="Red" Kind="Seat" Width="30" Height="30"/>
+        </TextBlock>
+        </StackPanel>
+        <ComboBox Grid.Row="0"  Grid.Column="0"         
+                x:Name="WagonCombo"
+                SelectionChanged="WagonCombo_SelectionChanged"
+                Style="{StaticResource MaterialDesignOutlinedComboBox}"   
+                FontSize="14"
+                FontWeight="Medium"
+                HorizontalAlignment="Left"
+                materialDesign:HintAssist.Hint="Vagon"
+                materialDesign:HintAssist.Foreground="Black"
+                Width="150"
+                Height="Auto"
+                Margin="20 20 0 0"/>
+        <ScrollViewer Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid x:Name="SeatsGrid" Margin="20 20 20 20">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
-            </Grid>      
+            </Grid>
         </ScrollViewer>
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="2" Grid.ColumnSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="0.6*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="2.5*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Label Grid.Row="0" Grid.Column="0" FontSize="18" Content="Pocetna stanica :" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <Label x:Name ="StartStation" Grid.Row="0" Grid.Column="1" FontSize="18" Content="Novi Sad" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <Label x:Name ="StartTime" Grid.Row="0" Grid.Column="2" FontSize="18" Content="11:00" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <Label x:Name ="SeatNumber" Grid.Row="0" Grid.Column="3" FontSize="18" Content="Sediste" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <Label Grid.Row="1" Grid.Column="0" FontSize="18" Content="Krajnja stanica :" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <Label x:Name ="EndStation" Grid.Row="1" Grid.Column="1" FontSize="18" Content="Beograd" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <Label x:Name ="EndTime" Grid.Row="1" Grid.Column="2" FontSize="18" Content="12:00" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <Label x:Name ="Price" Grid.Row="1" Grid.Column="3" FontSize="18" Content="Cena" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <Label Grid.Row="2" Grid.Column="0" FontSize="18" Content="Datum :" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <Label x:Name ="Date" Grid.Row="2" Grid.Column="1" FontSize="18" Content="06-06-2022" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <Button Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" Width ="100" HorizontalAlignment="Center" Margin="0 5 0 5" Foreground="White" Click="ReserveTicket" FontWeight="Bold">Rezervisi</Button>
-            <Button Grid.Row="2" Grid.Column="3" VerticalAlignment="Center"  Width ="100" HorizontalAlignment="Center" Margin="0 5 0 5" Foreground="White" Click="BuyTicket" FontWeight="Bold">Kupi</Button>
-
+            <TextBlock Margin="20 0 0 0" Width="Auto" Grid.Row="0" Grid.Column="0">
+                    <Label FontSize="18" FontWeight="Bold" Content="Broj sedišta : "/>
+                    <Label x:Name ="SeatNumber" FontWeight="Medium" FontSize="18" />
+                </TextBlock>
+            <TextBlock Width="Auto" Grid.Row="0" Grid.Column="1">
+                    <Label FontSize="18" FontWeight="Bold" Content="Cena : "/>
+                    <Label x:Name ="Price" FontWeight="Medium" FontSize="18" />
+            </TextBlock>
+            <TextBlock Margin="20 0 0 0" Width="Auto" Grid.Row="1" Grid.Column="0">
+                <Label FontSize="18" FontWeight="Bold" Content="Početna stanica : "/>
+                <Label x:Name ="StartStation" FontWeight="Medium" FontSize="18" />
+            </TextBlock>
+            <TextBlock Width="Auto" Grid.Row="1" Grid.Column="1">
+                <Label FontSize="18" FontWeight="Bold" Content="Krajnja stanica : "/>
+                <Label x:Name ="EndStation" FontWeight="Medium" FontSize="18" />
+            </TextBlock>
+            <TextBlock Margin="20 0 0 0" Width="Auto" Grid.Row="2" Grid.Column="0">
+                    <Label FontSize="18" FontWeight="Bold" Content="Datum : "/>
+                    <Label x:Name ="Date" FontWeight="Medium" FontSize="18" />
+            </TextBlock>
+            <TextBlock Width="Auto" Grid.Row="2" Grid.Column="1" >
+                    <Label FontSize="18" FontWeight="Bold" Content="Vreme : "/>
+                    <Label x:Name ="StartTime" FontWeight="Medium" FontSize="18" ContentStringFormat="{}{0:hh}:{0:mm}"/>
+                    <Label FontSize="19" FontWeight="Bold" Content="-"></Label>
+                    <Label x:Name ="EndTime" FontWeight="Medium" FontSize="18" ContentStringFormat="{}{0:hh}:{0:mm}"/>
+            </TextBlock>
+            <Button Margin="0 25 30 25" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" Width ="150" Foreground="White" Click="ReserveTicket" FontWeight="Bold">Rezerviši kartu</Button>
+            <Button Margin="0 25 0 25" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" Width ="150" Foreground="White" Click="BuyTicket" FontWeight="Bold">Kupi kartu</Button>
         </Grid>
         
     </Grid>
