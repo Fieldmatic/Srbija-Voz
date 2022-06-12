@@ -98,13 +98,16 @@ namespace SrbijaVoz.managerWindows
                 ListViewItem listViewItem =
                     FindAncestor<ListViewItem>((DependencyObject)e.OriginalSource);
 
-                // Find the data behind the ListViewItem
-                Station station = (Station)listView.ItemContainerGenerator.
+                try
+                {
+                    // Find the data behind the ListViewItem
+                    Station station = (Station)listView.ItemContainerGenerator.
                     ItemFromContainer(listViewItem);
-
-                // Initialize the drag & drop operation
-                DataObject dragData = new DataObject("myFormat", station);
-                DragDrop.DoDragDrop(listViewItem, dragData, DragDropEffects.Move);
+                    // Initialize the drag & drop operation
+                    DataObject dragData = new DataObject("myFormat", station);
+                    DragDrop.DoDragDrop(listViewItem, dragData, DragDropEffects.Move);
+                }
+                catch (ArgumentNullException) { }
             }
         }
 
@@ -135,6 +138,8 @@ namespace SrbijaVoz.managerWindows
             if (e.Data.GetDataPresent("myFormat"))
             {
                 Station station = e.Data.GetData("myFormat") as Station;
+                if (SettedStations.Contains(station))
+                    return;
                 AvailableStations.Remove(station);
                 SettedStations.Add(station);
             }
@@ -145,6 +150,8 @@ namespace SrbijaVoz.managerWindows
             if (e.Data.GetDataPresent("myFormat"))
             {
                 Station station = e.Data.GetData("myFormat") as Station;
+                if (AvailableStations.Contains(station))
+                    return;
                 SettedStations.Remove(station);
                 AvailableStations.Add(station);
             }
