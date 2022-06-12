@@ -79,7 +79,7 @@
                                 </StackPanel>
                             </Button.Content>
                         </Button>
-                        <Button HorizontalAlignment="Stretch" Height="Auto" Margin="10 0 10 0" MinWidth="100" Click="HelpBtn_Click" ToolTip="Pomoć, Ctrl+H">
+                        <Button HorizontalAlignment="Stretch" Height="Auto" Margin="10 0 10 0" MinWidth="100" Click="HelpBtn_Click" ToolTip="Pomoć, F1">
                             <Button.Content>
                                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                                     <materialDesign:PackIcon Kind="HelpCircle" Height="20" Width="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>

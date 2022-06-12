@@ -93,7 +93,7 @@ namespace SrbijaVoz.managerWindows
             managerWindow.CommandBindings.Add(new CommandBinding(openDemo, playDemo));
 
             RoutedCommand openHelp = new();
-            openHelp.InputGestures.Add(new KeyGesture(Key.H, ModifierKeys.Control));
+            openHelp.InputGestures.Add(new KeyGesture(Key.F1));
             managerWindow.CommandBindings.Add(new CommandBinding(openHelp, HelpBtn_Click));
         }
 
