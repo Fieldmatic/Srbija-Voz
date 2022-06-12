@@ -75,7 +75,7 @@ namespace SrbijaVoz.managerPages
 
         private void playDemo(object sender, RoutedEventArgs e)
         {
-            DemoVideo m = new DemoVideo(@"../../../demo/Stanice.mp4");
+            DemoVideo m = new DemoVideo(@"../../../demo/MesecniIzvestaj.mp4");
             m.ShowDialog();
         }
         protected override void OnPreviewMouseUp(MouseButtonEventArgs e)

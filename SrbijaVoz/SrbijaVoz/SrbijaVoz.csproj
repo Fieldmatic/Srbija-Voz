@@ -8,7 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="demo\IzvestajVoznja.mp4" />
     <None Remove="demo\Linije.mp4" />
+    <None Remove="demo\MesecniIzvestaj.mp4" />
     <None Remove="demo\RedoviVoznje.mp4" />
     <None Remove="demo\Vozovi.mp4" />
     <None Remove="resources\9696.png" />
@@ -49,7 +51,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="demo\IzvestajVoznja.mp4" />
     <Resource Include="demo\Linije.mp4" />
+    <Resource Include="demo\MesecniIzvestaj.mp4" />
     <Resource Include="demo\RedoviVoznje.mp4" />
     <Resource Include="demo\Vozovi.mp4" />
     <Resource Include="resources\9696.png" />
