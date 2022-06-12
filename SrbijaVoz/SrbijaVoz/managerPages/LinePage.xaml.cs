@@ -246,14 +246,12 @@ namespace SrbijaVoz.managerWindows
 
         private void HelpBtn_Click(object sender, RoutedEventArgs e)
         {
-            var p = new Process
-            {
-                StartInfo = new ProcessStartInfo(@"../../../../help/lineHelp.html")
-                {
-                    UseShellExecute = true
-                }
-            };
-            p.Start();
+            // Path to bin/debug/net6.0
+            var path = System.Environment.CurrentDirectory;
+            // The path to the Help file.
+            string filePath = path + "/../../../help/lineHelp.html";
+            System.Diagnostics.Process.Start(new ProcessStartInfo(filePath) { UseShellExecute = true });
+
         }
     }
 }

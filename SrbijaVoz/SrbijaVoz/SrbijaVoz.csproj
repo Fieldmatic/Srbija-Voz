@@ -92,4 +92,10 @@
     <Folder Include="help\lineImages\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="help\lineHelp.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
