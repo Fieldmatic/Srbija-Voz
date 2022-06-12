@@ -48,7 +48,7 @@
                     Grid.Row="1"
                     Style="{StaticResource MaterialDesignOutlinedComboBox}"   
                     FontSize="15"
-                    materialDesign:HintAssist.Hint="Pocetna stanica"
+                    materialDesign:HintAssist.Hint="Početna stanica"
                     materialDesign:HintAssist.Foreground="Black"
                     HorizontalAlignment="Stretch"
                     Margin="15 0 15 0"
@@ -74,7 +74,7 @@
                     HorizontalAlignment="Stretch"
                     Margin="15 0 15 0"
                     Grid.Row="3"
-                    Content="Prikazi karte"
+                    Content="Prikaži karte"
                     FontSize="18"
                     VerticalAlignment="Center"
                     Click="SearchTickets"/>
@@ -88,7 +88,7 @@
                             </StackPanel>
                         </Button.Content>
                     </Button>
-                    <Button HorizontalAlignment="Stretch" Height="Auto" Margin="10 0 10 0" MinWidth="100">
+                    <Button HorizontalAlignment="Stretch" Height="Auto" Margin="10 0 10 0" MinWidth="100" Click="HelpBtn_Click" ToolTip="Pomoć, Ctrl+H">
                         <Button.Content>
                             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <materialDesign:PackIcon Kind="HelpCircle" Height="20" Width="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>

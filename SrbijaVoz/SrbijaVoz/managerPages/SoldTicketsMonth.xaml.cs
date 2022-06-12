@@ -5,6 +5,7 @@ using SrbijaVoz.model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,6 +42,10 @@ namespace SrbijaVoz.managerPages
             RoutedCommand openDemo = new();
             openDemo.InputGestures.Add(new KeyGesture(Key.D, ModifierKeys.Control));
             managerWindow.CommandBindings.Add(new CommandBinding(openDemo, playDemo));
+
+            RoutedCommand openHelp = new();
+            openHelp.InputGestures.Add(new KeyGesture(Key.H, ModifierKeys.Control));
+            managerWindow.CommandBindings.Add(new CommandBinding(openHelp, HelpBtn_Click));
         }
 
         private void SearchTickets(object sender, RoutedEventArgs e)
@@ -90,6 +95,13 @@ namespace SrbijaVoz.managerPages
         private void MonthPicker_DisplayModeChanged(object sender, CalendarModeChangedEventArgs e)
         {
             MonthPicker.DisplayMode = CalendarMode.Year;
+        }
+
+        private void HelpBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var path = Environment.CurrentDirectory;
+            string filePath = path + "/../../../help/soldTicketsMonthHelp.html";
+            Process.Start(new ProcessStartInfo(filePath) { UseShellExecute = true });
         }
     }
 }

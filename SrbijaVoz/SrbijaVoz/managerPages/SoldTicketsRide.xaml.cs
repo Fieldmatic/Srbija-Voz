@@ -5,6 +5,7 @@ using SrbijaVoz.model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,6 +44,10 @@ namespace SrbijaVoz.managerPages
             RoutedCommand openDemo = new();
             openDemo.InputGestures.Add(new KeyGesture(Key.D, ModifierKeys.Control));
             managerWindow.CommandBindings.Add(new CommandBinding(openDemo, playDemo));
+
+            RoutedCommand openHelp = new();
+            openHelp.InputGestures.Add(new KeyGesture(Key.H, ModifierKeys.Control));
+            managerWindow.CommandBindings.Add(new CommandBinding(openHelp, HelpBtn_Click));
         }
 
         private void playDemo(object sender, RoutedEventArgs e)
@@ -79,6 +84,13 @@ namespace SrbijaVoz.managerPages
                 if (ex is NullReferenceException || ex is InvalidOperationException)
                     MessageBox.Show("Odaberite sve potrebne parametre.", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void HelpBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var path = Environment.CurrentDirectory;
+            string filePath = path + "/../../../help/soldTicketsRideHelp.html";
+            Process.Start(new ProcessStartInfo(filePath) { UseShellExecute = true });
         }
     }
 }
