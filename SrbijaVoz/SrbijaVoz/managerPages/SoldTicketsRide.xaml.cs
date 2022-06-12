@@ -36,7 +36,7 @@ namespace SrbijaVoz.managerPages
 
         private void playDemo(object sender, RoutedEventArgs e)
         {
-            DemoVideo m = new DemoVideo(@"../../../demo/Stanice.mp4");
+            DemoVideo m = new DemoVideo(@"../../../demo/IzvestajVoznja.mp4");
             m.ShowDialog();
         }
 
