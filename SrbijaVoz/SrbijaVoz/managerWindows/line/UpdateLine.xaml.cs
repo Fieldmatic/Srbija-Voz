@@ -160,7 +160,7 @@ namespace SrbijaVoz.managerWindows
                                 MessageBoxImage.Error);
                 return;
             }
-            if (LineAlreadyExist())
+            if (CurrentLine.Stations != SettedStations.ToList() && LineAlreadyExist())
             {
                 MessageBox.Show("Ovakva linija već postoji!",
                                    "Greška",
@@ -184,6 +184,8 @@ namespace SrbijaVoz.managerWindows
             foreach (Line line in Database.Lines)
             {
                 if (line.Stations.Count != SettedStations.Count)
+                    continue;
+                if (line.Id == CurrentLine.Id)
                     continue;
                 for (int i = 0; i < SettedStations.Count; i++)
                 {

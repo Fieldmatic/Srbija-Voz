@@ -26,12 +26,21 @@ namespace SrbijaVoz.managerPages
     public partial class SoldTicketsMonth : Page
     {
         private Database Database;
-        public SoldTicketsMonth(Database db)
+        public SoldTicketsMonth(Database db, ManagerWindow managerWindow)
         {
             Database = db;
             InitializeComponent();
 
+            managerWindow.CommandBindings.Clear();
+            managerWindow.InitializeManagerShortcuts();
+            InitializeSoldTicketsMonthPageShortcuts(managerWindow);
+        }
 
+        private void InitializeSoldTicketsMonthPageShortcuts(ManagerWindow managerWindow)
+        {
+            RoutedCommand openDemo = new();
+            openDemo.InputGestures.Add(new KeyGesture(Key.D, ModifierKeys.Control));
+            managerWindow.CommandBindings.Add(new CommandBinding(openDemo, playDemo));
         }
 
         private void SearchTickets(object sender, RoutedEventArgs e)

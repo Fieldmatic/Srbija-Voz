@@ -27,13 +27,24 @@ namespace SrbijaVoz.managerPages
     {
         public List<Station> Stations;
 
-        public StationsPage(List<Station> stations)
+        public StationsPage(List<Station> stations, ManagerWindow managerWindow)
         {
             Stations = stations;
             InitializeComponent();
             StationsNetworkMap.Focus();
             DrawStationsOnMap();
             StationsListBox.ItemsSource = Stations;
+
+            managerWindow.CommandBindings.Clear();
+            managerWindow.InitializeManagerShortcuts();
+            InitializeStationsPageShortcuts(managerWindow);
+        }
+
+        private void InitializeStationsPageShortcuts(ManagerWindow managerWindow)
+        {
+            RoutedCommand openDemo = new();
+            openDemo.InputGestures.Add(new KeyGesture(Key.D, ModifierKeys.Control));
+            managerWindow.CommandBindings.Add(new CommandBinding(openDemo, playDemo));
         }
 
         private void DrawStationsOnMap()

@@ -79,13 +79,17 @@ namespace SrbijaVoz.managerWindows
             addNewLineSchedule.InputGestures.Add(new KeyGesture(Key.N, ModifierKeys.Control));
             managerWindow.CommandBindings.Add(new CommandBinding(addNewLineSchedule, AddLineSchedule_Executed));
 
-            //RoutedCommand editLineSchedule = new RoutedCommand();
-            //editLineSchedule.InputGestures.Add(new KeyGesture(Key.E, ModifierKeys.Control));
-            //managerWindow.CommandBindings.Add(new CommandBinding(editLineSchedule, EditLine_Executed));
+            RoutedCommand editLineSchedule = new RoutedCommand();
+            editLineSchedule.InputGestures.Add(new KeyGesture(Key.E, ModifierKeys.Control));
+            managerWindow.CommandBindings.Add(new CommandBinding(editLineSchedule, EditLineSchedule_Executed));
 
             RoutedCommand deleteLineSchedule = new RoutedCommand();
             deleteLineSchedule.InputGestures.Add(new KeyGesture(Key.Delete, ModifierKeys.Shift));
             managerWindow.CommandBindings.Add(new CommandBinding(deleteLineSchedule, DeleteLineSchedule_Executed));
+
+            RoutedCommand openDemo = new();
+            openDemo.InputGestures.Add(new KeyGesture(Key.D, ModifierKeys.Control));
+            managerWindow.CommandBindings.Add(new CommandBinding(openDemo, playDemo));
         }
 
         private void AddLineSchedule_CanExecute(object sender, CanExecuteRoutedEventArgs e)
@@ -215,8 +219,17 @@ namespace SrbijaVoz.managerWindows
 
         private void LineScheduleDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            EditBtn.IsEnabled = true;
-            DeleteBtn.IsEnabled = true;
+            LineScheduleRecord lineScheduleRecord = (LineScheduleRecord)LineScheduleDataGrid.SelectedItem;
+            if (lineScheduleRecord != null)
+            {
+                EditBtn.IsEnabled = true;
+                DeleteBtn.IsEnabled = true;
+            }
+            else
+            {
+                EditBtn.IsEnabled = false;
+                DeleteBtn.IsEnabled = false;
+            }
         }
     }
 }

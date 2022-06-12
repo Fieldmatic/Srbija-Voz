@@ -26,12 +26,23 @@ namespace SrbijaVoz.managerPages
     public partial class SoldTicketsRide : Page
     {
         private Database Database;
-        public SoldTicketsRide(Database db)
+        public SoldTicketsRide(Database db, ManagerWindow managerWindow)
         {
             InitializeComponent();
             Database = db;
             StartStationCombo.ItemsSource = db.GetStationNames();
             EndStationCombo.ItemsSource = db.GetStationNames();
+
+            managerWindow.CommandBindings.Clear();
+            managerWindow.InitializeManagerShortcuts();
+            InitializeSoldTicketsRidePageShortcuts(managerWindow);
+        }
+
+        private void InitializeSoldTicketsRidePageShortcuts(ManagerWindow managerWindow)
+        {
+            RoutedCommand openDemo = new();
+            openDemo.InputGestures.Add(new KeyGesture(Key.D, ModifierKeys.Control));
+            managerWindow.CommandBindings.Add(new CommandBinding(openDemo, playDemo));
         }
 
         private void playDemo(object sender, RoutedEventArgs e)
