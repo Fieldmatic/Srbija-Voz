@@ -66,7 +66,7 @@ namespace SrbijaVoz.clientPages
                             {
                                 Station start = Database.GetStationByName(startStation);
                                 Station end = Database.GetStationByName(endStation);
-                                Dictionary<SeatClass, int> prices = Database.getPriceByDistance(lineSchedule, start, end);
+                                Dictionary<SeatClass, int> prices = Database.getPriceByDuration(lineSchedule, startTime, endTime);
                                 offers.Add(new Offer(lineSchedule, start, end, prices[SeatClass.I], prices[SeatClass.II], selectedDate, startTime, endTime));
                                 break;
                             }

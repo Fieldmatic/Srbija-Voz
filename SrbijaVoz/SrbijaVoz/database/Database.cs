@@ -60,19 +60,15 @@ namespace SrbijaVoz.database
             return null;
         }
 
-        public Dictionary<SeatClass, int> getPriceByDistance(LineSchedule LineSchedule, Station Start, Station End)
+        public Dictionary<SeatClass, int> getPriceByDuration(LineSchedule LineSchedule, TimeSpan StartTime, TimeSpan EndTime)
         {
             Dictionary<SeatClass, int> prices = new Dictionary<SeatClass, int>();
-            Location routeStart = LineSchedule.Line.Stations.First().Location;
-            Location routeEnd = LineSchedule.Line.Stations.Last().Location;
-            var routeStartCoord = new GeoCoordinate(routeStart.Latitude, routeStart.Longitude);
-            var routeEndCoord = new GeoCoordinate(routeEnd.Latitude, routeEnd.Longitude);
-            var wantedStart = new GeoCoordinate(Start.Location.Latitude, Start.Location.Longitude);
-            var wantedEnd = new GeoCoordinate(End.Location.Latitude, End.Location.Longitude);
-            double pricePerMeterIIClass = LineSchedule.Train.PricesPerMinute[SeatClass.II] / routeStartCoord.GetDistanceTo(routeEndCoord);
-            double pricePerMeterIClass = LineSchedule.Train.PricesPerMinute[SeatClass.I] / routeStartCoord.GetDistanceTo(routeEndCoord);
-            prices.Add(SeatClass.I, (int) (wantedStart.GetDistanceTo(wantedEnd) * pricePerMeterIClass));
-            prices.Add(SeatClass.II, (int) (wantedStart.GetDistanceTo(wantedEnd) * pricePerMeterIIClass));
+            TimeSpan travelDuration = EndTime - StartTime;
+           
+            int priceIIClass = (int)(LineSchedule.Train.PricesPerMinute[SeatClass.II] * travelDuration.TotalMinutes);
+            int priceIClass = (int) (LineSchedule.Train.PricesPerMinute[SeatClass.I] * travelDuration.TotalMinutes);
+            prices.Add(SeatClass.I, priceIClass);
+            prices.Add(SeatClass.II, priceIIClass);
             return prices;
         }
 

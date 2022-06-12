@@ -69,7 +69,7 @@ namespace SrbijaVoz.managerWindows
 
         private void playDemo(object sender, RoutedEventArgs e)
         {
-            DemoVideo m = new DemoVideo(@"../../../demo/Stanice.mp4");
+            DemoVideo m = new DemoVideo(@"../../../demo/RedoviVoznje.mp4");
             m.ShowDialog();
         }
 
