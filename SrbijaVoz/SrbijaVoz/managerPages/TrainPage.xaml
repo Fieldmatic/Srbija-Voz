@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SrbijaVoz.managerWindows" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
-      d:DesignHeight="600" d:DesignWidth="1200"
+      d:DesignHeight="600" d:DesignWidth="1250"
       Title="TrainPage">
     <Page.Resources>
         <Image x:Key="Add" Source="../resources/plus.png"/>
@@ -22,12 +22,12 @@
         <DataGrid x:Name="TrainDataGrid"  RowHeaderWidth="0" ItemsSource="{Binding}" Grid.Column="0"  AutoGenerateColumns="False" FontSize="20" PreviewMouseLeftButtonDown="TrainDataGrid_PreviewMouseLeftButtonDown" CanUserAddRows="false" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="trainRow" Header="Id" Binding="{Binding Id}" Width="0.5*"/>
-                <DataGridTextColumn Header="Naziv"  Binding="{Binding Name}" Width="0.65*"/>
-                <DataGridTextColumn Header="Broj vagona" Binding="{Binding WagonsNumber}" Width="0.65*"/>
-                <DataGridTextColumn Header="Broj sedišta I razred" Binding="{Binding FirstClassSeatsNumber}" Width="1*"/>
-                <DataGridTextColumn Header="Broj sedišta II razred"  Binding="{Binding SecondClassSeatsNumber}" Width="1*"/>
-                <DataGridTextColumn Header="Cena/min I razred" Binding="{Binding FirstClassPrice}" Width="1*"/>
-                <DataGridTextColumn Header="Cena/min II razred" Binding="{Binding SecondClassPrice}" Width="1*"/>
+                <DataGridTextColumn Header="Naziv"  Binding="{Binding Name}" Width="0.67*"/>
+                <DataGridTextColumn Header="Broj vagona" Binding="{Binding WagonsNumber}" Width="1.15*"/>
+                <DataGridTextColumn Header="Sedišta I razred" Binding="{Binding FirstClassSeatsNumber}" Width="1.4*"/>
+                <DataGridTextColumn Header="Sedišta II razred"  Binding="{Binding SecondClassSeatsNumber}" Width="1.45*"/>
+                <DataGridTextColumn Header="Cena/min I razred" Binding="{Binding FirstClassPrice}" Width="1.6*"/>
+                <DataGridTextColumn Header="Cena/min II razred" Binding="{Binding SecondClassPrice}" Width="1.65*"/>
             </DataGrid.Columns>
         </DataGrid>
         <Border BorderBrush="Gray" Grid.Column="1" BorderThickness="0.5 0 0 0">

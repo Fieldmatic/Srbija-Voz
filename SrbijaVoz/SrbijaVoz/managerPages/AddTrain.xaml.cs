@@ -110,6 +110,8 @@ namespace SrbijaVoz.managerWindows
                 textBox1.FontSize = 18;
                 textBox1.Name = "_1" + wagon.Number.ToString();
                 textBox1.Text = wagon.getNumberOfSeatsClass(SeatClass.I).ToString();
+                MaterialDesignThemes.Wpf.HintAssist.SetHint(textBox1, "I razred");
+                textBox1.Style = TryFindResource("MaterialDesignFloatingHintTextBox") as Style;
 
 
                 TextBox textBox2 = new TextBox();
@@ -117,6 +119,8 @@ namespace SrbijaVoz.managerWindows
                 textBox2.FontSize = 18;
                 textBox2.Name = "_2" + wagon.Number.ToString(); 
                 textBox2.Text = wagon.getNumberOfSeatsClass(SeatClass.II).ToString();
+                MaterialDesignThemes.Wpf.HintAssist.SetHint(textBox2, "II razred");
+                textBox2.Style = TryFindResource("MaterialDesignFloatingHintTextBox") as Style;
 
                 groupBoxGrid.Children.Add(textBox1);
                 groupBoxGrid.Children.Add(textBox2);
