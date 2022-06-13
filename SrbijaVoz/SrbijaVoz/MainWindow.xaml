@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Icon="resources/SrbijaVozLogo.png"
         WindowStartupLocation="CenterScreen"
-        Title="Srbija Voz" Height="800" Width="1200"
+        Title="Srbija Voz" Height="750" Width="1000" MinHeight="650" MinWidth="600"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -28,7 +28,7 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="3.8*"/>
+            <RowDefinition Height="5*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <materialDesign:Card HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1">
@@ -47,6 +47,7 @@
                   Width="Auto"
                   Margin="40 20 40 0"
                   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                  VerticalAlignment="Stretch"
                   materialDesign:HintAssist.Hint="Korisničko ime" Grid.Row="1"/>
             <PasswordBox
                   Name="Password"           

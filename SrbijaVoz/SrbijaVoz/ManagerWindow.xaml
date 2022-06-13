@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Icon="resources/SrbijaVozLogo.png"
         WindowStartupLocation="CenterScreen"
-        Title="Srbija Voz - Menadžer" Height="800" Width="1500"
+        Title="Srbija Voz - Menadžer" Height="800" Width="1500" MinHeight="650" MinWidth="1370"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -31,7 +31,7 @@
                 <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
                     <Image Source="resources/SrbijaVozLogo.png" Margin="10"/>
 
-                    <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Medium" FontSize="22" Margin="0 0 10 0" Click="SwitchToTrainData" ToolTip="Ctrl+1">
+                    <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Medium" FontSize="22" Margin="0 0 5 0" Click="SwitchToTrainData" ToolTip="Ctrl+1">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <Image Source="resources/train-48.png" HorizontalAlignment="Center" VerticalAlignment="Center" />
@@ -39,7 +39,7 @@
                             </StackPanel>
                         </Button.Content>
                     </Button>
-                    <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Medium" FontSize="22" Margin="0 0 10 0" Click="SwitchToStationsData"  ToolTip="Ctrl+2">
+                    <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Medium" FontSize="22" Margin="0 0 5 0" Click="SwitchToStationsData"  ToolTip="Ctrl+2">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <Image Source="resources/locations-91.png" HorizontalAlignment="Center" VerticalAlignment="Center" />
@@ -47,7 +47,7 @@
                             </StackPanel>
                         </Button.Content>
                     </Button>
-                    <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Medium" FontSize="22" Margin="0 0 10 0" Click="SwitchToLineData" ToolTip="Ctrl+2">
+                    <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Medium" FontSize="22" Margin="0 0 5 0" Click="SwitchToLineData" ToolTip="Ctrl+2">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <Image Source="resources/icons8-journey-48.png" HorizontalAlignment="Center" VerticalAlignment="Center" />
@@ -55,7 +55,7 @@
                             </StackPanel>
                         </Button.Content>
                     </Button>
-                    <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Medium" FontSize="22" Margin="0 0 10 0" Click="SwitchToLineScheduleData" ToolTip="Ctrl+3">
+                    <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Medium" FontSize="22" Margin="0 0 5 0" Click="SwitchToLineScheduleData" ToolTip="Ctrl+3">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <Image Source="resources/icons8-timetable-48.png" HorizontalAlignment="Center" VerticalAlignment="Center" />
@@ -63,7 +63,7 @@
                             </StackPanel>
                         </Button.Content>
                     </Button>
-                    <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Medium" FontSize="22" Margin="0 0 10 0" Click="SwitchToSoldTicketsRide" ToolTip="Ctrl+5">
+                    <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Medium" FontSize="22" Margin="0 0 5 0" Click="SwitchToSoldTicketsRide" ToolTip="Ctrl+5">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <Image Source="resources/icons8-report-64.png" HorizontalAlignment="Center" VerticalAlignment="Center" />
@@ -71,7 +71,7 @@
                             </StackPanel>
                         </Button.Content>
                     </Button>
-                    <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Medium" FontSize="22" Margin="0 0 10 0" Click="SwitchToSoldTicketsMonth" ToolTip="Ctrl+6">
+                    <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Medium" FontSize="22" Margin="0 0 5 0" Click="SwitchToSoldTicketsMonth" ToolTip="Ctrl+6">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <Image Source="resources/icons8-report-64.png" HorizontalAlignment="Center" VerticalAlignment="Center" />
@@ -80,11 +80,11 @@
                         </Button.Content>
                     </Button>
                 </StackPanel>
-                <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Medium" FontSize="22" Grid.Column="1" Click="LogoutEvent" Margin="5 0 5 0" ToolTip="Ctrl+Backspace">
+                <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Medium" FontSize="22" Grid.Column="1" Click="LogoutEvent" Margin="15 0 0 0" ToolTip="Ctrl+Backspace">
                     <Button.Content>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Image Source="resources/icons8-logout-48.png" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="6 0 0 0"> Izloguj se</TextBlock>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="resources/icons8-logout-48.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                            <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="6 0 0 0"> Izloguj se</TextBlock>
                         </StackPanel>
                     </Button.Content>
                 </Button>

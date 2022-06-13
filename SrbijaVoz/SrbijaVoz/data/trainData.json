@@ -3,8 +3,8 @@
     "Id": 1,
     "Name": "Soko",
     "PricesPerMinute": {
-      "0": 500,
-      "1": 300
+      "0": 18,
+      "1": 14
     },
     "Wagons": [
       {
@@ -55,8 +55,8 @@
     "Id": 2,
     "Name": "Soko",
     "PricesPerMinute": {
-      "0": 500,
-      "1": 300
+      "0": 20,
+      "1": 17
     },
     "Wagons": [
       {
@@ -102,8 +102,8 @@
     "Id": 3,
     "Name": "Svraka",
     "PricesPerMinute": {
-      "0": 300,
-      "1": 200
+      "0": 14,
+      "1": 11
     },
     "Wagons": [
       {

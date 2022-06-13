@@ -41,8 +41,8 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <StackPanel Orientation="Vertical" Grid.Row="0" VerticalAlignment="Center">
-                    <Label x:Name="RevenueLabel" Grid.Row="0" Content="" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18"/>
-                    <Label x:Name="TicketSoldLabel" Grid.Row="0" Content="" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18"/>
+                    <Label x:Name="RevenueLabel" Grid.Row="0" Content="" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Medium" FontSize="16"/>
+                    <Label x:Name="TicketSoldLabel" Grid.Row="0" Content="" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Medium" FontSize="16"/>
                 </StackPanel>
                 
                 <Border Grid.Row="1" BorderBrush="Gray" BorderThickness="0.5">

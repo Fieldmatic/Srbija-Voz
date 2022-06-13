@@ -41,6 +41,11 @@ namespace SrbijaVoz.clientPages
                 String startStation = StartStationCombo.SelectedItem.ToString();
                 String endStation = EndStationCombo.SelectedItem.ToString();
                 DateTime selectedDate = (DateTime)DepartureDatePicker.SelectedDate;
+                if (selectedDate.Day < DateTime.Now.Day)
+                {
+                    MessageBox.Show("Ne možete odabrati datum koji je prošao!", "Obavestenje", MessageBoxButton.OK, MessageBoxImage.Information);
+                    return;
+                }
                 List<Offer> offers = new List<Offer>();
                 foreach (LineSchedule lineSchedule in Database.LineSchedules)
                 {
@@ -49,12 +54,14 @@ namespace SrbijaVoz.clientPages
                     TimeSpan startTime = new TimeSpan();
                     TimeSpan endTime = new TimeSpan();
                     if (lineSchedule.Days.Contains(selectedDate.DayOfWeek))
-                    {
+                    {                      
                         foreach (TrainStop trainStop in lineSchedule.TrainStops)
                         {
                             if (trainStop.StartStation.Name.Equals(startStation))
-                            {
+                            {                         
                                 containsStartStation = true;
+                                containsEndStation = false;
+                                if ((selectedDate.Day == DateTime.Now.Day) && (trainStop.DepartureTime < DateTime.Now.TimeOfDay)) containsStartStation = false;
                                 startTime = trainStop.DepartureTime;
                             }
                             if (trainStop.EndStation.Name.Equals(endStation)) 

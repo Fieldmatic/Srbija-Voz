@@ -9,23 +9,23 @@
     <Border Background="White" BorderThickness="0 0 0 1" BorderBrush="Gray">
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2.1*"/>
-                <ColumnDefinition Width="1.35*"/>
-                <ColumnDefinition Width="1.35*"/>
-                <ColumnDefinition Width="1.35*"/>
-                <ColumnDefinition Width="1.35*"/>
-                <ColumnDefinition Width="1.35*"/>
-                <ColumnDefinition Width="1.35*"/>
-                <ColumnDefinition Width="2.03*"/>
+                <ColumnDefinition Width="2.8*"/>
+                <ColumnDefinition Width="1.45*"/>
+                <ColumnDefinition Width="1.38*"/>
+                <ColumnDefinition Width="1.38*"/>
+                <ColumnDefinition Width="1.55*"/>
+                <ColumnDefinition Width="1.25*"/>
+                <ColumnDefinition Width="1.25*"/>
+                <ColumnDefinition Width="1.9*"/>
             </Grid.ColumnDefinitions>
 
-            <Label x:Name="Line" Grid.Column="0" Content="Novi Sad - Beograd" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
-            <Label x:Name="Date" Grid.Column="1" Content="05.05.2022" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
-            <Label x:Name="Departure" Grid.Column="2" Content="12:00" VerticalAlignment="Center"  HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
-            <Label x:Name="Arrival" Grid.Column="3" Content="13:30" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
-            <Label x:Name="Price" Grid.Column="4" Content="Cena" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
-            <Label x:Name="Seat" Grid.Column="5" Content="Sediste" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
-            <Label x:Name="Train" Grid.Column="6" Content="Soko" VerticalAlignment="Center"  HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
+            <Label x:Name="Line" Grid.Column="0" Content="Novi Sad - Beograd" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Medium" FontSize="20"/>
+            <Label x:Name="Date" Grid.Column="1" Content="05.05.2022" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Medium" FontSize="20"/>
+            <Label x:Name="Departure" Grid.Column="2" Content="12:00" VerticalAlignment="Center"  HorizontalAlignment="Center" FontWeight="Medium" FontSize="20" ContentStringFormat="{}{0:hh}:{0:mm}"/>
+            <Label x:Name="Arrival" Grid.Column="3" Content="13:30" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Medium" FontSize="20" ContentStringFormat="{}{0:hh}:{0:mm}"/>
+            <Label x:Name="Price" Grid.Column="4" Content="Cena" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Medium" FontSize="20"/>
+            <Label x:Name="Seat" Grid.Column="5" Content="Sediste" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Medium" FontSize="20"/>
+            <Label x:Name="Train" Grid.Column="6" Content="Soko" VerticalAlignment="Center"  HorizontalAlignment="Center" FontWeight="Medium" FontSize="20"/>
             <Button x:Name ="SeeTicketRoute" Content="Pogledaj rutu" Grid.Column="7" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Margin="0 7 0 7" FontSize="18" Click="ShowTicketRoute"/>
 
         </Grid>

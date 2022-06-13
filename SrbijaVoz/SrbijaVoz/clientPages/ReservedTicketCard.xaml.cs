@@ -31,8 +31,8 @@ namespace SrbijaVoz.clientPages
             Client = client;
             Line.Content = Ticket.StartStation.Name + "-" + Ticket.ExitStation.Name;
             Date.Content = Ticket.Date.ToShortDateString();
-            Departure.Content = Ticket.Departure.ToString();
-            Arrival.Content = Ticket.Arrival.ToString();
+            Departure.Content = Ticket.Departure;
+            Arrival.Content = Ticket.Arrival;
             Train.Content = Ticket.LineSchedule.Train.Name;
             Seat.Content = Ticket.Seat.Number.ToString();
             Price.Content = Ticket.Price + " RSD";

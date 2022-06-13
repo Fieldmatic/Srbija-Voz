@@ -37,7 +37,7 @@
                   SelectionChanged="TrainDataGrid_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="trainRow" Header="Id" Binding="{Binding Id}" Width="0.5*"/>
-                <DataGridTextColumn Header="Naziv"  Binding="{Binding Name}" Width="0.67*"/>
+                <DataGridTextColumn Header="Naziv"  Binding="{Binding Name}" Width="0.9*"/>
                 <DataGridTextColumn Header="Broj vagona" Binding="{Binding WagonsNumber}" Width="1.15*"/>
                 <DataGridTextColumn Header="Sedišta I razred" Binding="{Binding FirstClassSeatsNumber}" Width="1.4*"/>
                 <DataGridTextColumn Header="Sedišta II razred"  Binding="{Binding SecondClassSeatsNumber}" Width="1.45*"/>

@@ -217,6 +217,18 @@ namespace SrbijaVoz.clientPages
 
         private void BuyTicket(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                int SeatNum = Seat.Number;
+            }
+            catch (Exception ex)
+            {
+                if (ex is NullReferenceException)
+                {
+                    MessageBox.Show("Morate odabrati sedište pre kupovine karte. Molim Vas, pokušajte ponovo.", "Greška", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                return;
+            }
             string sMessageBoxText = "Da li ste sigurni da želite da kupite kartu?";
 
             MessageBoxButton btnMessageBox = MessageBoxButton.YesNoCancel;
@@ -228,8 +240,6 @@ namespace SrbijaVoz.clientPages
             switch (rsltMessageBox)
             {
                 case MessageBoxResult.Yes:
-                    try
-                    {
                         Ticket ticket = new Ticket(currentOffer.LineSchedule, TicketStatus.BOUGHT, Seat, Client, TicketPrice, currentOffer.StartStation, currentOffer.EndStation, currentOffer.StartTime, currentOffer.EndTime, currentOffer.Date);
                         Client.Tickets.Add(ticket);
                         database.Tickets.Add(ticket);
@@ -241,17 +251,7 @@ namespace SrbijaVoz.clientPages
                             currentOffer.LineSchedule.TakenSeats[currentOffer.Date] = newTakenSeats;
                         }
                         this.Close();
-                        break;
-                    }
-                    catch (Exception ex)
-                    {
-                        if (ex is NullReferenceException || ex is InvalidOperationException)
-                        {
-                            MessageBox.Show("Morate odabrati sedište pre kupovine karte. Molim Vas, pokušajte ponovo.", "Greška", MessageBoxButton.OK, MessageBoxImage.Error);
-                        }
-                        break;
-                    }
-                   
+                        break;                   
                 case MessageBoxResult.No:
                     break;
 
@@ -264,6 +264,18 @@ namespace SrbijaVoz.clientPages
 
         private void ReserveTicket(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                int SeatNum = Seat.Number;
+            }
+            catch (Exception ex)
+            {
+                if (ex is NullReferenceException)
+                {
+                    MessageBox.Show("Morate odabrati sediste pre rezervacije karte!", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                return;
+            }
             string sMessageBoxText = "Da li ste sigurni da želite da rezervišete kartu?";
 
             MessageBoxButton btnMessageBox = MessageBoxButton.YesNoCancel;
@@ -275,8 +287,7 @@ namespace SrbijaVoz.clientPages
             switch (rsltMessageBox)
             {
                 case MessageBoxResult.Yes:
-                    try
-                    {
+
                         Ticket ticket = new Ticket(currentOffer.LineSchedule, TicketStatus.RESERVED, Seat, Client, TicketPrice, currentOffer.StartStation, currentOffer.EndStation, currentOffer.StartTime, currentOffer.EndTime, currentOffer.Date);
                         Client.Tickets.Add(ticket);
                         database.Tickets.Add(ticket);
@@ -289,15 +300,6 @@ namespace SrbijaVoz.clientPages
                         }
                         this.Close();
                         break;
-                    }
-                    catch (Exception ex)
-                    {
-                        if (ex is NullReferenceException || ex is InvalidOperationException)
-                        {
-                            MessageBox.Show("Morate odabrati sediste pre rezervacije karte!", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
-                        }
-                        break;
-                    }
 
                 case MessageBoxResult.No:
                     break;

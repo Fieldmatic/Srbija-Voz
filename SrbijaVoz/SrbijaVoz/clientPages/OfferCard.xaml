@@ -9,22 +9,22 @@
     <Border Background="White" BorderThickness="0 0 0 1" BorderBrush="Gray">
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="1.35*"/>
-                <ColumnDefinition Width="1.35*"/>
-                <ColumnDefinition Width="1.35*"/>
-                <ColumnDefinition Width="1.35*"/>
-                <ColumnDefinition Width="1.35*"/>
-                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2.2*"/>
+                <ColumnDefinition Width="1.3*"/>
+                <ColumnDefinition Width="1.3*"/>
+                <ColumnDefinition Width="1.2*"/>
+                <ColumnDefinition Width="1.55*"/>
+                <ColumnDefinition Width="1.3*"/>
+                <ColumnDefinition Width="2.1*"/>
             </Grid.ColumnDefinitions>
 
-            <Label x:Name="Line" Grid.Column="0" Content="Novi Sad - Beograd" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
-            <Label x:Name="Date" Grid.Column="1" Content="05.05.2022" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
-            <Label x:Name="Departure" Grid.Column="2" Content="12:00" VerticalAlignment="Center"  HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
-            <Label x:Name="Arrival" Grid.Column="3" Content="13:30" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
-            <Label x:Name="Price" Grid.Column="4" Content="Cena" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
-            <Label x:Name="Train" Grid.Column="5" Content="Soko" VerticalAlignment="Center"  HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
-            <Button x:Name ="TicketResBuy" Content="Rezervacija/Kupovina" Grid.Column="6" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Margin="0 7 0 7" FontSize="18" Click="TicketResBuy_Click"/>
+            <Label x:Name="Line" Grid.Column="0" Content="Novi Sad - Beograd" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Medium" FontSize="20"/>
+            <Label x:Name="Date" Grid.Column="1" Content="05.05.2022" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Medium" FontSize="20"/>
+            <Label x:Name="Departure" Grid.Column="2" Content="12:00" VerticalAlignment="Center"  HorizontalAlignment="Center" FontWeight="Medium" FontSize="20" ContentStringFormat="{}{0:hh}:{0:mm}"/>
+            <Label x:Name="Arrival" Grid.Column="3" Content="13:30" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Medium" FontSize="20" ContentStringFormat="{}{0:hh}:{0:mm}"/>
+            <Label x:Name="Price" Grid.Column="4" Content="Cena" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Medium" FontSize="20"/>
+            <Label x:Name="Train" Grid.Column="5" Content="Soko" VerticalAlignment="Center"  HorizontalAlignment="Center" FontWeight="Medium" FontSize="20"/>
+            <Button x:Name ="TicketResBuy" Content="Rezervacija/Kupovina" Grid.Column="6" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Margin="0 7 0 7" FontSize="16" Click="TicketResBuy_Click"/>
 
         </Grid>
     </Border>

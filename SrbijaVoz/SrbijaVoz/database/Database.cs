@@ -104,6 +104,11 @@ namespace SrbijaVoz.database
                 }
                 ls.TakenSeats = new Dictionary<DateTime, List<int>>();
             }
-        }
+            Stations.Add(new Station(5, "Niš", new Location(43.315704, 21.877389)));
+            Stations.Add(new Station(6, "Kraljevo", new Location(43.728099, 20.692424)));
+            Stations.Add(new Station(7, "Subotica", new Location(46.092255, 19.661154)));
+            Stations.Add(new Station(8, "Zrenjanin", new Location(45.380948, 20.375985)));
+            Lines.Add(new Line(3, "Subotica - Niš", new List<Station> { GetStationByName("Subotica"), GetStationByName("Novi Sad"), GetStationByName("Zrenjanin"), GetStationByName("Beograd Centar"), GetStationByName("Kraljevo"), GetStationByName("Niš")}));
+        } 
     }
 }
