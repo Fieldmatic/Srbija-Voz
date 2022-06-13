@@ -9,7 +9,39 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Stations">
-        
+
+    <Page.Resources>
+        <Style TargetType="Button" x:Key="MyButton2">
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Background" Value="MediumAquamarine" />
+            <Setter Property="Foreground" Value="MediumBlue" />
+           
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid Background="{TemplateBinding Background}">
+                            <Border CornerRadius="25" Background="#0F3256" BorderBrush="#ccc" BorderThickness="0,1,1,0" >
+                            </Border>
+                            <ContentPresenter x:Name="MyContentPresenter" 
+                                          Content="{TemplateBinding Content}"
+                                          HorizontalAlignment="Center" 
+                                          VerticalAlignment="Center" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
+
+
     <Grid x:Name="Grid">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -66,43 +98,54 @@
                     </Button.Content>
                 </Button>
             </Grid>
-            <Border BorderBrush="Gray" Grid.Row="1" Grid.Column="1" BorderThickness="0 0.5 0 0.5">
+            <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto" Grid.Row="1" Grid.Column="1" >
+
+                <Border BorderBrush="Gray" BorderThickness="0 0.5 0 0.5">
                 <ListBox MouseDoubleClick="StationsListBox_MouseDoubleClick"
                 Grid.Row="1"
                 Name="StationsListBox"
                 HorizontalAlignment="Stretch"
                 Grid.IsSharedSizeScope="True"
                 Margin="12 0 12 0">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <Border
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border
                                 x:Name="Border"
                                 HorizontalAlignment="Stretch"
                                 Padding="8"
                                 Width="400"
                                 BorderThickness="0 0 0 1"
                                 BorderBrush="{DynamicResource MaterialDesignDivider}">
-                                <Grid x:Name="Grid">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition SharedSizeGroup="Checkerz"/>
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <ToggleButton x:Name="ButtonId"
+                                    <Grid x:Name="Grid">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition SharedSizeGroup="Checkerz"/>
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Button
+                                        x:Name="Button"
                                         VerticalAlignment="Center"
-                                        Style="{StaticResource MaterialDesignActionLightToggleButton}"
-                                        Content="{Binding Id}"/>
-                                    <StackPanel
+                                        Height="40"
+                                        Width="40"
+                                        BorderBrush="#0F3256"
+                                        IsEnabled="False"
+                                        Style="{StaticResource MyButton2}"
+
+                                        Content="{Binding Id}">
+                               
+                                        </Button>
+                                        <StackPanel
                                         Margin="8 0 0 0"
                                         Grid.Column="1"
                                         VerticalAlignment="Center">
-                                        <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
-                                    </StackPanel>
-                                </Grid>
-                            </Border>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-            </Border>
+                                            <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Border>
+            </ScrollViewer>
 
             <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Button HorizontalAlignment="Stretch" Height="Auto" Margin="10 0 10 0" MinWidth="100" Click="playDemo" ToolTip="Demo, Ctrl+D">

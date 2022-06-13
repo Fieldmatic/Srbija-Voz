@@ -102,7 +102,6 @@ namespace SrbijaVoz.managerPages
                 StationsListBox.Items.Refresh();
                 StationsNetworkMap.Children.Clear();
                 DrawStationsOnMap();
-
             }
         }
 
@@ -110,7 +109,7 @@ namespace SrbijaVoz.managerPages
         {
             foreach(Station station in Stations)
             {
-                if ((Math.Abs(station.Location.Latitude - location.Latitude) <= 0.001) && (Math.Abs(station.Location.Longitude - location.Longitude) <= 0.001)) return station;
+                if ((Math.Abs(station.Location.Latitude - location.Latitude) <= 0.002) && (Math.Abs(station.Location.Longitude - location.Longitude) <= 0.002)) return station;
             }
             return null;
         }
@@ -126,7 +125,9 @@ namespace SrbijaVoz.managerPages
             if (result is bool b && b)
             {
                 Location pinLocation = StationsNetworkMap.ViewportPointToLocation(dropPosition);
-                int newId = Stations.Last().Id + 1;
+                int newId;
+                if (Stations.Count == 0) newId = 1;
+                else newId = Stations.Last().Id + 1;
                 Station newStation = new(newId, viewModel.MessageBoxInput, pinLocation);
                 Stations.Add(newStation);
                 StationsListBox.Items.Refresh();
@@ -156,13 +157,6 @@ namespace SrbijaVoz.managerPages
             StationsNetworkMap.ZoomLevel = 15;
         }
 
-        private void StationsListBox_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            Station selectedStation = StationsListBox.SelectedItem as Station;
-            StationsNetworkMap.Center = selectedStation.Location;
-            StationsNetworkMap.Focus();
-            StationsNetworkMap.ZoomLevel = 15;
-        }
 
         private void playDemo(object sender, RoutedEventArgs e)
         {
