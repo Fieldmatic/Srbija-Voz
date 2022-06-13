@@ -1,5 +1,6 @@
 ﻿using SrbijaVoz.database;
 using SrbijaVoz.dataGridRecord;
+using SrbijaVoz.help;
 using SrbijaVoz.managerPages;
 using SrbijaVoz.managerWindows;
 using SrbijaVoz.model;
@@ -35,7 +36,10 @@ namespace SrbijaVoz
             Manager = manager;
             CenterWindowOnScreen();
             InitializeManagerShortcuts();
-            
+
+            RoutedCommand help = new();
+            help.InputGestures.Add(new KeyGesture(Key.F1));
+            this.CommandBindings.Add(new CommandBinding(help, OpenHelp));
         }
 
         public void InitializeManagerShortcuts()
@@ -67,6 +71,12 @@ namespace SrbijaVoz
             RoutedCommand logout = new();
             logout.InputGestures.Add(new KeyGesture(Key.Back, ModifierKeys.Control));
             this.CommandBindings.Add(new CommandBinding(logout, LogoutEvent));
+        }
+
+        private void OpenHelp(object sender, ExecutedRoutedEventArgs e)
+        {
+            var helpViewer = new HelpViewer("homeHelp");
+            helpViewer.Show();
         }
 
         private void LogoutEvent(object sender, RoutedEventArgs e)
