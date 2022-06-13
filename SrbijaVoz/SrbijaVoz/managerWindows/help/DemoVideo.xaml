@@ -6,7 +6,8 @@
         Icon="../../resources/SrbijaVozLogo.png"
         xmlns:local="clr-namespace:SrbijaVoz.managerWindows.help"
         mc:Ignorable="d"
-        Title="Demo pomoć" Height="600" Width="900">
+        Title="Demo pomoć" Height="600" Width="900"
+        KeyDown="Window_KeyDown">
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />

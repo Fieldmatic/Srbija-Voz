@@ -67,5 +67,10 @@ namespace SrbijaVoz.managerWindows.help
 			this.Left = (screenWidth / 2) - (windowWidth / 2);
 			this.Top = (screenHeight / 2) - (windowHeight / 2);
 		}
-	}
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+			this.Close();
+        }
+    }
 }
