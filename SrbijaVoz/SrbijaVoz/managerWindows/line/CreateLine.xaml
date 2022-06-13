@@ -24,8 +24,8 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <TextBlock Grid.Row="0" Grid.Column="0" Text="Dostupne stanice:" FontSize="17" Margin="10 0 0 10"/>
-            <TextBlock Grid.Row="0" Grid.Column="1" Text="Izabrane stanice:" FontSize="17" Margin="10 0 0 10"/>
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Dostupne stanice:" FontWeight="Medium" FontSize="17" Margin="10 0 0 10"/>
+            <TextBlock Grid.Row="0" Grid.Column="1" Text="Izabrane stanice:" FontWeight="Medium" FontSize="17" Margin="10 0 0 10"/>
             <Border BorderBrush="Gray" Grid.Column="0" Grid.Row="1" BorderThickness="1">
                 <ListView Grid.Column="0" Grid.Row="1" ItemsSource="{Binding AvailableStations}"
                       PreviewMouseLeftButtonDown="ListView_PreviewMouseLeftButtonDown"

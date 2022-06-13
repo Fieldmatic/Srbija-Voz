@@ -129,17 +129,35 @@ namespace SrbijaVoz.managerPages
             var result = await DialogHost.Show(viewModel);
             if (result is bool b && b)
             {
-                Location pinLocation = StationsNetworkMap.ViewportPointToLocation(dropPosition);
-                int newId;
-                if (Stations.Count == 0) newId = 1;
-                else newId = Stations.Last().Id + 1;
-                Station newStation = new(newId, viewModel.MessageBoxInput, pinLocation);
-                Stations.Add(newStation);
-                StationsListBox.Items.Refresh();
-                AddStationOnMap(newStation);
-                return true;
+                string stationName = viewModel.MessageBoxInput;
+                if (CheckIfStationNameExists(stationName))
+                {
+                    MessageBox.Show("Stanica sa imenom " + stationName + " već postoji. Molim vas, pokušajte ponovo. ", "Pogrešan unos", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+                else
+                {
+                    Location pinLocation = StationsNetworkMap.ViewportPointToLocation(dropPosition);
+                    int newId;
+                    if (Stations.Count == 0) newId = 1;
+                    else newId = Stations.Last().Id + 1;
+                    Station newStation = new(newId, stationName, pinLocation);
+                    Stations.Add(newStation);
+                    StationsListBox.Items.Refresh();
+                    AddStationOnMap(newStation);
+                    return true;
+                }
             }
             return false;
+        }
+
+        private bool CheckIfStationNameExists(string stationName)
+        {
+            bool stationNameExists = false;
+            foreach(Station station in Stations)
+            {
+                if (station.Name == stationName) stationNameExists = true;
+            }
+            return stationNameExists;
         }
 
         private void DeleteStation_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
