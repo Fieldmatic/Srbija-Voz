@@ -1,5 +1,6 @@
 ﻿using SrbijaVoz.database;
 using SrbijaVoz.dataGridRecord;
+using SrbijaVoz.help;
 using SrbijaVoz.managerWindows.help;
 using SrbijaVoz.managerWindows.line;
 using SrbijaVoz.model;
@@ -39,10 +40,13 @@ namespace SrbijaVoz.managerWindows
         public delegate void RefreshLines();
         public event RefreshLines RefreshLinesListEvent;
 
+        private ManagerWindow _managerWindow;
+
         public LinePage(Database database, ManagerWindow managerWindow)
         {
             InitializeComponent();
             Database = database;
+            _managerWindow = managerWindow;
 
             managerWindow.CommandBindings.Clear();
             managerWindow.InitializeManagerShortcuts();
@@ -246,9 +250,8 @@ namespace SrbijaVoz.managerWindows
 
         private void HelpBtn_Click(object sender, RoutedEventArgs e)
         {
-            var path = Environment.CurrentDirectory;
-            string filePath = path + "/../../../help/lineHelp.html";
-            Process.Start(new ProcessStartInfo(filePath) { UseShellExecute = true });
+            var helpViewer = new HelpViewer("lineHelp");
+            helpViewer.Show();
         }
     }
 }

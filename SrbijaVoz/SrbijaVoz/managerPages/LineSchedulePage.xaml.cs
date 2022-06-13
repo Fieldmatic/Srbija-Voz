@@ -1,5 +1,6 @@
 ﻿using SrbijaVoz.database;
 using SrbijaVoz.dataGridRecord;
+using SrbijaVoz.help;
 using SrbijaVoz.managerWindows.help;
 using SrbijaVoz.model;
 using System;
@@ -239,9 +240,8 @@ namespace SrbijaVoz.managerWindows
 
         private void HelpBtn_Click(object sender, RoutedEventArgs e)
         {
-            var path = Environment.CurrentDirectory;
-            string filePath = path + "/../../../help/lineScheduleHelp.html";
-            Process.Start(new ProcessStartInfo(filePath) { UseShellExecute = true });
+            var helpViewer = new HelpViewer("lineScheduleHelp");
+            helpViewer.Show();
         }
     }
 }

@@ -5,41 +5,149 @@
     <meta charset="utf-8" />
     <title>Kontekstna pomoć za izveštaje o prodatim kartama na nivou vožnje</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+        * {
+            list-style: none;
+            text-decoration: none;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .sidebar {
+            background: rgb(0, 51, 102);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 225px;
+            height: 100%;
+            transition: all 0.5s ease;
+        }
+        .sidebar .profile {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .sidebar .profile img {
+            display: block;
+            width: 225px;
+            height: auto;
+            border-radius: 50%;
+            margin: 0 auto;
+        }
+        .sidebar ul li a {
+            display: block;
+            padding: 13px 30px;
+            border-bottom: 1px solid #10558d;
+            color: rgb(241, 237, 237);
+            font-size: 16px;
+            position: relative;
+        }
+
+        .sidebar ul li a .icon {
+            color: #dee4ec;
+            width: 30px;
+            display: inline-block;
+        }
+
+        .sidebar ul li a:hover,
+        .sidebar ul li a.active {
+            color: #0c7db1;
+            background: white;
+            border-right: 2px solid rgb(5, 68, 104);
+        }
+
+        .sidebar ul li a:hover .icon,
+        .sidebar ul li a.active .icon {
+            color: #0c7db1;
+        }
+
+        .sidebar ul li a:hover:before,
+        .sidebar ul li a.active:before {
+            display: block;
+        }
+
         .content {
             max-width: 700px;
             margin: auto;
             background: #fff;
-            font-family: 'georgia';
             font-size: 17px;
         }
     </style>
 </head>
-<body class="content">
+<body>
 
-    <h1>Izveštaj o prodatim kartama na nivou vožnje</h1><br />
-    <br /> <hr />
+    <div class="sidebar">
+        <div class="profile">
+            <img src="../resources/SrbijaVozLogo.png" alt="profile_picture">
+        </div>
+        <ul>
+            <li>
+                <a href="./homeHelp.html">
+                    <span class="item">Početna</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="item">Voz</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="item">Stanica</span>
+                </a>
+            </li>
+            <li>
+                <a href="./lineHelp.html">
+                    <span class="item">Linija</span>
+                </a>
+            </li>
+            <li>
+                <a href="./lineScheduleHelp.html">
+                    <span class="item">Red vožnje</span>
+                </a>
+            </li>
+            <li>
+                <a href="./soldTicketsRideHelp.html" class="active">
+                    <span class="item">Izveštaj vožnji</span>
+                </a>
+            </li>
+            <li>
+                <a href="./soldTicketsMonthHelp.html">
+                    <span class="item">Izveštaj za mesec</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="content">
+
+        <h1>Izveštaj o prodatim kartama na nivou vožnje</h1><br />
+        <br /> <hr />
         <h3 style="font-style:italic">
             U ovoj sekciji biće prikazano korišćenje stranice za prikaz izveštaja o prodatim kartama na nivou vožnje
         </h3>
-    <br />
-    <div>
-        <p>
-            Da bi se prikazao izveštaj potrebno je uneti početnu i krajnju stanicu u zaokružena polja sa
-            desne strane i pritisnuti dugme "Prikaži karte".
-        </p>
-        <img src="./reportRideImages/reportRide1.png" alt="slika1" width="700" height="400">
-    </div>
+        <br />
+        <div>
+            <p>
+                Da bi se prikazao izveštaj potrebno je uneti početnu i krajnju stanicu u zaokružena polja sa
+                desne strane i pritisnuti dugme "Prikaži karte".
+            </p>
+            <img src="./reportRideImages/reportRide1.png" alt="slika1" width="700" height="400">
+        </div>
 
-    <br /> <hr /> <br />
-    <div>
-        <p>
-            Nakon toga se u tabeli prikazuju prodate karte, a u gornjem desnom uglu je prikazana ukupna zarada
-            i broj prodatih karata.
-        </p>
-        <img src="./reportRideImages/reportRide2.png" alt="slika2" width="700" height="400">
-    </div>
+        <br /> <hr /> <br />
+        <div>
+            <p>
+                Nakon toga se u tabeli prikazuju prodate karte, a u gornjem desnom uglu je prikazana ukupna zarada
+                i broj prodatih karata.
+            </p>
+            <img src="./reportRideImages/reportRide2.png" alt="slika2" width="700" height="400">
+        </div>
 
-    <br /> <br />
-    
+        <br /> <br />
+    </div>
 </body>
 </html>

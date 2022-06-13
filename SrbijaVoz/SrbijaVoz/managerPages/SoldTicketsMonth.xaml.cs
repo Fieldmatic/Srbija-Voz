@@ -1,5 +1,6 @@
 ﻿using SrbijaVoz.database;
 using SrbijaVoz.dataGridRecord;
+using SrbijaVoz.help;
 using SrbijaVoz.managerWindows.help;
 using SrbijaVoz.model;
 using System;
@@ -99,9 +100,8 @@ namespace SrbijaVoz.managerPages
 
         private void HelpBtn_Click(object sender, RoutedEventArgs e)
         {
-            var path = Environment.CurrentDirectory;
-            string filePath = path + "/../../../help/soldTicketsMonthHelp.html";
-            Process.Start(new ProcessStartInfo(filePath) { UseShellExecute = true });
+            var helpViewer = new HelpViewer("soldTicketsMonthHelp");
+            helpViewer.Show();
         }
     }
 }

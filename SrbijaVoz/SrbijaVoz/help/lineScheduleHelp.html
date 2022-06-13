@@ -5,98 +5,207 @@
     <meta charset="utf-8" />
     <title>Kontekstna pomoć za kreiranje linije</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+        * {
+            list-style: none;
+            text-decoration: none;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .sidebar {
+            background: rgb(0, 51, 102);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 225px;
+            height: 100%;
+            transition: all 0.5s ease;
+        }
+        .sidebar .profile {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .sidebar .profile img {
+            display: block;
+            width: 225px;
+            height: auto;
+            border-radius: 50%;
+            margin: 0 auto;
+        }
+        .sidebar ul li a {
+            display: block;
+            padding: 13px 30px;
+            border-bottom: 1px solid #10558d;
+            color: rgb(241, 237, 237);
+            font-size: 16px;
+            position: relative;
+        }
+
+        .sidebar ul li a .icon {
+            color: #dee4ec;
+            width: 30px;
+            display: inline-block;
+        }
+
+        .sidebar ul li a:hover,
+        .sidebar ul li a.active {
+            color: #0c7db1;
+            background: white;
+            border-right: 2px solid rgb(5, 68, 104);
+        }
+
+        .sidebar ul li a:hover .icon,
+        .sidebar ul li a.active .icon {
+            color: #0c7db1;
+        }
+
+        .sidebar ul li a:hover:before,
+        .sidebar ul li a.active:before {
+            display: block;
+        }
+
         .content {
             max-width: 700px;
             margin: auto;
             background: #fff;
-            font-family: 'georgia';
             font-size: 17px;
         }
     </style>
 </head>
-<body class="content">
+<body>
 
-    <h1>Red vožnje</h1><br />
-    <br /> <hr />
-
-    <h3 style="font-style:italic">
-        U ovoj sekciji biće prikazano korišćenje stranice za kreiranje novog reda vožnje
-    </h3>
-    <br />
-    <div>
-        <p>
-            Prvi korak predstavlja odabir opcije "Novi red vožnje" klikom na dugme ili
-            upotrebom određene prečice(Ctrl+N) kao što je zaokruženo na slici ispod.
-        </p>
-        <img src="./lineScheduleImages/createLineSchedule1.png" alt="slika1" width="700" height="400">
+    <div class="sidebar">
+        <div class="profile">
+            <img src="../resources/SrbijaVozLogo.png" alt="profile_picture">
+        </div>
+        <ul>
+            <li>
+                <a href="./homeHelp.html">
+                    <span class="item">Početna</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="item">Voz</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="item">Stanica</span>
+                </a>
+            </li>
+            <li>
+                <a href="./lineHelp.html">
+                    <span class="item">Linija</span>
+                </a>
+            </li>
+            <li>
+                <a href="./lineScheduleHelp.html" class="active">
+                    <span class="item">Red vožnje</span>
+                </a>
+            </li>
+            <li>
+                <a href="./soldTicketsRideHelp.html">
+                    <span class="item">Izveštaj vožnji</span>
+                </a>
+            </li>
+            <li>
+                <a href="./soldTicketsMonthHelp.html">
+                    <span class="item">Izveštaj za mesec</span>
+                </a>
+            </li>
+        </ul>
     </div>
 
-    <br /> <hr /> <br />
-    <div>
-        <p>
-            Nakon toga se otvara prozor za kreiranje novog reda vožnje koji sadrži pobrojane sve dostupne
-            linije(1), vozove(2) i dane polaska(3).
-        </p>
-        <img src="./lineScheduleImages/createLineSchedule2.png" alt="slika2" width="700" height="500">
-    </div>
+    <div class="content">
 
-    <br /> <hr /> <br />
-    <div>
-        <p>
-            Da bi se kreirao novi red vožnje potrebno je u tabeli linija odabrati odgovarajuću liniju, a
-            zatim se pojavljuju stanice iz izabrane linije, kao i polje za unos vremena polaska, odnosno
-            vremena dolaska (zaokruženo). Potrebno je da korisnik unese sva vremena u pravilnom redosledu
-            zatim da odabere voz i dane polaska voza. Zatim pritiskom na dugme "Dodaj" kreira se novi red
-            vožnje i prikazuje u tabeli svih redova vožnje.
-        </p>
-        <img src="./lineScheduleImages/createLineSchedule3.png" alt="slika2" width="700" height="500">
-    </div>
+        <h1>Red vožnje</h1><br />
+        <br /> <hr />
 
-    
-    <br /> <hr /> <br />
-    <h3 style="font-style:italic">
-        U ovoj sekciji biće prikazano korišćenje stranice za ažuriranje postojećeg reda vožnje
-    </h3>
-    <br />
-    <div>
-        <p>
-            Prvi korak je odabir određenog reda vožnje u tabeli svih dostupnih redova vožnje. Zatim klikom
-            na zaokruženo dugme sa desne strane("Izmeni red vožnje") ili prevlačenjem izabranog reda vožnje
-            na pomenuto dugme ili upotrebom određene prečice(Ctrl+E), otvara se prozor koji sadrži podatke
-            o izabranom redu vožnje.
-        </p>
-        <img src="./lineScheduleImages/updateLineSchedule1.png" alt="slika1" width="700" height="400">
+        <h3 style="font-style:italic">
+            U ovoj sekciji biće prikazano korišćenje stranice za kreiranje novog reda vožnje
+        </h3>
+        <br />
+        <div>
+            <p>
+                Prvi korak predstavlja odabir opcije "Novi red vožnje" klikom na dugme ili
+                upotrebom određene prečice(Ctrl+N) kao što je zaokruženo na slici ispod.
+            </p>
+            <img src="./lineScheduleImages/createLineSchedule1.png" alt="slika1" width="700" height="400">
+        </div>
+
+        <br /> <hr /> <br />
+        <div>
+            <p>
+                Nakon toga se otvara prozor za kreiranje novog reda vožnje koji sadrži pobrojane sve dostupne
+                linije(1), vozove(2) i dane polaska(3).
+            </p>
+            <img src="./lineScheduleImages/createLineSchedule2.png" alt="slika2" width="700" height="500">
+        </div>
+
+        <br /> <hr /> <br />
+        <div>
+            <p>
+                Da bi se kreirao novi red vožnje potrebno je u tabeli linija odabrati odgovarajuću liniju, a
+                zatim se pojavljuju stanice iz izabrane linije, kao i polje za unos vremena polaska, odnosno
+                vremena dolaska (zaokruženo). Potrebno je da korisnik unese sva vremena u pravilnom redosledu
+                zatim da odabere voz i dane polaska voza. Zatim pritiskom na dugme "Dodaj" kreira se novi red
+                vožnje i prikazuje u tabeli svih redova vožnje.
+            </p>
+            <img src="./lineScheduleImages/createLineSchedule3.png" alt="slika2" width="700" height="500">
+        </div>
+
+
+        <br /> <hr /> <br />
+        <h3 style="font-style:italic">
+            U ovoj sekciji biće prikazano korišćenje stranice za ažuriranje postojećeg reda vožnje
+        </h3>
+        <br />
+        <div>
+            <p>
+                Prvi korak je odabir određenog reda vožnje u tabeli svih dostupnih redova vožnje. Zatim klikom
+                na zaokruženo dugme sa desne strane("Izmeni red vožnje") ili prevlačenjem izabranog reda vožnje
+                na pomenuto dugme ili upotrebom određene prečice(Ctrl+E), otvara se prozor koji sadrži podatke
+                o izabranom redu vožnje.
+            </p>
+            <img src="./lineScheduleImages/updateLineSchedule1.png" alt="slika1" width="700" height="400">
+        </div>
+        <br /> <hr /> <br />
+        <div>
+            <p>
+                Prozor je prikazan na sledećoj slici. Na vrhu je prikazana linija za koju je vezan red vožnje.
+                Korisnik može da izmeni voz, vremena polaska i dolaska, kao i dane za koje važi taj red vožnje.
+                Pritiskom na dugme "Sačuvaj" izabrani red vožnje se ažurira.
+            </p>
+            <img src="./lineScheduleImages/updateLineSchedule2.png" alt="slika1" width="700" height="500">
+        </div>
+        <br /> <hr /> <br />
+        <h3 style="font-style:italic">
+            U ovoj sekciji biće prikazano brisanje postojećeg reda vožnje
+        </h3>
+        <div>
+            <p>
+                Prvi korak je odabir određenog reda vožnje u tabeli svih dostupnih redova vožnje. Zatim klikom
+                na zaokruženo dugme sa desne strane("Obriši red vožnje") ili prevlačenjem izabranog reda vožnje
+                na pomenuto dugme ili upotrebom određene prečice(Shift+Del), otvara se dijalog sa upozorenjem
+                gdje korisnik mora da potvrdi brisanje izabranog reda vožnje.
+            </p>
+            <img src="./lineScheduleImages/deleteLineSchedule1.png" alt="slika1" width="700" height="400">
+        </div>
+        <br /> <hr /> <br />
+        <div>
+            <p>
+                Ukoliko korisnik odluči da odustanete od procesa brisanja reda vožnje treba da pritisne opciju "No",
+                a ukoliko izabere opciju "Yes" izabrani red vožnje će biti trajno obrisan.
+            </p>
+            <img src="./lineScheduleImages/deleteLineSchedule2.png" alt="slika1" width="700" height="400">
+        </div>
+        <br /> <br />
     </div>
-    <br /> <hr /> <br />
-    <div>
-        <p>
-            Prozor je prikazan na sledećoj slici. Na vrhu je prikazana linija za koju je vezan red vožnje. 
-            Korisnik može da izmeni voz, vremena polaska i dolaska, kao i dane za koje važi taj red vožnje. 
-            Pritiskom na dugme "Sačuvaj" izabrani red vožnje se ažurira.
-        </p>
-        <img src="./lineScheduleImages/updateLineSchedule2.png" alt="slika1" width="700" height="500">
-    </div>
-    <br /> <hr /> <br />
-    <h3 style="font-style:italic">
-        U ovoj sekciji biće prikazano brisanje postojećeg reda vožnje
-    </h3>
-    <div>
-        <p>
-            Prvi korak je odabir određenog reda vožnje u tabeli svih dostupnih redova vožnje. Zatim klikom
-            na zaokruženo dugme sa desne strane("Obriši red vožnje") ili prevlačenjem izabranog reda vožnje
-            na pomenuto dugme ili upotrebom određene prečice(Shift+Del), otvara se dijalog sa upozorenjem
-            gdje korisnik mora da potvrdi brisanje izabranog reda vožnje.
-        </p>
-        <img src="./lineScheduleImages/deleteLineSchedule1.png" alt="slika1" width="700" height="400">
-    </div>
-    <br /> <hr /> <br />
-    <div>
-        <p>
-            Ukoliko korisnik odluči da odustane od procesa brisanja reda vožnje treba da pritisne opciju "No",
-            a ukoliko izabere opciju "Yes" izabrani red vožnje će biti trajno obrisan.
-        </p>
-        <img src="./lineScheduleImages/deleteLineSchedule2.png" alt="slika1" width="700" height="400">
-    </div>
-    <br /> <br />
 </body>
 </html>
