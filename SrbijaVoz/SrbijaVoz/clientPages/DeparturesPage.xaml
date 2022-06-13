@@ -21,7 +21,7 @@
                 Style="{StaticResource MaterialDesignOutlinedComboBox}"   
                 FontSize="15"
                 HorizontalAlignment="Left"
-                materialDesign:HintAssist.Hint="Pocetna stanica"
+                materialDesign:HintAssist.Hint="Početna stanica"
                 materialDesign:HintAssist.Foreground="Black"
                 Width="Auto"
                 Margin="5 0 5 0"/>

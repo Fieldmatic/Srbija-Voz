@@ -272,7 +272,7 @@ namespace SrbijaVoz.clientPages
             {
                 if (ex is NullReferenceException)
                 {
-                    MessageBox.Show("Morate odabrati sediste pre rezervacije karte!", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Morate odabrati sedište pre rezervacije karte!", "Greška", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 return;
             }

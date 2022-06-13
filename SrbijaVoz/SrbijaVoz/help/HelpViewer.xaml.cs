@@ -23,6 +23,7 @@ namespace SrbijaVoz.help
         public HelpViewer(string key)
         {
             InitializeComponent();
+            CenterWindowOnScreen();
             var dir = Environment.CurrentDirectory;
             string path = $"{dir}/../../../help/{key}.html";
             Uri u = new(path);
@@ -56,6 +57,16 @@ namespace SrbijaVoz.help
 
         private void wbHelp_Navigating(object sender, System.Windows.Navigation.NavigatingCancelEventArgs e)
         {
+        }
+
+        private void CenterWindowOnScreen()
+        {
+            double screenWidth = System.Windows.SystemParameters.PrimaryScreenWidth;
+            double screenHeight = System.Windows.SystemParameters.PrimaryScreenHeight;
+            double windowWidth = this.Width;
+            double windowHeight = this.Height;
+            this.Left = (screenWidth / 2) - (windowWidth / 2);
+            this.Top = (screenHeight / 2) - (windowHeight / 2);
         }
     }
 }

@@ -41,7 +41,7 @@ namespace SrbijaVoz.clientPages
 
         private void TicketConfirmReservation(object sender, RoutedEventArgs e)
         {
-            string sMessageBoxText = "Jeste li sigurni da zelite da potvrdite rezervaciju za ovu kartu?";
+            string sMessageBoxText = "Jeste li sigurni da želite da potvrdite rezervaciju za ovu kartu?";
 
             MessageBoxButton btnMessageBox = MessageBoxButton.YesNoCancel;
             MessageBoxImage icnMessageBox = MessageBoxImage.Question;
@@ -68,7 +68,7 @@ namespace SrbijaVoz.clientPages
 
         private void TicketRemoveReservation(object sender, RoutedEventArgs e)
         {
-            string sMessageBoxText = "Jeste li sigurni da zelite da otkazete rezervaciju za ovu kartu?";
+            string sMessageBoxText = "Jeste li sigurni da želite da otkažete rezervaciju za ovu kartu?";
 
             MessageBoxButton btnMessageBox = MessageBoxButton.YesNoCancel;
             MessageBoxImage icnMessageBox = MessageBoxImage.Question;

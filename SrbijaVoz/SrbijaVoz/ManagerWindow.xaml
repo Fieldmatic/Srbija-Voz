@@ -47,7 +47,7 @@
                             </StackPanel>
                         </Button.Content>
                     </Button>
-                    <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Medium" FontSize="22" Margin="0 0 5 0" Click="SwitchToLineData" ToolTip="Ctrl+2">
+                    <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Medium" FontSize="22" Margin="0 0 5 0" Click="SwitchToLineData" ToolTip="Ctrl+3">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <Image Source="resources/icons8-journey-48.png" HorizontalAlignment="Center" VerticalAlignment="Center" />
@@ -55,7 +55,7 @@
                             </StackPanel>
                         </Button.Content>
                     </Button>
-                    <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Medium" FontSize="22" Margin="0 0 5 0" Click="SwitchToLineScheduleData" ToolTip="Ctrl+3">
+                    <Button Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Medium" FontSize="22" Margin="0 0 5 0" Click="SwitchToLineScheduleData" ToolTip="Ctrl+4">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <Image Source="resources/icons8-timetable-48.png" HorizontalAlignment="Center" VerticalAlignment="Center" />
