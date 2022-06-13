@@ -1,5 +1,6 @@
 ﻿using SrbijaVoz.database;
 using SrbijaVoz.dataGridRecord;
+using SrbijaVoz.help;
 using SrbijaVoz.managerWindows.help;
 using SrbijaVoz.model;
 using System;
@@ -40,7 +41,7 @@ namespace SrbijaVoz.managerWindows
         {
             RoutedCommand addNewTrain = new();
             addNewTrain.InputGestures.Add(new KeyGesture(Key.N, ModifierKeys.Control));
-            managerWindow.CommandBindings.Add(new CommandBinding(addNewTrain, AddTrain_Executed));
+            managerWindow.CommandBindings.Add(new CommandBinding(addNewTrain, Add_Train_Event));
 
             RoutedCommand editTrain = new();
             editTrain.InputGestures.Add(new KeyGesture(Key.E, ModifierKeys.Control));
@@ -53,6 +54,10 @@ namespace SrbijaVoz.managerWindows
             RoutedCommand openDemo = new();
             openDemo.InputGestures.Add(new KeyGesture(Key.D, ModifierKeys.Control));
             managerWindow.CommandBindings.Add(new CommandBinding(openDemo, playDemo));
+
+            RoutedCommand openHelp = new();
+            openHelp.InputGestures.Add(new KeyGesture(Key.F1));
+            managerWindow.CommandBindings.Add(new CommandBinding(openHelp, HelpBtn_Click));
         }
 
         private void InitializeTrains()
@@ -67,19 +72,6 @@ namespace SrbijaVoz.managerWindows
             ObservableCollection<TrainRecord> trainRecordData = new();
             foreach (Train train in this.Database.Trains) trainRecordData.Add(new TrainRecord(train));
             return trainRecordData;
-        }
-
-        private void AddTrain_CanExecute(object sender, CanExecuteRoutedEventArgs e)
-        {
-            e.CanExecute = true;
-        }
-
-        private void AddTrain_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            var form = new AddTrainWindow(Database, "add");
-            RefreshTrainsListEvent += new RefreshTrains(InitializeTrains);
-            form.UpdateTrain = RefreshTrainsListEvent;
-            form.ShowDialog();
         }
 
         private void EditTrain_CanExecute(object sender, CanExecuteRoutedEventArgs e)
@@ -233,6 +225,12 @@ namespace SrbijaVoz.managerWindows
                 EditBtn.IsEnabled = false;
                 DeleteBtn.IsEnabled = false;
             }
+        }
+
+        private void HelpBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var helpViewer = new HelpViewer("trainHelp");
+            helpViewer.Show();
         }
     }
 }

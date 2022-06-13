@@ -1,6 +1,7 @@
 ﻿using Hangfire.Annotations;
 using MaterialDesignThemes.Wpf;
 using Microsoft.Maps.MapControl.WPF;
+using SrbijaVoz.help;
 using SrbijaVoz.managerWindows.help;
 using SrbijaVoz.model;
 using System;
@@ -45,6 +46,10 @@ namespace SrbijaVoz.managerPages
             RoutedCommand openDemo = new();
             openDemo.InputGestures.Add(new KeyGesture(Key.D, ModifierKeys.Control));
             managerWindow.CommandBindings.Add(new CommandBinding(openDemo, playDemo));
+
+            RoutedCommand openHelp = new();
+            openHelp.InputGestures.Add(new KeyGesture(Key.F1));
+            managerWindow.CommandBindings.Add(new CommandBinding(openHelp, HelpBtn_Click));
         }
 
         private void DrawStationsOnMap()
@@ -162,7 +167,13 @@ namespace SrbijaVoz.managerPages
         {
             DemoVideo m = new DemoVideo(@"../../../demo/Stanice.mp4");
             m.ShowDialog();
-         }
+        }
+
+        private void HelpBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var helpViewer = new HelpViewer("stationHelp");
+            helpViewer.Show();
+        }
     }
 
     public class MessageBoxModel : INotifyPropertyChanged

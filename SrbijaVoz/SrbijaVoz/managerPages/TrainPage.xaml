@@ -10,8 +10,6 @@
       Title="TrainPage">
 
     <Page.CommandBindings>
-        <CommandBinding Command="cmd:RoutedCommands.AddNewItem"
-                        CanExecute="AddTrain_CanExecute" Executed="AddTrain_Executed"></CommandBinding>
         <CommandBinding Command="cmd:RoutedCommands.EditItem"
                         CanExecute="EditTrain_CanExecute" Executed="EditTrain_Executed"></CommandBinding>
         <CommandBinding Command="cmd:RoutedCommands.DeleteItem"
@@ -55,7 +53,7 @@
                     <Button AllowDrop="True" Drop="AddTrain_Drop" Click="Add_Train_Event"
                             Grid.Row="1" Background ="Transparent" BorderThickness="0"
                             Content="{StaticResource Add}" Height="60" HorizontalAlignment="Center"
-                            ToolTip="Novi voz, Ctrl+N" Command="cmd:RoutedCommands.AddNewItem"/>
+                            ToolTip="Novi voz, Ctrl+N"/>
                     <Button x:Name="EditBtn" AllowDrop="True" Drop="UpdateTrain_Drop"
                             Background ="Transparent" BorderThickness="0"
                             Content="{StaticResource Edit}" Margin="12 80 0 0" Height="60"
@@ -77,7 +75,7 @@
                                 </StackPanel>
                             </Button.Content>
                         </Button>
-                        <Button HorizontalAlignment="Stretch" Height="Auto" Margin="10 0 10 0" MinWidth="100">
+                        <Button HorizontalAlignment="Stretch" Height="Auto" Margin="10 0 10 0" MinWidth="100" Click="HelpBtn_Click" ToolTip="Pomoć, F1">
                             <Button.Content>
                                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                                     <materialDesign:PackIcon Kind="HelpCircle" Height="20" Width="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
