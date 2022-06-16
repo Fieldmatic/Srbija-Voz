@@ -151,7 +151,7 @@ namespace SrbijaVoz.managerWindows
                 TextBox seatsIIClass = (TextBox)children[1];
 
                 Wagon wagon = new Wagon();
-                if (Int32.TryParse(seatsIClass.Text, out int seatsIClassInt) && Int32.TryParse(seatsIIClass.Text, out int seatsIIClassInt))
+                if (Int32.TryParse(seatsIClass.Text, out int seatsIClassInt) && Int32.TryParse(seatsIIClass.Text, out int seatsIIClassInt) && (seatsIClassInt > 0) && (seatsIIClassInt > 0))
                 {
                     wagon.Number = selectedWagons[i].Number;
                     wagon.Seats = GetWagonSeats(seatsIClassInt, seatsIIClassInt, wagon.Number);
@@ -184,7 +184,7 @@ namespace SrbijaVoz.managerWindows
                 trainForUpdate.Name = Name.Text;
                 List<Wagon> allWagons = getAllWagons();
 
-                if (Int32.TryParse(seatsPriceIClass.Text, out int seatsPriceIClassInt) && Int32.TryParse(seatsPriceIIClass.Text, out int seatsPriceIIClassInt) && allWagons is not null)
+                if (Int32.TryParse(seatsPriceIClass.Text, out int seatsPriceIClassInt) && Int32.TryParse(seatsPriceIIClass.Text, out int seatsPriceIIClassInt) && allWagons is not null && (seatsPriceIClassInt > 0) && (seatsPriceIIClassInt > 0))
                 {
                     trainForUpdate.PricesPerMinute = GetTrainSeatsPrice(seatsPriceIClassInt, seatsPriceIIClassInt);
                     trainForUpdate.Wagons = getAllWagons();
@@ -218,7 +218,7 @@ namespace SrbijaVoz.managerWindows
                 newTrain.Name = Name.Text;
                 List<Wagon> allWagons = getAllWagons();
 
-                if (Int32.TryParse(seatsPriceIClass.Text, out int seatsPriceIClassInt) && Int32.TryParse(seatsPriceIIClass.Text, out int seatsPriceIIClassInt) && allWagons is not null)
+                if (Int32.TryParse(seatsPriceIClass.Text, out int seatsPriceIClassInt) && Int32.TryParse(seatsPriceIIClass.Text, out int seatsPriceIIClassInt) && allWagons is not null && (seatsPriceIClassInt > 0) && (seatsPriceIIClassInt > 0))
                 {
                     newTrain.PricesPerMinute = GetTrainSeatsPrice(seatsPriceIClassInt, seatsPriceIIClassInt);
                     newTrain.Id = this.Trains.Last().Id + 1;
@@ -229,7 +229,7 @@ namespace SrbijaVoz.managerWindows
                 }
                 else
                 {
-                    MessageBox.Show("Za cenu i broj sedišta dozvoljeni su samo brojevi.", "Pogrešan unos", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show("Za cenu i broj sedišta dozvoljeni su samo pozitivni brojevi.", "Pogrešan unos", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
             catch (ArgumentException ex)
@@ -301,7 +301,7 @@ namespace SrbijaVoz.managerWindows
             {
                 Wagon newWagon = new Wagon();
                 List<Wagon> existingWagons = getAllWagons();
-                if (Int32.TryParse(seatsNumIClass.Text, out int seatsIClassInt) && Int32.TryParse(seatsNumIIClass.Text, out int seatsIIClassInt) && existingWagons is not null)
+                if (Int32.TryParse(seatsNumIClass.Text, out int seatsIClassInt) && Int32.TryParse(seatsNumIIClass.Text, out int seatsIIClassInt) && existingWagons is not null && (seatsIClassInt > 0) && (seatsIIClassInt > 0))
                 {
                     if (selectedWagons.Count == 0)
                     {
@@ -320,7 +320,7 @@ namespace SrbijaVoz.managerWindows
                 }
                 else
                 {
-                    MessageBox.Show("Za broj sedišta vagona dozvoljeni su samo brojevi. Molim vas, pokušajte ponovo. ", "Pogrešan unos", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show("Za broj sedišta vagona dozvoljeni su samo pozitivni brojevi. Molim vas, pokušajte ponovo. ", "Pogrešan unos", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
             catch (Exception ex)
